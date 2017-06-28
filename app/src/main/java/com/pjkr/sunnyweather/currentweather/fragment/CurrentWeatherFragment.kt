@@ -9,13 +9,17 @@ import android.view.ViewGroup
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.pjkr.sunnyweather.R
+import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
+import com.pjkr.sunnyweather.currentweather.model.Weather
+import com.pjkr.sunnyweather.currentweather.presenter.CurrentWeatherPresenter
 
 /**
  * Created by PJablonski on 26.06.2017.
  */
-class CurrentWeatherFragment : Fragment() {
-
-    var recyclerView?: RecyclerView by bindOptionalView
+class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
+    var presenter: CurrentWeatherPresenter? = null
+    @BindView(R.id.recyclerView)
+    var recyclerView: RecyclerView? = null
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view: View = inflater?.inflate(R.layout.current_weather_framgnet, container, false) as View
@@ -24,7 +28,25 @@ class CurrentWeatherFragment : Fragment() {
         return view
     }
 
-    public fun getRecyclerView(){
-        return this.recyclerView
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        this.presenter = CurrentWeatherPresenter(this)
+        this.presenter?.repository
     }
+
+    override fun displayWeather(weather: Weather) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showLoadingIndicator() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun hideLoadingIndicator() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun displayWeathers() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
 }

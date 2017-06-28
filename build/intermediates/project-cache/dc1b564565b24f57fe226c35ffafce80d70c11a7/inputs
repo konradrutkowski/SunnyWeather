@@ -1,0 +1,6 @@
+COMMAND=PREDEX_LIBRARY_TO_DEX_ARCHIVE
+FILE_PATH=D:\SVNy\SunnyWeather\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar
+FILE_HASH=09144483a6335236fa09173dc69b9f558dcb72c4
+DX_VERSION=1.13
+JUMBO_MODE=true
+OPTIMIZE=true
