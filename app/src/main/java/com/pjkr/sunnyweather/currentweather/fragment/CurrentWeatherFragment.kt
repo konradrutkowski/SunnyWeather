@@ -12,6 +12,7 @@ import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
 import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.presenter.CurrentWeatherPresenter
+import com.pjkr.sunnyweather.currentweather.repository.CurrentWeatherRepository
 
 /**
  * Created by PJablonski on 26.06.2017.
@@ -30,23 +31,24 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         this.presenter = CurrentWeatherPresenter(this)
-        this.presenter?.repository
+        this.presenter?.repository = CurrentWeatherRepository(this.presenter)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        this.presenter?.loadElements("2172797")
     }
 
     override fun displayWeather(weather: Weather) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun showLoadingIndicator() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun hideLoadingIndicator() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun displayWeathers() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
 }

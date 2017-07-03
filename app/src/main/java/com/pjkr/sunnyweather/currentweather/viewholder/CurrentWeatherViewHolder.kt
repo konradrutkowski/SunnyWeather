@@ -6,7 +6,8 @@ import android.view.View
  * Created by PJablonski on 28.06.2017.
  */
 class CurrentWeatherViewHolder(itemView: View?) : AbstractViewHolder(itemView) {
+    val row: ListRow? = null;
     override fun setUp() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 }
