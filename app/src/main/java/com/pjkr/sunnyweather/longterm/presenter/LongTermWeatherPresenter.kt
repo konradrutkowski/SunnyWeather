@@ -8,7 +8,11 @@ import com.pjkr.sunnyweather.longterm.WeatherContract
 class LongTermWeatherPresenter(val view: WeatherContract.View) : WeatherContract.Presenter {
 
 
+    override fun onStart() {
+        this.loadData()
+    }
+
+
     override fun loadData() {
-        view.showTitle()
     }
 }

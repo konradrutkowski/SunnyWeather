@@ -6,10 +6,14 @@ package com.pjkr.sunnyweather.longterm
 interface WeatherContract{
 
     interface View{
-        fun showTitle()
+        fun showData()
+        fun setAdapter();
     }
+
+
     interface Presenter{
         fun loadData()
+        fun onStart();
 
     }
 
