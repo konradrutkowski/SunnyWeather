@@ -1,10 +1,12 @@
 package com.pjkr.sunnyweather.api;
 
 
+import android.support.annotation.NonNull;
+import android.util.Log;
+
 import com.pjkr.sunnyweather.longterm.model.Weather;
 
 import java.util.List;
-import java.util.ServiceConfigurationError;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,16 +31,19 @@ public class WeatherProvider {
 
 
         MapAPI mapAPI = retrofit.create(MapAPI.class);
-        mapAPI.getMovie("London", "7", "3a6092b5c20245c7b5b76a920b2d9208", new Callback<List<Weather>>() {
+        mapAPI.getWeather("London", "7", "3a6092b5c20245c7b5b76a920b2d9208", new Callback<List<Weather>>() {
 
 
             @Override
-            public void onResponse(Call<List<Weather>> call, Response<List<Weather>> response) {
-                response.toString();
+            public void onResponse(@NonNull Call<List<Weather>> call, @NonNull Response<List<Weather>> response) {
+                Log.e("Request", " call Value = "+call.toString());
+                Log.e("Request", " Value = "+response.toString());
+
             }
 
             @Override
-            public void onFailure(Call<List<Weather>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<Weather>> call, @NonNull Throwable t) {
+                Log.e("Request", " Value = "+call.toString());
                 t.printStackTrace();
             }
         });

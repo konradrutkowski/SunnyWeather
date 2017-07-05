@@ -9,7 +9,7 @@ import com.pjkr.sunnyweather.longterm.model.Weather
 /**
  * Created by konradrutkowski on 28.06.2017.
  */
-public class LongTermListAdapter(var viewid: Int) : RecyclerView.Adapter<LongTermHolder>() {
+class LongTermListAdapter(var viewid: Int) : RecyclerView.Adapter<LongTermHolder>() {
 
     var longTermWeatherList: List<Weather> = ArrayList()
 
@@ -19,11 +19,18 @@ public class LongTermListAdapter(var viewid: Int) : RecyclerView.Adapter<LongTer
     }
 
     override fun onBindViewHolder(holder: LongTermHolder, position: Int) {
-            holder.titleTV.text = longTermWeatherList.get(position).main
+            holder.titleTV.text = longTermWeatherList[position].main
+            holder.descriptionTV.text = longTermWeatherList[position].description
+
     }
 
     override fun getItemCount(): Int {
         return longTermWeatherList.size
+    }
+
+    fun changeLongTermWeatherList(weatherList: List<Weather>){
+        this.longTermWeatherList = weatherList
+        notifyDataSetChanged()
     }
 
 

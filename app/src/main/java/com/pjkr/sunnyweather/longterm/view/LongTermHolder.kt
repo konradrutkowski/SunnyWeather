@@ -12,6 +12,6 @@ import org.w3c.dom.Text
 class LongTermHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     var titleTV: TextView = view.findViewById(R.id.title_long_term_row) as TextView
-
+    var descriptionTV: TextView = view.findViewById(R.id.description_long_term_row) as TextView
 
 }

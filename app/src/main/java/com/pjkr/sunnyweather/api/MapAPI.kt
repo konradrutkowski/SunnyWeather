@@ -14,5 +14,5 @@ import retrofit2.http.Query
 
 public interface MapAPI {
     @GET("/data/2.5/forecast/daily?q={city_name}&cnt={cnt}")
-    fun getMovie(@Path("city_name") cityName: String,@Path("cnt") numberOfDays: String, @Query("&APPID=") keyApi: String, response: Callback<List<Weather>>)
+    fun getWeather(@Path("city_name") cityName: String, @Path("cnt") numberOfDays: String, @Query("&APPID=") keyApi: String, response: Callback<List<Weather>>)
 }

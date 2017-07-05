@@ -1,18 +1,17 @@
 package com.pjkr.sunnyweather.longterm.view
 
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
-import android.support.annotation.NonNull
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
+import android.widget.Toast
 import com.pjkr.sunnyweather.R
+import com.pjkr.sunnyweather.data.MockWeatherRepository
 import com.pjkr.sunnyweather.longterm.WeatherContract
+import com.pjkr.sunnyweather.longterm.model.Weather
 import com.pjkr.sunnyweather.longterm.presenter.LongTermWeatherPresenter
 
 /**
@@ -20,14 +19,15 @@ import com.pjkr.sunnyweather.longterm.presenter.LongTermWeatherPresenter
  */
 class LongTermWeatherFragment : Fragment(), WeatherContract.View {
 
-    val presenter: LongTermWeatherPresenter = LongTermWeatherPresenter(this)
+
+    override var presenter: WeatherContract.Presenter = LongTermWeatherPresenter(this, MockWeatherRepository())
 
     lateinit var list: RecyclerView
     lateinit var adapter: LongTermListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = LongTermListAdapter(R.id.title_long_term_row)
+        adapter = LongTermListAdapter(R.layout.long_term_row)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -47,7 +47,12 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         list.adapter = adapter
     }
 
-    override fun showData() {
+    override fun showData(weatherList: List<Weather>) {
+        adapter.changeLongTermWeatherList(weatherList)
+    }
+
+    override fun showFailedDataFetch() {
+        Toast.makeText(context, "Failed to download the data", Toast.LENGTH_LONG).show()
     }
 
 

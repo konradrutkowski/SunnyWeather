@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun AppCompatActivity.startFragment() {
-        var fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.add(R.id.container, LongTermWeatherFragment())
         fragmentTransaction.commit()
     }
