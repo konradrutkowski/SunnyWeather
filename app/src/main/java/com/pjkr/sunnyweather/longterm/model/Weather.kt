@@ -5,17 +5,20 @@ import com.google.gson.annotations.SerializedName
 
 class Weather {
 
-    @SerializedName("id")
+    @SerializedName("city")
     @Expose
-    var id: Int? = null
-    @SerializedName("main")
+    var city: City? = null
+    @SerializedName("cod")
     @Expose
-    var main: String? = null
-    @SerializedName("description")
+    var cod: String? = null
+    @SerializedName("message")
     @Expose
-    var description: String? = null
-    @SerializedName("icon")
+    var message: Double? = null
+    @SerializedName("cnt")
     @Expose
-    var icon: String? = null
+    var cnt: Int? = null
+    @SerializedName("list")
+    @Expose
+    var list: List<Properties>? = null
 
 }

@@ -39,9 +39,9 @@ class MockWeatherRepository : WeathersDataSource {
         val weatherProvider = WeatherProvider()
         weatherProvider.getWeather()
         val weather: Weather = Weather()
-        weather.description = "Elo"
-        weather.id = 1
-        weather.main = "Title"
+        weather.cod = "Elo"
+        weather.cnt = 1
+        weather.message = 20.0
         weatherList += weather
         //        weatherList.add(new Weather("Headphones microphone is not working", "Janusz", "24.05.2017"));
         //        weatherList.add(new Weather("Wash machine - weird sounds", "Andrew", "23.05.2017"));

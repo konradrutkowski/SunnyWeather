@@ -19,8 +19,8 @@ class LongTermListAdapter(var viewid: Int) : RecyclerView.Adapter<LongTermHolder
     }
 
     override fun onBindViewHolder(holder: LongTermHolder, position: Int) {
-            holder.titleTV.text = longTermWeatherList[position].main
-            holder.descriptionTV.text = longTermWeatherList[position].description
+            holder.titleTV.text = longTermWeatherList[position].message.toString()
+            holder.descriptionTV.text = longTermWeatherList[position].cod
 
     }
 
