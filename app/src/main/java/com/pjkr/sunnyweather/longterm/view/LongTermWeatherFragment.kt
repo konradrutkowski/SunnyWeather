@@ -10,6 +10,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.data.MockWeatherRepository
+import com.pjkr.sunnyweather.data.WeathersRepository
+import com.pjkr.sunnyweather.data.local.LocalDataSource
+import com.pjkr.sunnyweather.data.remote.RemoteDataSource
 import com.pjkr.sunnyweather.longterm.WeatherContract
 import com.pjkr.sunnyweather.longterm.model.Weather
 import com.pjkr.sunnyweather.longterm.presenter.LongTermWeatherPresenter
@@ -20,7 +23,10 @@ import com.pjkr.sunnyweather.longterm.presenter.LongTermWeatherPresenter
 class LongTermWeatherFragment : Fragment(), WeatherContract.View {
 
 
-    override var presenter: WeatherContract.Presenter = LongTermWeatherPresenter(this, MockWeatherRepository())
+
+
+
+    override var presenter: WeatherContract.Presenter = LongTermWeatherPresenter(this, WeathersRepository(LocalDataSource, RemoteDataSource))
 
     lateinit var list: RecyclerView
     lateinit var adapter: LongTermListAdapter
@@ -47,12 +53,17 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         list.adapter = adapter
     }
 
-    override fun showData(weatherList: List<Weather>) {
+    override fun showWeatherList(weatherList: List<Weather>) {
         adapter.changeLongTermWeatherList(weatherList)
     }
 
     override fun showFailedDataFetch() {
         Toast.makeText(context, "Failed to download the data", Toast.LENGTH_LONG).show()
+    }
+
+    override fun showWeather(weather: Weather) {
+        Toast.makeText(context, "Temp "+ weather.list!![0].temp!!.max, Toast.LENGTH_LONG).show()
+
     }
 
 

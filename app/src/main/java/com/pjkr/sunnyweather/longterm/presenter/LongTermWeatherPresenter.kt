@@ -1,7 +1,6 @@
 package com.pjkr.sunnyweather.longterm.presenter
 
 import com.pjkr.sunnyweather.data.WeathersDataSource
-import com.pjkr.sunnyweather.data.WeathersRepository
 import com.pjkr.sunnyweather.longterm.WeatherContract
 import com.pjkr.sunnyweather.longterm.model.Weather
 
@@ -18,15 +17,26 @@ class LongTermWeatherPresenter(val view: WeatherContract.View, val repository: W
 
 
     override fun loadData() {
-        repository.getWeatherList(object: WeathersDataSource.LoadWeathersCallback{
+        repository.getWeather(object: WeathersDataSource.GetWeatherCallback{
             override fun onFail() {
                 view.showFailedDataFetch()
             }
 
-            override fun onSuccess(weatherList: List<Weather>) {
-                view.showData(weatherList)
+            override fun onSuccess(weather: Weather) {
+                view.showWeather(weather)
             }
         })
 
     }
+//        repository.getWeatherList(object: WeathersDataSource.LoadWeathersCallback{
+//            override fun onFail() {
+//                view.showFailedDataFetch()
+//            }
+//
+//            override fun onSuccess(weatherList: List<Weather>) {
+//                view.showData(weatherList)
+//            }
+//        })
+//
+//    }
 }

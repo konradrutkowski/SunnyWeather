@@ -31,20 +31,21 @@ class WeatherProvider {
         mapAPI = retrofit.create(MapAPI::class.java)
     }
 
-    fun getWeather() {
-        val weatherCall = mapAPI.getWeather("London", "7", "3a6092b5c20245c7b5b76a920b2d9208")
-        weatherCall.enqueue(object : Callback<Weather> {
-            override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
-                Log.e("Request", " Response response = " + response.isSuccessful)
-                Log.e("Request", " Value = " + response.body()!!.toString())
-            }
-
-            override fun onFailure(call: Call<Weather>, t: Throwable) {
-                Log.e("Request", " FAILED")
-                Log.e("Request", " FAILED" + call.request().url())
-                t.printStackTrace()
-            }
-        })
+    fun getWeather(callback: Callback<Weather>) {
+        val weatherCall = mapAPI.getWeather("London", "7", "metric","3a6092b5c20245c7b5b76a920b2d9208")
+        weatherCall.enqueue(callback)
+//                object : Callback<Weather> {
+//            override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
+//                Log.e("Request", " Response response = " + response.isSuccessful)
+//                Log.e("Request", " Value = " + response.body()!!.toString())
+//            }
+//
+//            override fun onFailure(call: Call<Weather>, t: Throwable) {
+//                Log.e("Request", " FAILED")
+//                Log.e("Request", " FAILED" + call.request().url())
+//                t.printStackTrace()
+//            }
+//        })
     }
 
 }

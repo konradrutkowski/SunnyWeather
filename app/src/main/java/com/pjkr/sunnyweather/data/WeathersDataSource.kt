@@ -15,7 +15,7 @@ interface WeathersDataSource {
 
     fun getDeclinedWeathers(loadWeathersCallback: LoadWeathersCallback)
 
-    fun getWeather(getWeatherCallback: GetWeatherCallback): Weather
+    fun getWeather(getWeatherCallback: GetWeatherCallback)
 
 
     interface LoadWeathersCallback {
@@ -27,7 +27,7 @@ interface WeathersDataSource {
 
     interface GetWeatherCallback {
 
-        fun onSuccess(Weathers: Weather)
+        fun onSuccess(weather: Weather)
 
         fun onFail()
     }

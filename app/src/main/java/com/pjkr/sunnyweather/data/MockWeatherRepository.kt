@@ -31,13 +31,11 @@ class MockWeatherRepository : WeathersDataSource {
         loadWeathersCallback.onSuccess(weatherList)
     }
 
-    override fun getWeather(getWeatherCallback: WeathersDataSource.GetWeatherCallback): Weather {
-        return Weather()
+    override fun getWeather(getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
     }
 
     private fun fillMockListWithData() {
-        val weatherProvider = WeatherProvider()
-        weatherProvider.getWeather()
+
         val weather: Weather = Weather()
         weather.cod = "Elo"
         weather.cnt = 1

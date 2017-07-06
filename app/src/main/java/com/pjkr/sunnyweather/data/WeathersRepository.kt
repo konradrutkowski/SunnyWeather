@@ -6,7 +6,7 @@ import com.pjkr.sunnyweather.longterm.model.Weather
  * Created by konradrutkowski on 04.07.2017.
  */
 
-class WeathersRepository private constructor(private val localDataSource: WeathersDataSource, private val remoteDataSource: WeathersDataSource) : WeathersDataSource {
+class WeathersRepository constructor(private val localDataSource: WeathersDataSource, private val remoteDataSource: WeathersDataSource) : WeathersDataSource {
 
     override fun getWeatherList(loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
 
@@ -20,8 +20,8 @@ class WeathersRepository private constructor(private val localDataSource: Weathe
 
     }
 
-    override fun getWeather(getWeatherCallback: WeathersDataSource.GetWeatherCallback): Weather {
-        return Weather()
+    override fun getWeather(getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
+            remoteDataSource.getWeather(getWeatherCallback)
     }
 
     companion object {

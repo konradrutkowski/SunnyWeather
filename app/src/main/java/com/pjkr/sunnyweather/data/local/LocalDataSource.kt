@@ -20,8 +20,7 @@ object LocalDataSource : WeathersDataSource {
 
     override fun getDeclinedWeathers(loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {}
 
-    override fun getWeather(getWeatherCallback: WeathersDataSource.GetWeatherCallback): Weather {
-        return Weather()
+    override fun getWeather(getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
     }
 
 //    companion object {

@@ -11,7 +11,8 @@ interface WeatherContract{
 
     interface View{
         var presenter : Presenter
-        fun showData(weatherList: List<Weather>)
+        fun showWeatherList(weatherList: List<Weather>)
+        fun showWeather(weather: Weather)
         fun setAdapter()
         fun showFailedDataFetch()
 
