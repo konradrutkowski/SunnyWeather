@@ -11,6 +11,8 @@ class CurrentWeatherContract {
         fun displayWeathers()
         fun showLoadingIndicator()
         fun hideLoadingIndicator()
+        fun showTemperature(temp: String)
+        fun setHeaderBackground(drawableId: Int)
     }
     interface Presenter{
         fun loadElements(cityName: String)
