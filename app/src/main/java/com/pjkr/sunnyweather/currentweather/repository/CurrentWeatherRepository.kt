@@ -27,7 +27,6 @@ class CurrentWeatherRepository(var presenter: CurrentWeatherPresenter?): Current
     override fun getWeatherInformation(cityName: String) {
         var call: Call<WeatherResponse>? = this.api?.getCurrentWeather(cityName, BuildConfig.WEATHER_API)
         call?.enqueue(this)
-       // this.presenter?.weather = weather
     }
 
     override fun onFailure(call: Call<WeatherResponse>?, t: Throwable?) {
@@ -35,6 +34,12 @@ class CurrentWeatherRepository(var presenter: CurrentWeatherPresenter?): Current
     }
 
     override fun onResponse(call: Call<WeatherResponse>?, response: Response<WeatherResponse>?) {
-        this.presenter?.weather = response?.body()?.weathers?.get(0)
+        val weather = response?.body()?.weathers?.get(0)
+        var weatherObj: Weather = Weather(weather.id, weather.main, weather.description, weather.icon)
+        weatherObj.coord = response.body().coord
+        weatherObj.data = response.body().main
+        weatherObj.wind = response.body().wind
+        weatherObj.visibility = response.body().visibility
+        this.presenter?.weather = weatherObj
     }
 }

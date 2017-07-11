@@ -3,5 +3,6 @@ package com.pjkr.sunnyweather.currentweather.model
 /**
  * Created by PJablonski on 28.06.2017.
  */
-class Wind(speed: Float, deg: Float) {
+class Wind(val speed: Float,
+           val deg: Float) {
 }
