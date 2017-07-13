@@ -6,14 +6,12 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.currentweather.components.CurrentWeatherHeader
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
-import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.presenter.CurrentWeatherPresenter
 import com.pjkr.sunnyweather.currentweather.repository.CurrentWeatherRepository
+import com.pjkr.sunnyweather.utils.getDrawableByName
 import com.squareup.picasso.Picasso
 
 /**
@@ -36,17 +34,11 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         this.presenter = CurrentWeatherPresenter(this)
         this.presenter?.repository = CurrentWeatherRepository(this.presenter)
-        this.showTemperature("100")
     }
 
     override fun onResume() {
         super.onResume()
         this.presenter?.loadElements("2172797")
-    }
-
-    override fun displayWeather(weather: Weather) {
-        //todo set headers background
-        //set background
     }
 
     override fun showLoadingIndicator() {
@@ -63,7 +55,24 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
     }
 
     override fun setHeaderBackground(drawableId: Int) {
-        Picasso.with(context).load(drawableId).into(this.header?.background)
+        Picasso.with(context).load(drawableId).into(this.header?.weatherIcon)
+    }
+
+    override fun showHeaderIcon(iconName: String?) {
+        this.header?.weatherIcon?.setImageDrawable(context.getDrawableByName(iconName))
+    }
+
+    override fun setPressure(pressure: String?) {
+        this.header?.pressure?.text = context.getString(R.string.pressure, pressure)
+    }
+
+    override fun setCityName(cityName: String?) {
+        this.header?.cityName?.text = cityName
+    }
+
+    override fun setTemperatureInfo(weatherName: String?, weatherDescription: String?) {
+        this.header?.temperatureTitle?.text = weatherName
+        this.header?.temperatureDescription?.text = weatherDescription
     }
 
 }

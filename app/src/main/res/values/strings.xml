@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SunnyWeather</string>
     <string name="temperature">%1$s\u2103</string>
+    <string name="pressure">Pressure: %1$s hPa</string>
 </resources>

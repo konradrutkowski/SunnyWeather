@@ -21,8 +21,8 @@ class CurrentWeatherRepository(var presenter: CurrentWeatherPresenter?): Current
     private val BASE_URL: String = "http://samples.openweathermap.org/data/2.5/"
 
     init {
-        val retorfit: Retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
-        this.api = retorfit.create(WeatherAPI::class.java)
+        val retrofit: Retrofit = Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
+        this.api = retrofit.create(WeatherAPI::class.java)
     }
     override fun getWeatherInformation(cityName: String) {
         var call: Call<WeatherResponse>? = this.api?.getCurrentWeather(cityName, BuildConfig.WEATHER_API)
@@ -34,12 +34,12 @@ class CurrentWeatherRepository(var presenter: CurrentWeatherPresenter?): Current
     }
 
     override fun onResponse(call: Call<WeatherResponse>?, response: Response<WeatherResponse>?) {
-        val weather = response?.body()?.weathers?.get(0)
-        var weatherObj: Weather = Weather(weather.id, weather.main, weather.description, weather.icon)
-        weatherObj.coord = response.body().coord
-        weatherObj.data = response.body().main
-        weatherObj.wind = response.body().wind
-        weatherObj.visibility = response.body().visibility
-        this.presenter?.weather = weatherObj
+        val weather: Weather? = response?.body()?.weathers?.get(0)
+        var weatherObj: Weather = Weather(weather?.id, weather?.main, weather?.description, weather?.icon)
+        weatherObj.coord = response?.body()?.coord
+        weatherObj.data = response?.body()?.main
+        weatherObj.wind = response?.body()?.wind
+        weatherObj.visibility = response?.body()?.visibility
+        this.presenter?.showWeather(weatherObj)
     }
 }

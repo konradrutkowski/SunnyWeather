@@ -7,12 +7,15 @@ import com.pjkr.sunnyweather.currentweather.model.Weather
  */
 class CurrentWeatherContract {
     interface View{
-        fun displayWeather(weather: Weather)
         fun displayWeathers()
         fun showLoadingIndicator()
         fun hideLoadingIndicator()
         fun showTemperature(temp: String)
         fun setHeaderBackground(drawableId: Int)
+        fun showHeaderIcon(iconName: String?)
+        fun setPressure(pressure: String?)
+        fun setCityName(cityName: String?)
+        fun setTemperatureInfo(weatherName: String?, weatherDescription: String?)
     }
     interface Presenter{
         fun loadElements(cityName: String)

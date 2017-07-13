@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:id="@+id/headerBackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/weatherIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:paddingTop="8dp"
+        style="@style/headerElementStyle"
+        android:src="@mipmap/sun"/>
 
     <com.pjkr.sunnyweather.currentweather.components.RoundBorderTextView
         android:id="@+id/tempText"
@@ -19,6 +22,44 @@
         android:gravity="center"
         android:textColor="@color/grey"
         android:text="55"
-        android:textSize="60sp" />
+        android:textSize="50sp"
+        style="@style/headerElementStyle"/>
 
-</merge>
+    <TextView
+        android:id="@+id/weatherName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/weatherIcon"
+        android:text="Sun"
+        android:textColor="@color/grey"
+        style="@style/headerElementStyle"/>
+
+    <TextView
+        android:id="@+id/weatherDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/weatherName"
+        android:text="Sunny weather"
+        android:textColor="@color/grey"
+        style="@style/headerElementStyle"/>
+    
+    <TextView
+        android:id="@+id/pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/weatherDescription"
+        android:textColor="@color/grey"
+        style="@style/headerElementStyle"/>
+
+    <TextView
+        android:id="@+id/cityName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textColor="@color/grey"
+        style="@style/headerElementStyle"/>
+</RelativeLayout>
