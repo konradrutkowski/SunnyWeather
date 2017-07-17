@@ -1,5 +1,6 @@
 package com.pjkr.sunnyweather
 
+import android.content.ComponentName
 import android.os.Bundle
 import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
@@ -19,4 +20,5 @@ class MainActivity : AppCompatActivity() {
         fragmentTransaction.add(R.id.container, LongTermWeatherFragment())
         fragmentTransaction.commit()
     }
+
 }

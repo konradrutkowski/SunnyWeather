@@ -31,8 +31,8 @@ class WeatherProvider {
         mapAPI = retrofit.create(MapAPI::class.java)
     }
 
-    fun getWeather(callback: Callback<Weather>) {
-        val weatherCall = mapAPI.getWeather("London", "7", "metric","3a6092b5c20245c7b5b76a920b2d9208")
+    fun getWeather(city:String, callback: Callback<Weather>) {
+        val weatherCall = mapAPI.getWeather(city, "16", "metric","3a6092b5c20245c7b5b76a920b2d9208")
         weatherCall.enqueue(callback)
 //                object : Callback<Weather> {
 //            override fun onResponse(call: Call<Weather>, response: Response<Weather>) {

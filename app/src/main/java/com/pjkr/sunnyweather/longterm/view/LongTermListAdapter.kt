@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.Weather
 
 /**
@@ -11,7 +12,7 @@ import com.pjkr.sunnyweather.longterm.model.Weather
  */
 class LongTermListAdapter(var viewid: Int) : RecyclerView.Adapter<LongTermHolder>() {
 
-    var longTermWeatherList: List<Weather> = ArrayList()
+    var longTermWeatherList: List<Properties> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): LongTermHolder {
         val view: View = LayoutInflater.from(parent!!.context).inflate(viewid, parent, false)
@@ -19,8 +20,10 @@ class LongTermListAdapter(var viewid: Int) : RecyclerView.Adapter<LongTermHolder
     }
 
     override fun onBindViewHolder(holder: LongTermHolder, position: Int) {
-            holder.titleTV.text = longTermWeatherList[position].message.toString()
-            holder.descriptionTV.text = longTermWeatherList[position].cod
+        holder.titleTV.text = "Celcius " + longTermWeatherList[position].temp!!.day.toString()
+        holder.descriptionTV.text = "Pressure " + longTermWeatherList[position].pressure.toString()
+        holder.day.text = longTermWeatherList[position].temp!!.night.toString()
+
 
     }
 
@@ -28,9 +31,9 @@ class LongTermListAdapter(var viewid: Int) : RecyclerView.Adapter<LongTermHolder
         return longTermWeatherList.size
     }
 
-    fun changeLongTermWeatherList(weatherList: List<Weather>){
+    fun changeLongTermWeatherList(weatherList: List<Properties>) {
         this.longTermWeatherList = weatherList
-        notifyDataSetChanged()
+        this.notifyDataSetChanged()
     }
 
 

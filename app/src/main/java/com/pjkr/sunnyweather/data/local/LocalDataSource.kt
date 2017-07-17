@@ -10,7 +10,7 @@ import com.pjkr.sunnyweather.longterm.model.Weather
 
 object LocalDataSource : WeathersDataSource {
 
-    override fun getWeatherList(loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
+    override fun getWeatherList(city: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
 
     }
 
@@ -20,7 +20,7 @@ object LocalDataSource : WeathersDataSource {
 
     override fun getDeclinedWeathers(loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {}
 
-    override fun getWeather(getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
+    override fun getWeather(city: String, getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
     }
 
 //    companion object {

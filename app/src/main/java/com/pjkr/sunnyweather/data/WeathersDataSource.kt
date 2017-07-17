@@ -9,13 +9,13 @@ import com.pjkr.sunnyweather.longterm.model.Weather
 
 interface WeathersDataSource {
 
-    fun getWeatherList(loadWeathersCallback: LoadWeathersCallback)
+    fun getWeatherList(city: String, loadWeathersCallback: LoadWeathersCallback)
 
     fun getActivatedWeathers(loadWeathersCallback: LoadWeathersCallback)
 
     fun getDeclinedWeathers(loadWeathersCallback: LoadWeathersCallback)
 
-    fun getWeather(getWeatherCallback: GetWeatherCallback)
+    fun getWeather(city:String, getWeatherCallback: GetWeatherCallback)
 
 
     interface LoadWeathersCallback {
