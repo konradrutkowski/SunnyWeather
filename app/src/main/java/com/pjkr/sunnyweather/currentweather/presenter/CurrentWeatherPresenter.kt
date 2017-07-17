@@ -26,7 +26,7 @@ class CurrentWeatherPresenter(var view: CurrentWeatherContract.View)
         this.view.showTemperature(celsiusTemp)
         this.view.setCityName(weather.name)
 
-        val iconName: String? = "weather_" + weather.icon
+        val iconName: String? = "weather_" + weather.icon?.replace('n', 'd')
         this.view.showHeaderIcon(iconName)
         this.view.setTemperatureInfo(weather.main, weather.description)
         this.view.setPressure(weather.data?.pressure.toString())
