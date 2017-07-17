@@ -51,28 +51,32 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
     }
 
     override fun showTemperature(temp: String) {
-        this.header?.textField?.text = context.getString(R.string.temperature, temp)
-    }
-
-    override fun setHeaderBackground(drawableId: Int) {
-        Picasso.with(context).load(drawableId).into(this.header?.weatherIcon)
+        this.header?.setTemperature(context.getString(R.string.temperature, temp))
     }
 
     override fun showHeaderIcon(iconName: String?) {
-        this.header?.weatherIcon?.setImageDrawable(context.getDrawableByName(iconName))
+        this.header?.setWeatherIcon(iconName)
     }
 
     override fun setPressure(pressure: String?) {
-        this.header?.pressure?.text = context.getString(R.string.pressure, pressure)
+        this.header?.setPressure(pressure)
     }
 
     override fun setCityName(cityName: String?) {
-        this.header?.cityName?.text = cityName
+        this.header?.setCityName(cityName)
     }
 
     override fun setTemperatureInfo(weatherName: String?, weatherDescription: String?) {
-        this.header?.temperatureTitle?.text = weatherName
-        this.header?.temperatureDescription?.text = weatherDescription
+        this.header?.setTemperatureTitle(weatherName)
+        this.header?.setTemperatureDescription(weatherDescription)
+    }
+
+    override fun setMinTemp(temp: String) {
+        this.header?.setMinTemperature(context.getString(R.string.minTemp, temp))
+    }
+
+    override fun setMaxTemp(temp: String) {
+        this.header?.setMaxTemperature(context.getString(R.string.maxTemp, temp))
     }
 
 }

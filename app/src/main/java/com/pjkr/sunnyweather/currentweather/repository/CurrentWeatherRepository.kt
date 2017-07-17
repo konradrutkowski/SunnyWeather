@@ -40,6 +40,7 @@ class CurrentWeatherRepository(var presenter: CurrentWeatherPresenter?): Current
         weatherObj.data = response?.body()?.main
         weatherObj.wind = response?.body()?.wind
         weatherObj.visibility = response?.body()?.visibility
+        weatherObj.name = response?.body()?.name
         this.presenter?.showWeather(weatherObj)
     }
 }

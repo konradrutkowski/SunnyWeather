@@ -8,4 +8,5 @@ import com.google.gson.annotations.SerializedName
 class WeatherResponse(val coord: Coordinates?, val base: String?, val main: Data?, val visibility: Int?, val wind: Wind?) {
     @SerializedName("weather")
     val weathers: List<Weather>? = null
+    val name: String? = null
 }

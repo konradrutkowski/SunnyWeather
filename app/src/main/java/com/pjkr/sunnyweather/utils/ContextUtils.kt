@@ -9,11 +9,15 @@ import android.os.Build
  * Created by yabol on 13.07.2017.
  */
 fun Context.getDrawableByName(resourceName: String?): Drawable {
-    var resources: Resources = this.resources
-    val resourceId: Int = resources.getIdentifier(resourceName, "mipmap", this.packageName)
+    val resourceId: Int = getDrawableIdByName(resourceName)
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         return getDrawable(resourceId)
     }else{
         return getResources().getDrawable(resourceId)
     }
+}
+
+fun Context.getDrawableIdByName(resourceName: String?): Int{
+    var resources: Resources = this.resources
+    return resources.getIdentifier(resourceName, "mipmap", this.packageName)
 }

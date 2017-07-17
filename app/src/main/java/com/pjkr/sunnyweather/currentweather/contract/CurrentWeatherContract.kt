@@ -16,6 +16,8 @@ class CurrentWeatherContract {
         fun setPressure(pressure: String?)
         fun setCityName(cityName: String?)
         fun setTemperatureInfo(weatherName: String?, weatherDescription: String?)
+        fun setMinTemp(temp: String)
+        fun setMaxTemp(temp: String)
     }
     interface Presenter{
         fun loadElements(cityName: String)

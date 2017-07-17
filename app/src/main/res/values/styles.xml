@@ -17,6 +17,7 @@
     <style name="headerElementStyle">
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingBottom">8dp</item>
+        <item name="android:textSize">@dimen/text_small</item>
     </style>
 
 </resources>

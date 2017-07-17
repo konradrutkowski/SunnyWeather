@@ -2,9 +2,8 @@ package com.pjkr.sunnyweather.currentweather.presenter
 
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
 import com.pjkr.sunnyweather.currentweather.model.Weather
-import com.pjkr.sunnyweather.utils.celciusFromFarenheit
+import com.pjkr.sunnyweather.utils.celsiusFromKelvin
 import com.pjkr.sunnyweather.utils.formatDouble
-import java.security.Provider
 
 /**
  * Created by PJablonski on 28.06.2017.
@@ -23,13 +22,16 @@ class CurrentWeatherPresenter(var view: CurrentWeatherContract.View)
     fun showWeather(weather: Weather){
         this.weather = weather
 
-        val celsiusTemp = weather.data?.temp?.celciusFromFarenheit().formatDouble()
-        this.view.showTemperature(celsiusTemp.toString())
+        val celsiusTemp = weather.data?.temp?.celsiusFromKelvin().formatDouble()
+        this.view.showTemperature(celsiusTemp)
         this.view.setCityName(weather.name)
 
         val iconName: String? = "weather_" + weather.icon
         this.view.showHeaderIcon(iconName)
         this.view.setTemperatureInfo(weather.main, weather.description)
+        this.view.setPressure(weather.data?.pressure.toString())
+        this.view.setMinTemp(weather.data?.minTemp?.celsiusFromKelvin().formatDouble())
+        this.view.setMaxTemp(weather.data?.maxTemp?.celsiusFromKelvin().formatDouble())
     }
 
     override fun getWeather(position: Int): Weather? {
