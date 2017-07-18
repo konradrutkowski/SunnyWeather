@@ -12,7 +12,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        startFragment()
+        if (savedInstanceState == null) {
+            startFragment()
+        }
     }
 
     fun AppCompatActivity.startFragment() {

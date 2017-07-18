@@ -38,8 +38,7 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
     lateinit var list: RecyclerView
     lateinit var adapter: LongTermListAdapter
     lateinit var swipeRefreshLayout: SwipeRefreshLayout
-    // lateinit var cityNameTV: TextView
-    //  lateinit var positionTV: TextView
+    lateinit var searchView: SearchView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,8 +52,7 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         list = view.findViewById(R.id.weather_list) as RecyclerView
         swipeRefreshLayout = view.findViewById(R.id.swipe_long_term) as SwipeRefreshLayout
         list.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
-        //   cityNameTV = view.findViewById(R.id.city_name_tv) as TextView
-        //     positionTV = view.findViewById(R.id.latlon_tv) as TextView
+
         list.layoutManager = LinearLayoutManager(context)
         list.adapter = adapter
         initialize()
@@ -62,7 +60,14 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
     }
 
     fun initialize() {
-        swipeRefreshLayout.setOnRefreshListener { presenter.loadData("London") }
+        swipeRefreshLayout.setOnRefreshListener { presenter.loadData(getDataToSearch()) }
+    }
+
+    fun getDataToSearch() : String{
+        if(searchView.query.isNotEmpty()){
+            return searchView.query.toString()
+        }
+        return "London"
     }
 
     override fun onStart() {
@@ -114,7 +119,7 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         val manager: SearchManager = activity.applicationContext.getSystemService(Context.SEARCH_SERVICE) as SearchManager
 
         val menuItem: MenuItem = menu.findItem(R.id.search_longterm)
-        val searchView: SearchView = MenuItemCompat.getActionView(menuItem) as SearchView
+        searchView = MenuItemCompat.getActionView(menuItem) as SearchView
         searchView.setSearchableInfo(manager.getSearchableInfo(activity.componentName))
         // val searchView: SearchView = menu!!.findItem(R.id.search_longterm).actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -127,6 +132,7 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
                 return false
             }
         })
+
         super.onPrepareOptionsMenu(menu)
     }
 

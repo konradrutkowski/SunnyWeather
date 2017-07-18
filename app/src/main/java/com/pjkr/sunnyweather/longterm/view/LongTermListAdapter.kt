@@ -22,7 +22,7 @@ class LongTermListAdapter(var viewid: Int) : RecyclerView.Adapter<LongTermHolder
     override fun onBindViewHolder(holder: LongTermHolder, position: Int) {
         holder.titleTV.text = "Celcius " + longTermWeatherList[position].temp!!.day.toString()
         holder.descriptionTV.text = "Pressure " + longTermWeatherList[position].pressure.toString()
-        holder.day.text = longTermWeatherList[position].temp!!.night.toString()
+        holder.day.text = longTermWeatherList[position].stringDate
 
 
     }

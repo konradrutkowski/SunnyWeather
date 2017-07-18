@@ -35,5 +35,5 @@ class Properties {
     @SerializedName("snow")
     @Expose
     var snow: Double? = null
-
+    var stringDate: String = ""
 }
