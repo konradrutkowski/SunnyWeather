@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             var fragment: CurrentWeatherFragment = CurrentWeatherFragment()
-            startFragment(R.id.container, fragment, "")
+            startFragment(R.id.container, fragment, true, false, "")
         }
     }
 }

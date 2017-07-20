@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -16,19 +18,20 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
 
-            <android.support.v7.widget.Toolbar
+            <com.pjkr.sunnyweather.currentweather.components.CurrentWeatherHeader
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_collapseMode="pin"/>
+
+           <!-- <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:elevation="4dp"
                 app:theme="@style/ToolBarStyle"
                 app:layout_collapseMode="pin"
-                app:navigationIcon="?attr/homeAsUpIndicator"/>
-
-            <com.pjkr.sunnyweather.currentweather.components.CurrentWeatherHeader
-                android:id="@+id/header"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                app:navigationIcon="?attr/homeAsUpIndicator"/>-->
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
@@ -41,4 +44,4 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

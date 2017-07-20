@@ -11,5 +11,5 @@ import retrofit2.Call
  */
 interface WeatherAPI {
     @GET("weather?")
-    fun getCurrentWeather(@Query("id")cityId: String, @Query("appid")apiKey: String): Call<WeatherResponse>
+    fun getCurrentWeather(@Query("q")cityId: String, @Query("appid")apiKey: String): Call<WeatherResponse>
 }

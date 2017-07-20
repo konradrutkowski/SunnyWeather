@@ -12,8 +12,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:paddingTop="8dp"
-        android:src="@mipmap/weather_01d" />
+        android:paddingTop="8dp" />
 
     <com.pjkr.sunnyweather.currentweather.components.RoundBorderTextView
         android:id="@+id/tempText"
@@ -23,7 +22,6 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:padding="15dp"
-        android:text="55"
         android:textColor="@color/grey"
         android:textSize="@dimen/temp_text_size" />
 
@@ -35,7 +33,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@id/weatherIcon"
-        android:text="Sun"
         android:textColor="@color/grey" />
 
 
@@ -47,7 +44,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@id/weatherName"
-        android:text="Sunny weather"
         android:textColor="@color/grey" />
 
     <TextView
