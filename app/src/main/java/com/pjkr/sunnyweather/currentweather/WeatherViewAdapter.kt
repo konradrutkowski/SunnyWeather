@@ -16,7 +16,6 @@ class WeatherViewAdapter(provider: CurrentWeatherContract.Provider): RecyclerVie
     }
 
     override fun onBindViewHolder(holder: AbstractViewHolder?, position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): AbstractViewHolder {

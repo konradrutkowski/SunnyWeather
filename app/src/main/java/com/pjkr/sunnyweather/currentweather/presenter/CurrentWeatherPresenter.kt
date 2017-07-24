@@ -1,17 +1,23 @@
 package com.pjkr.sunnyweather.currentweather.presenter
 
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
+import com.pjkr.sunnyweather.currentweather.data.WeatherDataSource
 import com.pjkr.sunnyweather.currentweather.model.Weather
+import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
 import com.pjkr.sunnyweather.utils.celsiusFromKelvin
 import com.pjkr.sunnyweather.utils.formatDouble
+import retrofit2.Call
+import retrofit2.Response
 
 /**
  * Created by PJablonski on 28.06.2017.
  */
-class CurrentWeatherPresenter(var view: CurrentWeatherContract.View)
+class CurrentWeatherPresenter
+(var view: CurrentWeatherContract.View,
+ var dataSource: WeatherDataSource)
     : CurrentWeatherContract.Presenter, CurrentWeatherContract.Provider {
     var weathers: List<Weather>? = null
-    var repository: CurrentWeatherContract.Repository? = null
+
     var weather: Weather? = null
 
 
@@ -19,7 +25,7 @@ class CurrentWeatherPresenter(var view: CurrentWeatherContract.View)
         return this.weathers?.size as Int
     }
 
-    fun showWeather(weather: Weather){
+    fun showWeather(weather: Weather) {
         this.weather = weather
 
         val celsiusTemp = weather.data?.temp?.celsiusFromKelvin().formatDouble()
@@ -34,16 +40,26 @@ class CurrentWeatherPresenter(var view: CurrentWeatherContract.View)
         this.view.setMaxTemp(weather.data?.maxTemp?.celsiusFromKelvin().formatDouble())
     }
 
+
     override fun getWeather(position: Int): Weather? {
         return this.weathers?.get(position)
     }
 
     override fun loadElements(cityName: String) {
         this.view.showLoadingIndicator()
-        this.repository?.getWeatherInformation(cityName)
+        this.dataSource.getCurrentWeather(cityName, object : WeatherDataSource.OnDataCollectedCallback<Weather> {
+
+            override fun onSuccess(resultObject: Weather) {
+                showWeather(resultObject)
+            }
+
+            override fun onFail(message: String) {
+
+            }
+        })
     }
 
-    fun setWeathersList(weathers: List<Weather>){
+    fun setWeathersList(weathers: List<Weather>) {
         this.weathers = weathers
         this.view.displayWeathers()
     }
