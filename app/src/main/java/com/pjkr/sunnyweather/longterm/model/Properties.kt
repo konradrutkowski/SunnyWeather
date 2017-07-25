@@ -35,5 +35,13 @@ class Properties {
     @SerializedName("snow")
     @Expose
     var snow: Double? = null
-    var stringDate: String = ""
+    var dayOfTheWeek: WeatherDay? = null
+    var day: String? = null
+
+    var icon: WeatherIcon? = null
+
+    override fun toString(): String {
+        return "Properties(dt=$dt, temp=$temp, pressure=$pressure, humidity=$humidity, weather=$weather, speed=$speed, deg=$deg, clouds=$clouds, rain=$rain, snow=$snow, dayOfTheWeek=$dayOfTheWeek, day=$day, icon=$icon)"
+    }
+
 }

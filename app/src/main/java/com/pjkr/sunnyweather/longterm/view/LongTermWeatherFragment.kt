@@ -44,7 +44,7 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        adapter = LongTermListAdapter(R.layout.long_term_row)
+        adapter = LongTermListAdapter(activity, R.layout.long_term_row)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

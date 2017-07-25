@@ -109,7 +109,6 @@
             android:id="@+id/img1"
             android:layout_width="30dp"
             android:layout_height="25dp"
-            android:src="@drawable/ic_cloud"
             android:scaleType="fitXY"
             android:layout_marginTop="10dp"
             android:layout_below="@+id/text3"
