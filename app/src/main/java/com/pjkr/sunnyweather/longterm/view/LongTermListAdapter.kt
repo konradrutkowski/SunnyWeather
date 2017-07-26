@@ -27,11 +27,13 @@ class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.
         var property: Properties = longTermWeatherList[position]
         val temp : String = context.getString(R.string.temperature)
         var pressure : String = context.getString(R.string.pressure)
-        holder.titleTV.text = temp +" "+ property.temp!!.day.toString()
-        holder.descriptionTV.text = pressure +" "+ property.pressure.toString()
+        holder.titleTV.text = property.temp!!.day.toString()+ " \u2103"
+        holder.descriptionTV.text = pressure +" "+ property.pressure.toString()+ " hPa"
         holder.day.text = property.day!! + " "+context.getString(getStringId(property.dayOfTheWeek!!.nameOfTheDay))
+        holder.humidity.text = "Humidity" +" "+ property.humidity.toString()+ " %"
+        holder.windSpeed.text = "Wind" +" "+ property.speed.toString()+ " km/h"
         Log.e("Binding", property.icon!!.iconName)
-        Picasso.with(context).load(getDrawableId(property.icon!!.iconName)).fit().centerCrop().into(holder.icon)
+        Picasso.with(context).load(getDrawableId(property.icon!!.iconName)).fit().centerInside().into(holder.icon)
     }
 
     fun getDrawableId(name: String): Int{

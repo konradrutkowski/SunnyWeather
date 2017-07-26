@@ -15,6 +15,8 @@ class LongTermHolder(view: View) : RecyclerView.ViewHolder(view) {
     var titleTV: TextView = view.findViewById(R.id.title_long_term_row) as TextView
     var descriptionTV: TextView = view.findViewById(R.id.description_long_term_row) as TextView
     var day: TextView = view.findViewById(R.id.day_tv) as TextView
+    var humidity: TextView = view.findViewById(R.id.humidity_tv) as TextView
+    var windSpeed: TextView = view.findViewById(R.id.wind_speed_tv) as TextView
     var icon: ImageView = view.findViewById(R.id.weather_icon_row) as ImageView
 
 

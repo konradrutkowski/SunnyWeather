@@ -89,8 +89,8 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
 
     @SuppressLint("SetTextI18n")
     override fun showWeather(weather: Weather) {
-        city_name_tv.text = weather.city!!.name
-        latlon_tv.text = weather.city!!.coord!!.lat.toString() + "  " + weather.city!!.coord!!.lon.toString()
+        city_name_tv?.text = weather.city!!.name
+        latlon_tv?.text = weather.city!!.coord!!.lat.toString() + "  " + weather.city!!.coord!!.lon.toString()
         adapter.changeLongTermWeatherList(weather.list!!)
         //Toast.makeText(context, "Temp "+ weather.list!![0].temp!!.max, Toast.LENGTH_LONG).show()
 
