@@ -14,12 +14,12 @@ import android.support.v7.widget.SearchView
 import android.view.*
 import android.widget.Toast
 import com.pjkr.sunnyweather.R
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.data.WeathersRepository
 import com.pjkr.sunnyweather.data.local.LocalDataSource
 import com.pjkr.sunnyweather.data.remote.RemoteDataSource
 import com.pjkr.sunnyweather.longterm.WeatherContract
 import com.pjkr.sunnyweather.longterm.model.Properties
-import com.pjkr.sunnyweather.longterm.model.Weather
 import com.pjkr.sunnyweather.longterm.presenter.LongTermWeatherPresenter
 import kotlinx.android.synthetic.main.long_term_weather_fragment.*
 

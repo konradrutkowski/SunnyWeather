@@ -1,7 +1,7 @@
 package com.pjkr.sunnyweather.api
 
 
-import com.pjkr.sunnyweather.longterm.model.Weather
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

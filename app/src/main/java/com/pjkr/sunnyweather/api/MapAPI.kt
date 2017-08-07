@@ -1,6 +1,6 @@
 package com.pjkr.sunnyweather.api
 
-import com.pjkr.sunnyweather.longterm.model.Weather
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

@@ -1,7 +1,7 @@
 package com.pjkr.sunnyweather.data
 
 
-import com.pjkr.sunnyweather.longterm.model.Weather
+import com.pjkr.sunnyweather.currentweather.model.Weather
 
 /**
  * Created by konradrutkowski on 04.07.2017.

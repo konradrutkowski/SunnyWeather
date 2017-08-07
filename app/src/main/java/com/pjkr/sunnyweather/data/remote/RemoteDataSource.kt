@@ -4,9 +4,9 @@ package com.pjkr.sunnyweather.data.remote
 import android.util.Log
 import com.pjkr.sunnyweather.data.WeatherData
 import com.pjkr.sunnyweather.api.WeatherProvider
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
-import com.pjkr.sunnyweather.longterm.model.Weather
 import com.pjkr.sunnyweather.longterm.model.WeatherDay
 import retrofit2.Call
 import retrofit2.Callback

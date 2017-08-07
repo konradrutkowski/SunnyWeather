@@ -2,6 +2,7 @@ package com.pjkr.sunnyweather.longterm.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.pjkr.sunnyweather.currentweather.model.Weather
 
 class Properties {
 

@@ -1,8 +1,9 @@
 package com.pjkr.sunnyweather.data
 
 import android.util.Log
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.longterm.model.Properties
-import com.pjkr.sunnyweather.longterm.model.Weather
+
 import com.pjkr.sunnyweather.longterm.model.WeatherIcon
 
 /**

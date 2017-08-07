@@ -1,7 +1,7 @@
 package com.pjkr.sunnyweather.longterm
 
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.longterm.model.Properties
-import com.pjkr.sunnyweather.longterm.model.Weather
 
 /**
  * Created by konradrutkowski on 26.06.2017.
@@ -16,9 +16,7 @@ interface WeatherContract{
         fun showFailedDataFetch()
         fun showLoadIndicator()
         fun hideLoadIndicator()
-
     }
-
 
     interface Presenter{
         fun loadData(city: String)
