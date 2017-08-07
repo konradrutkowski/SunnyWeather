@@ -1,7 +1,5 @@
 package com.pjkr.sunnyweather.longterm
 
-import com.pjkr.sunnyweather.BasePresenter
-import com.pjkr.sunnyweather.BaseView
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.Weather
 

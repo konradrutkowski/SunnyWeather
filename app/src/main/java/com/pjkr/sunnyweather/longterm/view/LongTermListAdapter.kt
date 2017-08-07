@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.longterm.model.Properties
-import com.pjkr.sunnyweather.longterm.model.Weather
 import com.squareup.picasso.Picasso
 
 /**
@@ -24,9 +23,9 @@ class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: LongTermHolder, position: Int) {
-        var property: Properties = longTermWeatherList[position]
+        val property: Properties = longTermWeatherList[position]
         val temp : String = context.getString(R.string.temperature)
-        var pressure : String = context.getString(R.string.pressure)
+        val pressure : String = context.getString(R.string.pressure)
         holder.titleTV.text = property.temp!!.day.toString()+ " \u2103"
         holder.descriptionTV.text = pressure +" "+ property.pressure.toString()+ " hPa"
         holder.day.text = property.day!! + " "+context.getString(getStringId(property.dayOfTheWeek!!.nameOfTheDay))

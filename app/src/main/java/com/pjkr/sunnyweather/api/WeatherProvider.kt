@@ -1,14 +1,8 @@
 package com.pjkr.sunnyweather.api
 
 
-import android.support.annotation.RestrictTo
-import android.util.Log
-
 import com.pjkr.sunnyweather.longterm.model.Weather
-
-import retrofit2.Call
 import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

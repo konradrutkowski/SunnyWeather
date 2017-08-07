@@ -1,11 +1,8 @@
 package com.pjkr.sunnyweather.longterm.presenter
 
-import android.util.Log
 import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.WeatherContract
 import com.pjkr.sunnyweather.longterm.model.Weather
-import java.util.*
-
 
 
 /**
@@ -35,19 +32,5 @@ class LongTermWeatherPresenter(val view: WeatherContract.View, val repository: W
 
     }
 
-
-
-
-//        repository.getWeatherList(object: WeathersDataSource.LoadWeathersCallback{
-//            override fun onFail() {
-//                view.showFailedDataFetch()
-//            }
-//
-//            override fun onSuccess(weatherList: List<Weather>) {
-//                view.showData(weatherList)
-//            }
-//        })
-//
-//    }
 }
 

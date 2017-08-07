@@ -46,8 +46,6 @@ object RemoteDataSource : WeathersDataSource {
     override fun getWeather(city: String, getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
         WeatherProvider().getWeather(city, object : Callback<Weather> {
             override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
-                // Log.e("Request", " Response response = " + response.isSuccessful)
-                // Log.e("Request", " Value = " + response.body()!!.toString())
                 if (response.body() != null) {
                     var weather: Weather = fillResponseWithDates(response.body()!!)
                     weather = fillWeatherIcon(weather)
@@ -71,19 +69,19 @@ object RemoteDataSource : WeathersDataSource {
     }
 
     fun fillResponseWithDates(weather: Weather): Weather {
-        var weather : Weather = getNext16Days(weather)
+        val weather : Weather = getNext16Days(weather)
         return weather
     }
 
     fun getNext16Days(weather: Weather): Weather {
-        var properties: List<Properties> = weather.list!!
-        var date: Date = Date()
-        var arr: Array<String> = Array(16, { _ -> "" })
+        val properties: List<Properties> = weather.list!!
+        val date: Date = Date()
+        val arr: Array<String> = Array(16, { _ -> "" })
         val cal: Calendar = Calendar.getInstance()
         cal.time = date
         for (i in 1..16) {
             cal.add(Calendar.DATE, 1)
-            var dateStr: String = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH))
+            val dateStr: String = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH))
             arr[i - 1] = dateStr
             properties[i -1].day = dateStr
             properties[i -1].dayOfTheWeek = getNameOfTheDay(cal.time)
@@ -94,26 +92,13 @@ object RemoteDataSource : WeathersDataSource {
     }
 
     fun getNameOfTheDay(date: Date): WeatherDay {
-        //var date: Date = Date()
-        var calendar: Calendar = Calendar.getInstance()
-        calendar.setTime(date)
+        val calendar: Calendar = Calendar.getInstance()
+        calendar.time = date
         val days = arrayOf(WeatherDay.SUNDAY, WeatherDay.MONDAY, WeatherDay.TUESDAY,
                 WeatherDay.WEDNESDAY, WeatherDay.THURSDAY, WeatherDay.FRIDAY, WeatherDay.SATURDAY)
-        var day: WeatherDay = days[calendar.get(Calendar.DAY_OF_WEEK) - 1]
+        val day: WeatherDay = days[calendar.get(Calendar.DAY_OF_WEEK) - 1]
         Log.e("DayName", "Generated day name " + day)
         return day
     }
 
-//    companion object {
-//
-//        private var INSTANCE: RemoteDataSource? = null
-//
-//        val instance: RemoteDataSource
-//            get() {
-//                if (INSTANCE == null) {
-//                    INSTANCE = RemoteDataSource()
-//                }
-//                return INSTANCE!!
-//            }
-//    }
 }

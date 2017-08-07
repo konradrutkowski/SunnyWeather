@@ -5,7 +5,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.pjkr.sunnyweather.R
-import org.w3c.dom.Text
 
 /**
  * Created by konradrutkowski on 28.06.2017.

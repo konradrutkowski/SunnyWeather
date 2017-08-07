@@ -2,7 +2,6 @@ package com.pjkr.sunnyweather.longterm.view
 
 import android.annotation.SuppressLint
 import android.app.SearchManager
-import android.content.ComponentName
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -14,7 +13,6 @@ import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
 import android.view.*
 import android.widget.Toast
-import com.pjkr.sunnyweather.MainActivity
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.data.WeathersRepository
 import com.pjkr.sunnyweather.data.local.LocalDataSource
@@ -23,7 +21,6 @@ import com.pjkr.sunnyweather.longterm.WeatherContract
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.Weather
 import com.pjkr.sunnyweather.longterm.presenter.LongTermWeatherPresenter
-import kotlinx.android.synthetic.main.long_term_row.*
 import kotlinx.android.synthetic.main.long_term_weather_fragment.*
 
 
