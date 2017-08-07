@@ -1,0 +1,5 @@
+resourceHashesCache.bin
+version.txt
+.gradle/*
+.idea/*
+build/*
