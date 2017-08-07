@@ -53,7 +53,7 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
     }
 
     override fun showTemperature(temp: String) {
-        this.header.setTemperature(context.getString(R.string.temperature, temp))
+        this.header.setTemperature(context.getString(R.string.temperature_with_degrees, temp))
     }
 
     override fun showHeaderIcon(iconName: String?) {

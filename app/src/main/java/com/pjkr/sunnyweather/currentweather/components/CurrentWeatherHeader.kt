@@ -34,7 +34,7 @@ class CurrentWeatherHeader @JvmOverloads constructor(
     }
 
     fun setPressure(pressure: String?){
-        this.pressure.text = context.getString(R.string.pressure, pressure)
+        this.pressure.text = context.getString(R.string.pressure_with_unit, pressure)
     }
 
     fun setCityName(cityName: String?){
