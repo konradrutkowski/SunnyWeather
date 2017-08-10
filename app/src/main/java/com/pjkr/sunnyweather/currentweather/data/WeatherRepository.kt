@@ -1,21 +1,19 @@
 package com.pjkr.sunnyweather.currentweather.data
 
+import com.pjkr.sunnyweather.currentweather.data.local.WeatherLocalSource
+import com.pjkr.sunnyweather.currentweather.data.remote.WeatherRemoteSource
 import com.pjkr.sunnyweather.currentweather.model.Weather
-import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
-import retrofit2.Call
-import retrofit2.Response
 
 /**
  * Created by yabol on 24.07.2017.
  */
-class WeatherRepository(var remoteDataSource: WeatherDataSource,
-                        var localDataSource: WeatherDataSource): WeatherDataSource{
+class WeatherRepository: WeatherDataSource{
 
     override fun getCurrentWeather(cityName: String, callback: WeatherDataSource.OnDataCollectedCallback<Weather>) {
-        remoteDataSource.getCurrentWeather(cityName, object : WeatherDataSource.OnDataCollectedCallback<Weather>{
+        WeatherRemoteSource.getCurrentWeather(cityName, object : WeatherDataSource.OnDataCollectedCallback<Weather>{
 
             override fun onSuccess(resultObject: Weather) {
-                localDataSource.saveWeather(resultObject)
+                WeatherLocalSource.saveWeather(resultObject)
                 callback.onSuccess(resultObject)
             }
 
@@ -31,7 +29,7 @@ class WeatherRepository(var remoteDataSource: WeatherDataSource,
     }
 
     override fun saveWeather(weather: Weather) {
-        this.localDataSource.saveWeather(weather)
+        WeatherLocalSource.saveWeather(weather)
     }
 
 

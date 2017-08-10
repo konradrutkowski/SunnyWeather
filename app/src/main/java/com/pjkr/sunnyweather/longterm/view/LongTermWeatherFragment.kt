@@ -89,8 +89,6 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         city_name_tv?.text = weather.city!!.name
         latlon_tv?.text = weather.city!!.coord!!.lat.toString() + "  " + weather.city!!.coord!!.lon.toString()
         adapter.changeLongTermWeatherList(weather.list!!)
-        //Toast.makeText(context, "Temp "+ weather.list!![0].temp!!.max, Toast.LENGTH_LONG).show()
-
     }
 
     override fun showLoadIndicator() {
@@ -118,7 +116,6 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         val menuItem: MenuItem = menu.findItem(R.id.search_longterm)
         searchView = MenuItemCompat.getActionView(menuItem) as SearchView
         searchView.setSearchableInfo(manager.getSearchableInfo(activity.componentName))
-        // val searchView: SearchView = menu!!.findItem(R.id.search_longterm).actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 presenter.loadData(query!!)
@@ -132,28 +129,5 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
 
         super.onPrepareOptionsMenu(menu)
     }
-
-//    override fun onPrepareOptionsMenu(menu: Menu) {
-//        super.onPrepareOptionsMenu(menu)
-//                val menuItem: MenuItem = menu.findItem(R.id.search_longterm)
-//        val searchView: SearchView = MenuItemCompat.getActionView(menuItem) as SearchView
-//        // val searchView: SearchView = menu!!.findItem(R.id.search_longterm).actionView as SearchView
-//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-//            override fun onQueryTextSubmit(query: String?): Boolean {
-//                presenter.loadData(query!!)
-//                return true
-//            }
-//
-//            override fun onQueryTextChange(newText: String?): Boolean {
-//                return false
-//            }
-//        })
-//
-//    }
-
-
-//    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-//        super.onCreateOptionsMenu(menu, inflater)
-//    }
 
 }

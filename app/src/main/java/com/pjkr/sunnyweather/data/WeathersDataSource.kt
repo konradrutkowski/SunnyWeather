@@ -9,7 +9,7 @@ import com.pjkr.sunnyweather.currentweather.model.Weather
 
 interface WeathersDataSource {
 
-    fun getWeatherList(city: String, loadWeathersCallback: LoadWeathersCallback)
+    fun getWeatherList(city: String, numberOfDays: String, loadWeathersCallback: LoadWeathersCallback)
 
     fun getActivatedWeathers(loadWeathersCallback: LoadWeathersCallback)
 

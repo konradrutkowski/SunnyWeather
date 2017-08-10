@@ -16,6 +16,7 @@ class CurrentWeatherPresenter
 (var view: CurrentWeatherContract.View,
  var dataSource: WeatherDataSource)
     : CurrentWeatherContract.Presenter, CurrentWeatherContract.Provider {
+
     var weathers: List<Weather>? = null
 
     var weather: Weather? = null
@@ -45,7 +46,7 @@ class CurrentWeatherPresenter
         return this.weathers?.get(position)
     }
 
-    override fun loadElements(cityName: String) {
+    override fun loadCurrentWeather(cityName: String) {
         this.view.showLoadingIndicator()
         this.dataSource.getCurrentWeather(cityName, object : WeatherDataSource.OnDataCollectedCallback<Weather> {
 
@@ -57,6 +58,9 @@ class CurrentWeatherPresenter
 
             }
         })
+    }
+
+    override fun loadNextDaysWeather(cityName: String) {
     }
 
     fun setWeathersList(weathers: List<Weather>) {

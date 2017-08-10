@@ -11,7 +11,9 @@ import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
 import com.pjkr.sunnyweather.currentweather.data.WeatherRepository
 import com.pjkr.sunnyweather.currentweather.data.local.WeatherLocalSource
 import com.pjkr.sunnyweather.currentweather.data.remote.WeatherRemoteSource
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.presenter.CurrentWeatherPresenter
+import com.pjkr.sunnyweather.longterm.view.LongTermListAdapter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.current_weather_framgnet.*
 
@@ -21,11 +23,12 @@ import kotlinx.android.synthetic.main.current_weather_framgnet.*
 class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
     var presenter: CurrentWeatherPresenter? = null
     var fragmentBackground: ImageView? = null
+    var adapter: LongTermListAdapter? = null
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view: View = inflater?.inflate(R.layout.current_weather_framgnet, container, false) as View
-
+        this.adapter = LongTermListAdapter(context, R.layout.long_term_row)
 
 
         return view
@@ -33,14 +36,14 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
 
-        this.presenter = CurrentWeatherPresenter(this, WeatherRepository(WeatherRemoteSource(), WeatherLocalSource()))
+        this.presenter = CurrentWeatherPresenter(this, WeatherRepository())
         Picasso.with(context).load(R.drawable.background).fit().into(background)
 
     }
 
     override fun onResume() {
         super.onResume()
-        this.presenter?.loadElements("Łódź")
+        this.presenter?.loadCurrentWeather("Łódź")
     }
 
     override fun showLoadingIndicator() {
@@ -79,6 +82,10 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
 
     override fun setMaxTemp(temp: String) {
         this.header?.setMaxTemperature(context.getString(R.string.maxTemp, temp))
+    }
+
+    override fun setWeathersList(weathers: List<Weather>) {
+      //  this.adapter.changeLongTermWeatherList()
     }
 
 }

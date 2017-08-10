@@ -6,7 +6,7 @@ import com.pjkr.sunnyweather.currentweather.model.Weather
 /**
  * Created by yabol on 24.07.2017.
  */
-class WeatherLocalSource : WeatherDataSource {
+object WeatherLocalSource : WeatherDataSource {
     override fun saveWeather(weather: Weather) {
 
     }

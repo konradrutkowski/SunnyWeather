@@ -20,8 +20,8 @@ import java.util.*
 
 object RemoteDataSource : WeathersDataSource {
 
-    override fun getWeatherList(city: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
-        WeatherProvider().getWeather(city, object : Callback<Weather> {
+    override fun getWeatherList(city: String, numberOfDays: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
+        WeatherProvider().getWeather(city, numberOfDays, object : Callback<Weather> {
             override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
                 Log.e("Request", " Response response = " + response.isSuccessful)
                 Log.e("Request", " Value = " + response.body()!!.toString())
@@ -44,7 +44,7 @@ object RemoteDataSource : WeathersDataSource {
     }
 
     override fun getWeather(city: String, getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
-        WeatherProvider().getWeather(city, object : Callback<Weather> {
+        WeatherProvider().getWeather(city, "16", object : Callback<Weather> {
             override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
                 if (response.body() != null) {
                     var weather: Weather = fillResponseWithDates(response.body()!!)

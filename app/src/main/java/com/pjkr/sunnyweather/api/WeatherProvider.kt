@@ -1,7 +1,9 @@
 package com.pjkr.sunnyweather.api
 
 
+import com.pjkr.sunnyweather.BuildConfig
 import com.pjkr.sunnyweather.currentweather.model.Weather
+import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -25,21 +27,14 @@ class WeatherProvider {
         mapAPI = retrofit.create(MapAPI::class.java)
     }
 
-    fun getWeather(city:String, callback: Callback<Weather>) {
-        val weatherCall = mapAPI.getWeather(city, "16", "metric","3a6092b5c20245c7b5b76a920b2d9208")
+    fun getWeather(city:String, numberOfDays: String, callback: Callback<Weather>) {
+        val weatherCall = mapAPI.getWeather(city, numberOfDays, "metric","3a6092b5c20245c7b5b76a920b2d9208")
         weatherCall.enqueue(callback)
-//                object : Callback<Weather> {
-//            override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
-//                Log.e("Request", " Response response = " + response.isSuccessful)
-//                Log.e("Request", " Value = " + response.body()!!.toString())
-//            }
-//
-//            override fun onFailure(call: Call<Weather>, t: Throwable) {
-//                Log.e("Request", " FAILED")
-//                Log.e("Request", " FAILED" + call.request().url())
-//                t.printStackTrace()
-//            }
-//        })
+    }
+
+    fun getCurrentWeather(cityId: String, callback: Callback<WeatherResponse>){
+        val weatherCall = mapAPI.getCurrentWeather(cityId, BuildConfig.WEATHER_API)
+        weatherCall.enqueue(callback)
     }
 
 }
