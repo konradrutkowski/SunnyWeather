@@ -5,6 +5,7 @@ import android.util.Log
 import com.pjkr.sunnyweather.data.WeatherData
 import com.pjkr.sunnyweather.api.WeatherProvider
 import com.pjkr.sunnyweather.currentweather.model.Weather
+import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
 import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.WeatherDay
@@ -19,6 +20,7 @@ import java.util.*
  */
 
 object RemoteDataSource : WeathersDataSource {
+
 
     override fun getWeatherList(city: String, numberOfDays: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
         WeatherProvider().getWeather(city, numberOfDays, object : Callback<Weather> {
@@ -61,6 +63,30 @@ object RemoteDataSource : WeathersDataSource {
                 t.printStackTrace()
                 getWeatherCallback.onFail()
             }
+        })
+    }
+
+    override fun getCurrentWeather(cityName: String, callback: WeathersDataSource.GetWeatherCallback) {
+        WeatherProvider().getCurrentWeather(cityName, object: Callback<WeatherResponse>{
+            override fun onResponse(call: Call<WeatherResponse>?, response: Response<WeatherResponse>?) {
+                val weather: Weather? = response?.body()?.weathers?.get(0)
+                var weatherObj: Weather = Weather(weather?.id, weather?.main, weather?.description, weather?.icon)
+                weatherObj.coord = response?.body()?.coord
+                weatherObj.data = response?.body()?.main
+                weatherObj.wind = response?.body()?.wind
+                weatherObj.visibility = response?.body()?.visibility
+                weatherObj.name = response?.body()?.name
+                if (weather != null) {
+                    callback.onSuccess(weatherObj)
+                }else{
+                    callback.onFail()
+                }
+            }
+
+            override fun onFailure(call: Call<WeatherResponse>?, t: Throwable?) {
+                callback.onFail()
+            }
+
         })
     }
 

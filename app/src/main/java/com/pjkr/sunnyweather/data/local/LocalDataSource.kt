@@ -8,6 +8,9 @@ import com.pjkr.sunnyweather.data.WeathersDataSource
  */
 
 object LocalDataSource : WeathersDataSource {
+    override fun getCurrentWeather(cityName: String, callback: WeathersDataSource.GetWeatherCallback) {
+
+    }
 
     override fun getWeatherList(city: String, numberOfDays: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
 

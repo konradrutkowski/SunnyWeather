@@ -28,7 +28,7 @@ class WeatherProvider {
     }
 
     fun getWeather(city:String, numberOfDays: String, callback: Callback<Weather>) {
-        val weatherCall = mapAPI.getWeather(city, numberOfDays, "metric","3a6092b5c20245c7b5b76a920b2d9208")
+        val weatherCall = mapAPI.getWeather(city, numberOfDays, "metric",BuildConfig.WEATHER_API)
         weatherCall.enqueue(callback)
     }
 

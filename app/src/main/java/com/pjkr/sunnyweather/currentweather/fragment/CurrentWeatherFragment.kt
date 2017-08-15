@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
-import com.pjkr.sunnyweather.currentweather.data.WeatherRepository
-import com.pjkr.sunnyweather.currentweather.data.local.WeatherLocalSource
-import com.pjkr.sunnyweather.currentweather.data.remote.WeatherRemoteSource
 import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.presenter.CurrentWeatherPresenter
+import com.pjkr.sunnyweather.data.WeathersRepository
+import com.pjkr.sunnyweather.data.local.LocalDataSource
+import com.pjkr.sunnyweather.data.remote.RemoteDataSource
 import com.pjkr.sunnyweather.longterm.view.LongTermListAdapter
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.current_weather_framgnet.*
@@ -36,7 +36,7 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
 
-        this.presenter = CurrentWeatherPresenter(this, WeatherRepository())
+        this.presenter = CurrentWeatherPresenter(this, WeathersRepository(LocalDataSource, RemoteDataSource))
         Picasso.with(context).load(R.drawable.background).fit().into(background)
 
     }
