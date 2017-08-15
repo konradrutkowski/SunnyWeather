@@ -8,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.longterm.model.Properties
-import com.pjkr.sunnyweather.utils.formatDouble
-import com.pjkr.sunnyweather.utils.getDrawableIdByName
-import com.pjkr.sunnyweather.utils.getStringIdByName
+import com.pjkr.sunnyweather.utils.*
 import com.squareup.picasso.Picasso
 
 /**
@@ -29,11 +27,11 @@ class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.
         val property: Properties = longTermWeatherList[position]
         holder.titleTV.text = context.getString(R.string.temperature_with_degrees, property.temp!!.day.formatDouble())
         holder.descriptionTV.text = context.getString(R.string.pressure_with_unit, property.pressure.formatDouble())
-        holder.day.text = property.day!! + " "+context.getString(context.getStringIdByName(property.dayOfTheWeek!!.nameOfTheDay))
+        holder.day.text = property.day!! + " "+context.getString(context.getResourceIdByName(property.dayOfTheWeek!!.nameOfTheDay, "string"))
         holder.humidity.text = "Humidity" +" "+ property.humidity.toString()+ " %"
         holder.windSpeed.text = "Wind" +" "+ property.speed.toString()+ " km/h"
         Log.e("Binding", property.icon!!.iconName)
-        Picasso.with(context).load(context.getDrawableIdByName(property.icon!!.iconName, "drawable")).fit().centerInside().into(holder.icon)
+        Picasso.with(context).load(context.getResourceIdByName(property.icon!!.iconName, "drawable")).fit().centerInside().into(holder.icon)
     }
 
 

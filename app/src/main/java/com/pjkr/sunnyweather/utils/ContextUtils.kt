@@ -9,7 +9,7 @@ import android.os.Build
  * Created by yabol on 13.07.2017.
  */
 fun Context.getDrawableByName(resourceName: String?, defType: String): Drawable {
-    val resourceId: Int = getDrawableIdByName(resourceName, defType)
+    val resourceId: Int = getResourceIdByName(resourceName, defType)
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         return getDrawable(resourceId)
     }else{
@@ -17,11 +17,7 @@ fun Context.getDrawableByName(resourceName: String?, defType: String): Drawable 
     }
 }
 
-fun Context.getDrawableIdByName(resourceName: String?, defType: String): Int{
+fun Context.getResourceIdByName(resourceName: String?, defType: String): Int{
     var resources: Resources = this.resources
     return resources.getIdentifier(resourceName, defType, this.packageName)
-}
-
-fun Context.getStringIdByName(name: String): Int{
-    return resources.getIdentifier(name, "string", this.packageName)
 }

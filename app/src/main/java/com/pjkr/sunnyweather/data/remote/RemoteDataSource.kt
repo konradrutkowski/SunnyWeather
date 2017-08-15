@@ -101,8 +101,7 @@ object RemoteDataSource : WeathersDataSource {
     }
 
     private fun fillResponseWithDates(weather: Weather): Weather {
-        val weather: Weather = getNext16Days(weather)
-        return weather
+        return getNext16Days(weather)
     }
 
     private fun getNext16Days(weather: Weather): Weather {
@@ -130,10 +129,10 @@ object RemoteDataSource : WeathersDataSource {
     }
 
     private fun proceedListResponse(weather: Weather) : Weather{
-        var weatherResult = fillResponseWithDates(weather)
-        weatherResult = fillWeatherIcon(weather)
+        fillResponseWithDates(weather)
+        fillWeatherIcon(weather)
 
-        return weatherResult
+        return weather
     }
 
 }
