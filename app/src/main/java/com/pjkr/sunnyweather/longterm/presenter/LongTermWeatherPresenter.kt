@@ -13,7 +13,7 @@ class LongTermWeatherPresenter(val view: WeatherContract.View, val repository: W
 
     override fun onStart() {
         view.presenter = this
-        this.loadData("London")
+        this.loadData("Łódź")
     }
 
 
