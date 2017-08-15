@@ -7,6 +7,7 @@ package com.pjkr.sunnyweather.data
 class WeathersRepository constructor(private val localDataSource: WeathersDataSource, private val remoteDataSource: WeathersDataSource) : WeathersDataSource {
 
     override fun getWeatherList(city: String, numberOfDays: String,  loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
+        remoteDataSource.getWeatherList(city, numberOfDays, loadWeathersCallback)
 
     }
 

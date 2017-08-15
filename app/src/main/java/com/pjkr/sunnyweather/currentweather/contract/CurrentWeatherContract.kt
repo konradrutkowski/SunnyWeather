@@ -1,6 +1,7 @@
 package com.pjkr.sunnyweather.currentweather.contract
 
 import com.pjkr.sunnyweather.currentweather.model.Weather
+import com.pjkr.sunnyweather.longterm.model.Properties
 
 /**
  * Created by PJablonski on 28.06.2017.
@@ -17,7 +18,7 @@ class CurrentWeatherContract {
         fun setTemperatureInfo(weatherName: String?, weatherDescription: String?)
         fun setMinTemp(temp: String)
         fun setMaxTemp(temp: String)
-        fun setWeathersList(weathers: List<Weather>)
+        fun setWeathersList(weathers: List<Properties>?)
     }
     interface Presenter{
         fun loadCurrentWeather(cityName: String)

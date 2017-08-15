@@ -1,8 +1,8 @@
 package com.pjkr.sunnyweather.data
 
 
-import com.pjkr.sunnyweather.currentweather.data.WeatherDataSource
 import com.pjkr.sunnyweather.currentweather.model.Weather
+import com.pjkr.sunnyweather.longterm.model.Properties
 
 /**
  * Created by konradrutkowski on 04.07.2017.
@@ -24,7 +24,7 @@ public interface WeathersDataSource {
 
     interface LoadWeathersCallback {
 
-        fun onSuccess(weatherList: List<Weather>)
+        fun onSuccess(weatherList: List<Properties>?)
 
         fun onFail()
     }

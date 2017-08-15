@@ -3,6 +3,7 @@ package com.pjkr.sunnyweather.currentweather.presenter
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
 import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.currentweather.model.Weather
+import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.utils.celsiusFromKelvin
 import com.pjkr.sunnyweather.utils.formatDouble
 
@@ -56,6 +57,15 @@ class CurrentWeatherPresenter
     }
 
     override fun loadNextDaysWeather(cityName: String) {
+        this.dataSource.getWeatherList(cityName, "5", object: WeathersDataSource.LoadWeathersCallback{
+            override fun onSuccess(weatherList: List<Properties>?) {
+                view.setWeathersList(weatherList)
+            }
+
+            override fun onFail() {
+            }
+
+        })
     }
 
     fun setWeathersList(weathers: List<Weather>) {
