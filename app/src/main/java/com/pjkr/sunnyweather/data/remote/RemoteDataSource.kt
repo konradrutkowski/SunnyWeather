@@ -96,31 +96,25 @@ object RemoteDataSource : WeathersDataSource {
         })
     }
 
-    fun fillWeatherIcon(weather: Weather): Weather {
+    private fun fillWeatherIcon(weather: Weather): Weather {
         return WeatherData().chooseIcon(weather)
     }
 
-    fun fillResponseWithDates(weather: Weather): Weather {
+    private fun fillResponseWithDates(weather: Weather): Weather {
         val weather: Weather = getNext16Days(weather)
         return weather
     }
 
     private fun getNext16Days(weather: Weather): Weather {
         val properties: List<Properties> = weather.list!!
-        val date: Date = Date()
-        val arr: Array<String> = Array(16, { _ -> "" })
         val cal: Calendar = Calendar.getInstance()
-        cal.time = date
-        for (i in 1..16) {
-            if (i <= properties.size) {
+        cal.time = Date()
+        for (i in 1..properties.size) {
                 cal.add(Calendar.DATE, 1)
                 val dateStr: String = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH))
-                arr[i - 1] = dateStr
                 properties[i - 1].day = dateStr
                 properties[i - 1].dayOfTheWeek = getNameOfTheDay(cal.time)
-            }
         }
-        Log.e("Next16", "Dates = " + arr.contentToString())
         return weather
 
     }

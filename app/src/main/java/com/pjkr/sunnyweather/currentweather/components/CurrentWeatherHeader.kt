@@ -30,7 +30,7 @@ class CurrentWeatherHeader @JvmOverloads constructor(
     }
 
     fun setWeatherIcon(iconName: String?){
-        Picasso.with(context).load(context.getDrawableIdByName(iconName)).into(this.weatherIcon)
+        Picasso.with(context).load(context.getDrawableIdByName(iconName, "mipmap")).into(this.weatherIcon)
     }
 
     fun setPressure(pressure: String?){
