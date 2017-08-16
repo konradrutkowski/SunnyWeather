@@ -16,6 +16,7 @@ import com.pjkr.sunnyweather.data.local.LocalDataSource
 import com.pjkr.sunnyweather.data.remote.RemoteDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.view.LongTermListAdapter
+import com.pjkr.sunnyweather.utils.getColorSecure
 import kotlinx.android.synthetic.main.current_weather_framgnet.*
 
 /**
@@ -41,7 +42,7 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
 
-        this.header.setBackgroundColor(Color.BLUE)
+        this.header.setBackgroundColor(context.getColorSecure(R.color.colorPrimary))
         this.presenter = CurrentWeatherPresenter(this, WeathersRepository(LocalDataSource, RemoteDataSource))
 
     }
