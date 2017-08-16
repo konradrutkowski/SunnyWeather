@@ -10,14 +10,22 @@ import android.os.Build
  */
 fun Context.getDrawableByName(resourceName: String?, defType: String): Drawable {
     val resourceId: Int = getResourceIdByName(resourceName, defType)
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        return getDrawable(resourceId)
-    }else{
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        getDrawable(resourceId)
+    } else {
         return getResources().getDrawable(resourceId)
     }
 }
 
-fun Context.getResourceIdByName(resourceName: String?, defType: String): Int{
+fun Context.getResourceIdByName(resourceName: String?, defType: String): Int {
     var resources: Resources = this.resources
     return resources.getIdentifier(resourceName, defType, this.packageName)
+}
+
+fun Context.getColorSecure(colorId: Int): Int {
+    return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+        this.getColor(colorId)
+    } else {
+        return this.resources.getColor(colorId)
+    }
 }

@@ -10,19 +10,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/currentWeather"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Current"
+        <com.pjkr.sunnyweather.components.TabElement
+            android:id="@+id/currentWeatherTab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.5"/>
-        <TextView
-            android:id="@+id/forecast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Forecast"
+        <com.pjkr.sunnyweather.components.TabElement
+            android:id="@+id/longTermTab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="0.5"/>
     </LinearLayout>
 
