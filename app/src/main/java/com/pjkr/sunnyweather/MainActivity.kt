@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        currentWeatherTab.tabName.text = "Current"
-        longTermTab.tabName.text = "Long term"
+        currentWeatherTab.tabName.text = getString(R.string.current_tab)
+        longTermTab.tabName.text = getString(R.string.long_term_tab)
 
         currentWeatherTab.tabName.setOnClickListener { startCurrentWeatherFragment() }
         longTermTab.tabName.setOnClickListener { startLongTermWeatherFragment() }
