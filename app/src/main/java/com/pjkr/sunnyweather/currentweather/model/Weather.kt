@@ -1,7 +1,5 @@
 package com.pjkr.sunnyweather.currentweather.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
 import com.pjkr.sunnyweather.longterm.model.City
 import com.pjkr.sunnyweather.longterm.model.Properties
 

@@ -1,21 +1,20 @@
 package com.pjkr.sunnyweather.currentweather.presenter
 
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
-import com.pjkr.sunnyweather.currentweather.data.WeatherDataSource
+import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.currentweather.model.Weather
-import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
+import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.utils.celsiusFromKelvin
 import com.pjkr.sunnyweather.utils.formatDouble
-import retrofit2.Call
-import retrofit2.Response
 
 /**
  * Created by PJablonski on 28.06.2017.
  */
 class CurrentWeatherPresenter
 (var view: CurrentWeatherContract.View,
- var dataSource: WeatherDataSource)
+ var dataSource: WeathersDataSource)
     : CurrentWeatherContract.Presenter, CurrentWeatherContract.Provider {
+
     var weathers: List<Weather>? = null
 
     var weather: Weather? = null
@@ -45,17 +44,27 @@ class CurrentWeatherPresenter
         return this.weathers?.get(position)
     }
 
-    override fun loadElements(cityName: String) {
+    override fun loadCurrentWeather(cityName: String) {
         this.view.showLoadingIndicator()
-        this.dataSource.getCurrentWeather(cityName, object : WeatherDataSource.OnDataCollectedCallback<Weather> {
-
-            override fun onSuccess(resultObject: Weather) {
-                showWeather(resultObject)
+        this.dataSource.getCurrentWeather(cityName, object: WeathersDataSource.GetWeatherCallback {
+            override fun onSuccess(weather: Weather) {
+                showWeather(weather)
             }
 
-            override fun onFail(message: String) {
-
+            override fun onFail() {
             }
+        })
+    }
+
+    override fun loadNextDaysWeather(cityName: String) {
+        this.dataSource.getWeatherList(cityName, "5", object: WeathersDataSource.LoadWeathersCallback{
+            override fun onSuccess(weatherList: List<Properties>?) {
+                view.setWeathersList(weatherList)
+            }
+
+            override fun onFail() {
+            }
+
         })
     }
 

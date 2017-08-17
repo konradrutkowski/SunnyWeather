@@ -6,7 +6,8 @@ package com.pjkr.sunnyweather.data
 
 class WeathersRepository constructor(private val localDataSource: WeathersDataSource, private val remoteDataSource: WeathersDataSource) : WeathersDataSource {
 
-    override fun getWeatherList(city: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
+    override fun getWeatherList(city: String, numberOfDays: String,  loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
+        remoteDataSource.getWeatherList(city, numberOfDays, loadWeathersCallback)
 
     }
 
@@ -20,6 +21,11 @@ class WeathersRepository constructor(private val localDataSource: WeathersDataSo
 
     override fun getWeather(city: String, getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
         remoteDataSource.getWeather(city, getWeatherCallback)
+    }
+
+
+    override fun getCurrentWeather(cityName: String, callback: WeathersDataSource.GetWeatherCallback) {
+       remoteDataSource.getCurrentWeather(cityName, callback)
     }
 
     companion object {

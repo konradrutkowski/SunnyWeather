@@ -1,15 +1,11 @@
 package com.pjkr.sunnyweather.currentweather.components
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
-import android.widget.ImageView
 import android.widget.RelativeLayout
-import android.widget.TextView
 import com.pjkr.sunnyweather.R
-import com.pjkr.sunnyweather.utils.getDrawableByName
-import com.pjkr.sunnyweather.utils.getDrawableIdByName
+import com.pjkr.sunnyweather.utils.getResourceIdByName
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.current_weather_header.view.*
 
@@ -30,7 +26,7 @@ class CurrentWeatherHeader @JvmOverloads constructor(
     }
 
     fun setWeatherIcon(iconName: String?){
-        Picasso.with(context).load(context.getDrawableIdByName(iconName)).into(this.weatherIcon)
+        Picasso.with(context).load(context.getResourceIdByName(iconName, "mipmap")).into(this.weatherIcon)
     }
 
     fun setPressure(pressure: String?){

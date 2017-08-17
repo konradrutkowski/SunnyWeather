@@ -3,12 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <!--<android.support.v7.widget.SearchView-->
-        <!--android:id="@+id/search"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:focusable="true" />-->
-
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_long_term"

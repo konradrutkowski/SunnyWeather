@@ -10,4 +10,10 @@
     <string name="friday_shortcut">PT</string>
     <string name="saturday_shortcut">SOB</string>
     <string name="sunday_shortcut">ND</string>
+    <string name="temperature_with_degrees">%1$s\u2103</string>
+    <string name="pressure_with_unit">Ciśnienie: %1$s hPa</string>
+    <string name="minTemp">Min. temp: %1$s\u2103</string>
+    <string name="maxTemp">Max. temp: %1$s\u2103</string>
+    <string name="current_tab">Dziś</string>
+    <string name="long_term_tab">16 dni</string>
 </resources>

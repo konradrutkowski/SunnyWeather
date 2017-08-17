@@ -4,6 +4,8 @@
     <string name="pressure_with_unit">Pressure: %1$s hPa</string>
     <string name="minTemp">Min. temp: %1$s\u2103</string>
     <string name="maxTemp">Max. temp: %1$s\u2103</string>
+    <string name="current_tab">Current</string>
+    <string name="long_term_tab">Forecast</string>
     <string name="search_title">City</string>
     <string name="pressure">Pressure</string>
     <string name="temperature">Temperature</string>
