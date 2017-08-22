@@ -57,8 +57,8 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         swipeRefreshLayout.setOnRefreshListener { presenter.loadData(getDataToSearch()) }
     }
 
-    fun getDataToSearch() : String{
-        if(searchView.query.isNotEmpty()){
+    fun getDataToSearch(): String {
+        if (searchView.query.isNotEmpty()) {
             return searchView.query.toString()
         }
         return "London"
@@ -94,7 +94,7 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
     }
 
     private fun changeIndicatorVisibility(state: Boolean) {
-        if(activity!=null) {
+        if (activity != null) {
             activity.runOnUiThread { swipeRefreshLayout.isRefreshing = state }
         }
 
@@ -125,11 +125,11 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
 
         super.onPrepareOptionsMenu(menu)
     }
+
     override fun setTitle(cityName: String) {
-        (activity as AppCompatActivity).supportActionBar?.title = cityName
-       // ((AppCompatActivity) activity).support
-       // activity.support?.title = getString(R.string.coolTitle)
-        //activity.navig?.title = cityName
+        if (activity != null) {
+            (activity as AppCompatActivity).supportActionBar?.title = cityName
+        }
     }
 
 }
