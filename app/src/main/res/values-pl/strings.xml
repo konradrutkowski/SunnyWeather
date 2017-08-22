@@ -8,8 +8,8 @@
     <string name="wednesday_shortcut">%1$s ŚR</string>
     <string name="thursday_shortcut">%1$s CZW</string>
     <string name="friday_shortcut">%1$s PT</string>
-    <string name="saturday_shortcut">1$s SOB</string>
-    <string name="sunday_shortcut">1$s ND</string>
+    <string name="saturday_shortcut">%1$s SOB</string>
+    <string name="sunday_shortcut">%1$s ND</string>
     <string name="temperature_with_degrees">%1$s\u2103</string>
     <string name="pressure_with_unit">Ciśnienie: %1$s hPa</string>
     <string name="minTemp">Min. temp: %1$s\u2103</string>
