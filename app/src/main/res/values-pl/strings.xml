@@ -3,17 +3,20 @@
     <string name="app_name">SunnyWeather</string>
     <string name="pressure">Ciśnienie</string>
     <string name="temperature">Temperatura</string>
-    <string name="monday_shortcut">PON</string>
-    <string name="tuesday_shortcut">WT</string>
-    <string name="wednesday_shortcut">ŚR</string>
-    <string name="thursday_shortcut">CZW</string>
-    <string name="friday_shortcut">PT</string>
-    <string name="saturday_shortcut">SOB</string>
-    <string name="sunday_shortcut">ND</string>
+    <string name="monday_shortcut">%1$s PON</string>
+    <string name="tuesday_shortcut">%1$s WT</string>
+    <string name="wednesday_shortcut">%1$s ŚR</string>
+    <string name="thursday_shortcut">%1$s CZW</string>
+    <string name="friday_shortcut">%1$s PT</string>
+    <string name="saturday_shortcut">1$s SOB</string>
+    <string name="sunday_shortcut">1$s ND</string>
     <string name="temperature_with_degrees">%1$s\u2103</string>
     <string name="pressure_with_unit">Ciśnienie: %1$s hPa</string>
     <string name="minTemp">Min. temp: %1$s\u2103</string>
     <string name="maxTemp">Max. temp: %1$s\u2103</string>
     <string name="current_tab">Dziś</string>
     <string name="long_term_tab">16 dni</string>
+    <string name="city">Miasto</string>
+    <string name="humidity">Wilgotność  %1$s%%</string>
+    <string name="wind">Wiatr %1$s km/h</string>
 </resources>

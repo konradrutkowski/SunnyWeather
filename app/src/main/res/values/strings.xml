@@ -6,14 +6,17 @@
     <string name="maxTemp">Max. temp: %1$s\u2103</string>
     <string name="current_tab">Current</string>
     <string name="long_term_tab">Forecast</string>
-    <string name="search_title">City</string>
+    <string name="city">City</string>
     <string name="pressure">Pressure</string>
     <string name="temperature">Temperature</string>
-    <string name="monday_shortcut">MON</string>
-    <string name="tuesday_shortcut">TUE</string>
-    <string name="wednesday_shortcut">WED</string>
-    <string name="thursday_shortcut">THU</string>
-    <string name="friday_shortcut">FRI</string>
-    <string name="saturday_shortcut">SAT</string>
-    <string name="sunday_shortcut">SUN</string>
+    <string name="monday_shortcut">1$s MON</string>
+    <string name="tuesday_shortcut">1$s TUE</string>
+    <string name="wednesday_shortcut">1$s WED</string>
+    <string name="thursday_shortcut">1$s THU</string>
+    <string name="friday_shortcut">1$s FRI</string>
+    <string name="saturday_shortcut">1$s SAT</string>
+    <string name="sunday_shortcut">1$s SUN</string>
+    <string name="humidity">Humidity %1$s%%</string>
+    <string name="wind">Wind %1$s km/h</string>
+
 </resources>

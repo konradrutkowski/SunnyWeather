@@ -1,12 +1,12 @@
 package com.pjkr.sunnyweather.longterm.view
 
-import android.annotation.SuppressLint
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.view.MenuItemCompat
 import android.support.v4.widget.SwipeRefreshLayout
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
@@ -21,7 +21,6 @@ import com.pjkr.sunnyweather.data.remote.RemoteDataSource
 import com.pjkr.sunnyweather.longterm.WeatherContract
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.presenter.LongTermWeatherPresenter
-import kotlinx.android.synthetic.main.long_term_weather_fragment.*
 
 
 /**
@@ -29,9 +28,7 @@ import kotlinx.android.synthetic.main.long_term_weather_fragment.*
  */
 class LongTermWeatherFragment : Fragment(), WeatherContract.View {
 
-
     override var presenter: WeatherContract.Presenter = LongTermWeatherPresenter(this, WeathersRepository(LocalDataSource, RemoteDataSource))
-
     lateinit var list: RecyclerView
     lateinit var adapter: LongTermListAdapter
     lateinit var swipeRefreshLayout: SwipeRefreshLayout
@@ -84,10 +81,7 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         Toast.makeText(context, "Failed to download the data", Toast.LENGTH_LONG).show()
     }
 
-    @SuppressLint("SetTextI18n")
     override fun showWeather(weather: Weather) {
-        city_name_tv?.text = weather.city!!.name
-        latlon_tv?.text = weather.city!!.coord!!.lat.toString() + "  " + weather.city!!.coord!!.lon.toString()
         adapter.changeLongTermWeatherList(weather.list!!)
     }
 
@@ -100,7 +94,9 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
     }
 
     private fun changeIndicatorVisibility(state: Boolean) {
-        activity.runOnUiThread { swipeRefreshLayout.isRefreshing = state }
+        if(activity!=null) {
+            activity.runOnUiThread { swipeRefreshLayout.isRefreshing = state }
+        }
 
     }
 
@@ -128,6 +124,12 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         })
 
         super.onPrepareOptionsMenu(menu)
+    }
+    override fun setTitle(cityName: String) {
+        (activity as AppCompatActivity).supportActionBar?.title = cityName
+       // ((AppCompatActivity) activity).support
+       // activity.support?.title = getString(R.string.coolTitle)
+        //activity.navig?.title = cityName
     }
 
 }

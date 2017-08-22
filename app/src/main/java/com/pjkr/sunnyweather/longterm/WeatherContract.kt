@@ -13,6 +13,7 @@ interface WeatherContract{
         fun showWeatherList(weatherList: List<Properties>)
         fun showWeather(weather: Weather)
         fun setAdapter()
+        fun setTitle(cityName: String)
         fun showFailedDataFetch()
         fun showLoadIndicator()
         fun hideLoadIndicator()

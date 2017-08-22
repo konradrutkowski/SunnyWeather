@@ -32,12 +32,5 @@ class WeathersRepository constructor(private val localDataSource: WeathersDataSo
 
         private var INSTANCE: WeathersRepository? = null
 
-        fun getInstance(localDataSource: WeathersDataSource,
-                        remoteDataSource: WeathersDataSource): WeathersRepository {
-            if (INSTANCE == null) {
-                INSTANCE = WeathersRepository(localDataSource, remoteDataSource)
-            }
-            return INSTANCE!!
-        }
     }
 }

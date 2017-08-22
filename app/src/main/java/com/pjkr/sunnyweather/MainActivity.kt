@@ -2,7 +2,6 @@ package com.pjkr.sunnyweather
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import com.pjkr.sunnyweather.currentweather.fragment.CurrentWeatherFragment
 import com.pjkr.sunnyweather.longterm.view.LongTermWeatherFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -24,6 +23,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             startCurrentWeatherFragment()
         }
+
     }
 
     private fun startCurrentWeatherFragment(){
