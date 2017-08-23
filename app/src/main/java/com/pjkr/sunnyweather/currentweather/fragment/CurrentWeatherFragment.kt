@@ -71,24 +71,24 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
     }
 
     override fun setPressure(pressure: String?) {
-        this.header?.setPressure(pressure)
+        this.header.setPressure(pressure)
     }
 
     override fun setCityName(cityName: String?) {
-        this.header?.setCityName(cityName)
+        this.header.setCityName(cityName)
     }
 
     override fun setTemperatureInfo(weatherName: String?, weatherDescription: String?) {
-        this.header?.setTemperatureTitle(weatherName)
-        this.header?.setTemperatureDescription(weatherDescription)
+        this.header.setTemperatureTitle(weatherName)
+        this.header.setTemperatureDescription(weatherDescription)
     }
 
     override fun setMinTemp(temp: String) {
-        this.header?.setMinTemperature(context.getString(R.string.minTemp, temp))
+        this.header.setMinTemperature(context.getString(R.string.minTemp, temp))
     }
 
     override fun setMaxTemp(temp: String) {
-        this.header?.setMaxTemperature(context.getString(R.string.maxTemp, temp))
+        this.header.setMaxTemperature(context.getString(R.string.maxTemp, temp))
     }
 
     override fun setWeathersList(weathers: List<Properties>?) {
