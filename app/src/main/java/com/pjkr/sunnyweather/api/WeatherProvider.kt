@@ -33,8 +33,11 @@ class WeatherProvider {
     }
 
     fun getCurrentWeather(cityId: String, callback: Callback<WeatherResponse>){
-        val weatherCall = mapAPI.getCurrentWeather(cityId, BuildConfig.WEATHER_API)
-        weatherCall.enqueue(callback)
+        mapAPI.getCurrentWeather(cityId, BuildConfig.WEATHER_API).enqueue(callback)
+    }
+
+    fun getTodaysWeatherForecast(cityId: String, callback: Callback<Weather>){
+        mapAPI.getTodaysWeatherForecast(cityId, BuildConfig.WEATHER_API).enqueue(callback)
     }
 
 }

@@ -21,7 +21,6 @@ import java.util.*
 
 object RemoteDataSource : WeathersDataSource {
 
-
     override fun getWeatherList(city: String, numberOfDays: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
         WeatherProvider().getWeather(city, numberOfDays, object : Callback<Weather> {
             override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
@@ -96,15 +95,37 @@ object RemoteDataSource : WeathersDataSource {
         })
     }
 
+    override fun getTodaysForecast(cityName: String, callback: WeathersDataSource.LoadWeathersCallback) {
+        WeatherProvider().getTodaysWeatherForecast(cityName, object : Callback<Weather>{
+            override fun onResponse(call: Call<Weather>?, response: Response<Weather>?) {
+                Log.e("Request", " Response response = " + response?.isSuccessful)
+                if (response?.body() != null) {
+                    Log.e("Request", " Value = " + response.body()!!.toString())
+                    var weather = proceedListResponse(response.body()!!)
+                    callback.onSuccess(weather.list)
+                }else{
+                    callback.onFail()
+                }
+            }
+
+            override fun onFailure(call: Call<Weather>?, t: Throwable?) {
+                callback.onFail()
+            }
+
+        })
+    }
+
+
+
     private fun fillWeatherIcon(weather: Weather): Weather {
         return WeatherData().chooseIcon(weather)
     }
 
     private fun fillResponseWithDates(weather: Weather): Weather {
-        return getNext16Days(weather)
+        return getNextDays(weather)
     }
 
-    private fun getNext16Days(weather: Weather): Weather {
+    private fun getNextDays(weather: Weather): Weather {
         val properties: List<Properties> = weather.list!!
         val cal: Calendar = Calendar.getInstance()
         cal.time = Date()

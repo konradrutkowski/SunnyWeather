@@ -18,4 +18,5 @@ class Weather(val id: String? = "", val main: String? = "", val description: Str
     var message: Double? = null
     var cnt: Int? = null
     var list: List<Properties>? = null
+    var clouds: Clouds? = null
 }

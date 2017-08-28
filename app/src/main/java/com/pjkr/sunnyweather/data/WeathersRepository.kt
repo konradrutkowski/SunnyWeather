@@ -28,6 +28,10 @@ class WeathersRepository constructor(private val localDataSource: WeathersDataSo
        remoteDataSource.getCurrentWeather(cityName, callback)
     }
 
+    override fun getTodaysForecast(cityName: String, callback: WeathersDataSource.LoadWeathersCallback) {
+        remoteDataSource.getTodaysForecast(cityName, callback)
+    }
+
     companion object {
 
         private var INSTANCE: WeathersRepository? = null

@@ -20,4 +20,8 @@ interface MapAPI {
     @GET("data/2.5/weather?")
     fun getCurrentWeather(@Query("q")cityId: String,
                           @Query("appid")apiKey: String): Call<WeatherResponse>
+
+    @GET("data/2.5/forecast")
+    fun getTodaysWeatherForecast(@Query("q")cityId: String,
+                                 @Query("appid")apiKey: String) : Call<Weather>
 }
