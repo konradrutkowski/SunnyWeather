@@ -20,7 +20,7 @@ public interface WeathersDataSource {
 
     fun getCurrentWeather(cityName: String, callback: GetWeatherCallback)
 
-    fun getTodaysForecast(cityName: String, callback: LoadWeathersCallback)
+    fun getTodayForecast(cityName: String, callback: LoadWeathersCallback)
 
 
 

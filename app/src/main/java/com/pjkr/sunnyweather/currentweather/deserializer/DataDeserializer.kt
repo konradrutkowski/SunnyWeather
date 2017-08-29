@@ -15,9 +15,9 @@ class DataDeserializer : Deserializer<Data?> {
         const val MAX_TEMP = "temp_max"
     }
 
-    override fun parse(element: JsonElement): Data? {
+    override fun parse(element: JsonElement?): Data? {
         var result : Data?= null
-        if(element.isJsonObject){
+        if(element!!.isJsonObject){
             var dataObject = element.asJsonObject
             val temperature = dataObject.get(TEMP).asDouble
             val pressure = dataObject.get(PRESSURE).asInt

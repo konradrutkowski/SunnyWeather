@@ -4,37 +4,41 @@ import com.google.gson.JsonElement
 import com.pjkr.sunnyweather.currentweather.model.Data
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.Temp
+import com.pjkr.sunnyweather.utils.celsiusFromKelvin
 
 /**
  * Created by yabol on 28.08.2017.
  */
-class PropertyDeserializer: Deserializer<Properties>{
+class PropertyDeserializer: Deserializer<Properties?>{
+    companion object {
+        const val DATA = "main"
+        const val CLOUDS = "clouds"
+    }
+
     private var result: Properties? = null
 
-    override fun parse(element: JsonElement) {
-        if(element.isJsonObject){
+    override fun parse(element: JsonElement?): Properties? {
+        if(element!!.isJsonObject){
             var jsonObject = element.asJsonObject
             result = Properties()
             var dataDEserializer = DataDeserializer()
-            dataDEserializer.parse(jsonObject.get("main"))
-            val data = dataDEserializer.getResult()
+            val data = dataDEserializer.parse(jsonObject.get(DATA))
             result?.temp = getTemp(data)
             result?.humidity = data?.humidity
-            result?.pressure = data?.pressure as Double
+            result?.pressure = data?.pressure?.toDouble()
+            result?.clouds = CloudsDeserializer().parse(jsonObject.get(CLOUDS))
+            return result
         }
+        return null
     }
 
     private fun getTemp(tempData: Data?): Temp{
         var temp = Temp()
-        temp.day = tempData?.temp
-        temp.max = tempData?.maxTemp
-        temp.min = tempData?.minTemp
+        temp.day = tempData?.temp?.celsiusFromKelvin()
+        temp.max = tempData?.maxTemp?.celsiusFromKelvin()
+        temp.min = tempData?.minTemp?.celsiusFromKelvin()
         return temp
 
-    }
-
-    override fun getResult(): Properties? {
-        return result
     }
 
 }

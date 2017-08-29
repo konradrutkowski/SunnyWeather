@@ -57,7 +57,7 @@ class CurrentWeatherPresenter
     }
 
     override fun loadNextDaysWeather(cityName: String) {
-        this.dataSource.getTodaysForecast(cityName, object: WeathersDataSource.LoadWeathersCallback{
+        this.dataSource.getTodayForecast(cityName, object: WeathersDataSource.LoadWeathersCallback{
             override fun onSuccess(weatherList: List<Properties>?) {
                 view.setWeathersList(weatherList)
             }

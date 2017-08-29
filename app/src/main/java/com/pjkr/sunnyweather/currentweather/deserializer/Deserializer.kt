@@ -7,6 +7,6 @@ import com.pjkr.sunnyweather.currentweather.model.Weather
  * Created by yabol on 28.08.2017.
  */
 interface Deserializer<T> {
-    fun parse(element: JsonElement): T
+    fun parse(element: JsonElement?): T
 
 }

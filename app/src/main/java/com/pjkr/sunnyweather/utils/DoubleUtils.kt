@@ -7,3 +7,6 @@ package com.pjkr.sunnyweather.utils
 fun Double?.formatDouble() : String{
     return String.format("%.${0}f", this)
 }
+fun Double.celsiusFromKelvin(): Double {
+    return this - 273.15
+}

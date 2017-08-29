@@ -6,6 +6,7 @@ import com.pjkr.sunnyweather.data.WeatherData
 import com.pjkr.sunnyweather.api.WeatherProvider
 import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
+import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastResponse
 import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.WeatherDay
@@ -95,20 +96,21 @@ object RemoteDataSource : WeathersDataSource {
         })
     }
 
-    override fun getTodaysForecast(cityName: String, callback: WeathersDataSource.LoadWeathersCallback) {
-        WeatherProvider().getTodaysWeatherForecast(cityName, object : Callback<Weather>{
-            override fun onResponse(call: Call<Weather>?, response: Response<Weather>?) {
+    override fun getTodayForecast(cityName: String, callback: WeathersDataSource.LoadWeathersCallback) {
+        WeatherProvider().getTodayForecast(cityName, object : Callback<WeatherTodayForecastResponse>{
+            override fun onResponse(call: Call<WeatherTodayForecastResponse>?, response: Response<WeatherTodayForecastResponse>?) {
                 Log.e("Request", " Response response = " + response?.isSuccessful)
                 if (response?.body() != null) {
                     Log.e("Request", " Value = " + response.body()!!.toString())
-                    var weather = proceedListResponse(response.body()!!)
-                    callback.onSuccess(weather.list)
+                    var forecast = response.body()
+                    forecast?.properties = fillWeatherIcon(forecast?.properties!!)
+                    callback.onSuccess(forecast?.properties)
                 }else{
                     callback.onFail()
                 }
             }
 
-            override fun onFailure(call: Call<Weather>?, t: Throwable?) {
+            override fun onFailure(call: Call<WeatherTodayForecastResponse>?, t: Throwable?) {
                 callback.onFail()
             }
 
@@ -117,8 +119,8 @@ object RemoteDataSource : WeathersDataSource {
 
 
 
-    private fun fillWeatherIcon(weather: Weather): Weather {
-        return WeatherData().chooseIcon(weather)
+    private fun fillWeatherIcon(properties: List<Properties>): List<Properties> {
+        return WeatherData().chooseIcon(properties)
     }
 
     private fun fillResponseWithDates(weather: Weather): Weather {
@@ -151,7 +153,7 @@ object RemoteDataSource : WeathersDataSource {
 
     private fun proceedListResponse(weather: Weather) : Weather{
         fillResponseWithDates(weather)
-        fillWeatherIcon(weather)
+        weather.list = fillWeatherIcon(weather.list!!)
 
         return weather
     }

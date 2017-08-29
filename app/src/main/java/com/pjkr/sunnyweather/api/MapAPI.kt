@@ -2,6 +2,7 @@ package com.pjkr.sunnyweather.api
 
 import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
+import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -22,6 +23,6 @@ interface MapAPI {
                           @Query("appid")apiKey: String): Call<WeatherResponse>
 
     @GET("data/2.5/forecast")
-    fun getTodaysWeatherForecast(@Query("q")cityId: String,
-                                 @Query("appid")apiKey: String) : Call<Weather>
+    fun getTodayForecast(@Query("q")cityId: String,
+                         @Query("appid")apiKey: String) : Call<WeatherTodayForecastResponse>
 }

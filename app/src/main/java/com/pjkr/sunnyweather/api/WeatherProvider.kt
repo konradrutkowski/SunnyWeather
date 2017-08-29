@@ -1,9 +1,12 @@
 package com.pjkr.sunnyweather.api
 
 
+import com.google.gson.GsonBuilder
 import com.pjkr.sunnyweather.BuildConfig
+import com.pjkr.sunnyweather.currentweather.deserializer.GsonForecastDeserializer
 import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
+import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastResponse
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -20,8 +23,13 @@ class WeatherProvider {
 
 
     init {
+        val gson = GsonBuilder()
+                .registerTypeAdapter(WeatherTodayForecastResponse::class.java, GsonForecastDeserializer())
+                .create()
+
         retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
         mapAPI = retrofit.create(MapAPI::class.java)
@@ -36,8 +44,8 @@ class WeatherProvider {
         mapAPI.getCurrentWeather(cityId, BuildConfig.WEATHER_API).enqueue(callback)
     }
 
-    fun getTodaysWeatherForecast(cityId: String, callback: Callback<Weather>){
-        mapAPI.getTodaysWeatherForecast(cityId, BuildConfig.WEATHER_API).enqueue(callback)
+    fun getTodayForecast(cityId: String, callback: Callback<WeatherTodayForecastResponse>){
+        mapAPI.getTodayForecast(cityId, BuildConfig.WEATHER_API).enqueue(callback)
     }
 
 }
