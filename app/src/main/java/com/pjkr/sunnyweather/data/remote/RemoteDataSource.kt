@@ -9,7 +9,6 @@ import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
 import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastResponse
 import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
-import com.pjkr.sunnyweather.longterm.model.WeatherDay
 import com.pjkr.sunnyweather.utils.getWeatherDay
 import retrofit2.Call
 import retrofit2.Callback
