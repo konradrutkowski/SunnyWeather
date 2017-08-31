@@ -37,52 +37,40 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun locationPermissionCheck(){
+    fun locationPermissionCheck() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED ){
+                != PackageManager.PERMISSION_GRANTED) {
 
-            // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                     Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                // Show an explanation to the user *asynchronously* -- don't block
-                // this thread waiting for the user's response! After the user
-                // sees the explanation, try again to request the permission.
+                //TODO SHOW EXPLANATION
             } else {
-
-                // No explanation needed, we can request the permission.
-
                 ActivityCompat.requestPermissions(this,
-                         Array(1,{Manifest.permission.ACCESS_FINE_LOCATION}),
+                        Array(1, { Manifest.permission.ACCESS_FINE_LOCATION }),
                         LOCATION_REQUEST)
-
-                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
-                // app-defined int constant. The callback method gets the
-                // result of the request.
             }
         }
     }
 
-    private fun startCurrentWeatherFragment(){
+    private fun startCurrentWeatherFragment() {
         currentWeatherTab.showUnderline()
         longTermTab.hideUnderline()
         startFragment(R.id.container, CurrentWeatherFragment(), true, false, null)
     }
 
-    private fun startLongTermWeatherFragment(){
+    private fun startLongTermWeatherFragment() {
         currentWeatherTab.hideUnderline()
         longTermTab.showUnderline()
         startFragment(R.id.container, LongTermWeatherFragment(), true, false, null)
     }
 
-    private fun obtainLastKnownLocation(){
-        if(checkLocationPermission()) {
+    private fun obtainLastKnownLocation() {
+        if (checkLocationPermission()) {
             val locationProvider = LocationManager.NETWORK_PROVIDER
             val lastKnownLocation: Location = (this.getSystemService(Context.LOCATION_SERVICE) as LocationManager).getLastKnownLocation(locationProvider)
-            Log.e("Location", "Last know location - "+lastKnownLocation)
+            Log.e("Location", "Last know location - " + lastKnownLocation)
         }
-
     }
 
     private fun checkLocationPermission(): Boolean {
@@ -103,5 +91,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
 }
