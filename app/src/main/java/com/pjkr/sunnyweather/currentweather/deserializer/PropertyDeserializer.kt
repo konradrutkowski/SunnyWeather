@@ -17,6 +17,7 @@ class PropertyDeserializer: Deserializer<Properties?>{
     companion object {
         const val DATA = "main"
         const val CLOUDS = "clouds"
+        const val DATE_TIME = "dt_txt"
     }
 
     private var result: Properties? = null
@@ -31,7 +32,7 @@ class PropertyDeserializer: Deserializer<Properties?>{
             result?.humidity = data?.humidity
             result?.pressure = data?.pressure?.toDouble()
             result?.clouds = CloudsDeserializer().parse(jsonObject.get(CLOUDS))
-            setTimeAndDate(result, jsonObject.get("dt_txt").asString)
+            setTimeAndDate(result, jsonObject.get(DATE_TIME).asString)
 
             return result
         }
