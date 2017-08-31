@@ -37,12 +37,12 @@ class Properties {
     @Expose
     var snow: Double? = null
     var dayOfTheWeek: WeatherDay? = null
-    var day: String? = null
+    var timeString: String? = null
 
     var icon: WeatherIcon? = null
 
     override fun toString(): String {
-        return "Properties(dt=$dt, temp=$temp, pressure=$pressure, humidity=$humidity, weather=$weather, speed=$speed, deg=$deg, clouds=$clouds, rain=$rain, snow=$snow, dayOfTheWeek=$dayOfTheWeek, day=$day, icon=$icon)"
+        return "Properties(dt=$dt, temp=$temp, pressure=$pressure, humidity=$humidity, weather=$weather, speed=$speed, deg=$deg, clouds=$clouds, rain=$rain, snow=$snow, dayOfTheWeek=$dayOfTheWeek, timeString=$timeString, icon=$icon)"
     }
 
 }

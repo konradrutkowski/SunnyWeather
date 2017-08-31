@@ -51,23 +51,23 @@
         style="@style/headerElementStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/weatherDescription"
+        android:layout_above="@+id/maxTemp"
         android:textColor="@color/grey" />
 
     <TextView
-        android:id="@+id/maxTemp"
+        android:id="@id/maxTemp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/minTemp"
+        android:layout_above="@+id/pressure"
         android:textColor="@color/grey"
         style="@style/headerElementStyle"/>
 
     <TextView
-        android:id="@+id/pressure"
+        android:id="@id/pressure"
         style="@style/headerElementStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/maxTemp"
+        android:layout_alignParentBottom="true"
         android:textColor="@color/grey" />
 
     <TextView
@@ -76,6 +76,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:paddingRight="8dp"
+        android:paddingEnd="8dp"
         android:textColor="@color/grey" />
 
     <View

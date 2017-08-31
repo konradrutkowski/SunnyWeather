@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 class Temp {
 
-    @SerializedName("day")
+    @SerializedName("timeString")
     @Expose
     var day: Double? = null
     @SerializedName("min")

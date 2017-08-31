@@ -5,6 +5,10 @@ import com.pjkr.sunnyweather.currentweather.model.Data
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.Temp
 import com.pjkr.sunnyweather.utils.celsiusFromKelvin
+import com.pjkr.sunnyweather.utils.extractTimeFromDateTime
+import com.pjkr.sunnyweather.utils.fromString
+import com.pjkr.sunnyweather.utils.getWeatherDay
+import java.util.*
 
 /**
  * Created by yabol on 28.08.2017.
@@ -27,9 +31,18 @@ class PropertyDeserializer: Deserializer<Properties?>{
             result?.humidity = data?.humidity
             result?.pressure = data?.pressure?.toDouble()
             result?.clouds = CloudsDeserializer().parse(jsonObject.get(CLOUDS))
+            setTimeAndDate(result, jsonObject.get("dt_txt").asString)
+
             return result
         }
         return null
+    }
+
+    private fun setTimeAndDate(property: Properties?, timeString: String){
+        property?.timeString = timeString.extractTimeFromDateTime()
+        var calendar = Calendar.getInstance()
+        calendar.fromString(timeString)
+        property?.dayOfTheWeek = calendar.time.getWeatherDay()
     }
 
     private fun getTemp(tempData: Data?): Temp{

@@ -10,10 +10,12 @@ import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastR
 import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.WeatherDay
+import com.pjkr.sunnyweather.utils.getWeatherDay
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -76,7 +78,7 @@ object RemoteDataSource : WeathersDataSource {
         WeatherProvider().getCurrentWeather(cityName, object : Callback<WeatherResponse> {
             override fun onResponse(call: Call<WeatherResponse>?, response: Response<WeatherResponse>?) {
                 val weather: Weather? = response?.body()?.weathers?.get(0)
-                var weatherObj: Weather = Weather(weather?.id, weather?.main, weather?.description, weather?.icon)
+                var weatherObj = Weather(weather?.id, weather?.main, weather?.description, weather?.icon)
                 weatherObj.coord = response?.body()?.coord
                 weatherObj.data = response?.body()?.main
                 weatherObj.wind = response?.body()?.wind
@@ -103,6 +105,7 @@ object RemoteDataSource : WeathersDataSource {
                 if (response?.body() != null) {
                     Log.e("Request", " Value = " + response.body()!!.toString())
                     var forecast = response.body()
+                    forecast?.properties = getNext9Elements(forecast?.properties)
                     forecast?.properties = fillWeatherIcon(forecast?.properties!!)
                     callback.onSuccess(forecast?.properties)
                 }else{
@@ -117,6 +120,13 @@ object RemoteDataSource : WeathersDataSource {
         })
     }
 
+    private fun getNext9Elements(properties: List<Properties>?): List<Properties>{
+        var result: ArrayList<Properties> = ArrayList<Properties>()
+        if(properties != null) {
+            (0..8).mapTo(result) { properties?.get(it) }
+        }
+        return result
+    }
 
 
     private fun fillWeatherIcon(properties: List<Properties>): List<Properties> {
@@ -134,21 +144,11 @@ object RemoteDataSource : WeathersDataSource {
         for (i in 1..properties.size) {
                 cal.add(Calendar.DATE, 1)
                 val dateStr: String = String.format("%02d", cal.get(Calendar.DAY_OF_MONTH)) + "." + String.format("%02d", cal.get(Calendar.MONTH))
-                properties[i - 1].day = dateStr
-                properties[i - 1].dayOfTheWeek = getNameOfTheDay(cal.time)
+                properties[i - 1].timeString = dateStr
+                properties[i - 1].dayOfTheWeek = cal.time.getWeatherDay()
         }
         return weather
 
-    }
-
-    private fun getNameOfTheDay(date: Date): WeatherDay {
-        val calendar: Calendar = Calendar.getInstance()
-        calendar.time = date
-        val days = arrayOf(WeatherDay.SUNDAY, WeatherDay.MONDAY, WeatherDay.TUESDAY,
-                WeatherDay.WEDNESDAY, WeatherDay.THURSDAY, WeatherDay.FRIDAY, WeatherDay.SATURDAY)
-        val day: WeatherDay = days[calendar.get(Calendar.DAY_OF_WEEK) - 1]
-        Log.e("DayName", "Generated day name " + day)
-        return day
     }
 
     private fun proceedListResponse(weather: Weather) : Weather{
