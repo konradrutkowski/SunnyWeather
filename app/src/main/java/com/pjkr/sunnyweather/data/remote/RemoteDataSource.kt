@@ -23,7 +23,7 @@ object RemoteDataSource : WeathersDataSource {
 
 
     override fun getWeatherList(city: String, numberOfDays: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
-        WeatherProvider().getWeather(city, numberOfDays, object : Callback<Weather> {
+        WeatherProvider().getWeatherByCity(city, numberOfDays, object : Callback<Weather> {
             override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
                 Log.e("Request", " Response response = " + response.isSuccessful)
                 if (response.body() != null) {
@@ -53,7 +53,7 @@ object RemoteDataSource : WeathersDataSource {
     }
 
     override fun getWeather(city: String, getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
-        WeatherProvider().getWeather(city, "16", object : Callback<Weather> {
+        WeatherProvider().getWeatherByCity(city, "16", object : Callback<Weather> {
             override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
                 if (response.body() != null) {
                     var weather: Weather = proceedListResponse(response.body()!!)

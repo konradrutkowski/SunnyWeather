@@ -27,8 +27,13 @@ class WeatherProvider {
         mapAPI = retrofit.create(MapAPI::class.java)
     }
 
-    fun getWeather(city:String, numberOfDays: String, callback: Callback<Weather>) {
-        val weatherCall = mapAPI.getWeather(city, numberOfDays, "metric",BuildConfig.WEATHER_API)
+    fun getWeatherByCity(city:String, numberOfDays: String, callback: Callback<Weather>) {
+        val weatherCall = mapAPI.getWeatherCityName(city, numberOfDays, "metric", BuildConfig.WEATHER_API)
+        weatherCall.enqueue(callback)
+    }
+
+    fun getWeatherLatLon(lat:String,lon:String, numberOfDays: String, callback: Callback<Weather>) {
+        val weatherCall = mapAPI.getWeatherLatLon(lat, lon, numberOfDays, "metric", BuildConfig.WEATHER_API)
         weatherCall.enqueue(callback)
     }
 
@@ -36,5 +41,7 @@ class WeatherProvider {
         val weatherCall = mapAPI.getCurrentWeather(cityId, BuildConfig.WEATHER_API)
         weatherCall.enqueue(callback)
     }
+
+
 
 }
