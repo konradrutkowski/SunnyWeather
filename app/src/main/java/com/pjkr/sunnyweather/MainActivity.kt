@@ -1,10 +1,7 @@
 package com.pjkr.sunnyweather
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
-import android.view.View
 import com.pjkr.sunnyweather.currentweather.fragment.CurrentWeatherFragment
 import com.pjkr.sunnyweather.longterm.view.LongTermWeatherFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -28,19 +25,25 @@ class MainActivity : AppCompatActivity() {
         currentWeatherTab.tabName.setOnClickListener { startCurrentWeatherFragment() }
         longTermTab.tabName.setOnClickListener { startLongTermWeatherFragment() }
 
-        Log.e("OnCreate", "executed " + selectedTab)
         if (savedInstanceState == null) {
             startCurrentWeatherFragment()
         }else{
-            selectedTab = savedInstanceState.getInt(TAB)
-            Log.e("OnCreate", "recreate " + selectedTab)
+            readBundleData(savedInstanceState)
             displayTabUnderline()
         }
     }
 
+    private fun readBundleData(bundle: Bundle){
+        selectedTab = bundle.getInt(TAB)
+    }
+
+    private fun saveDataBeforeOrientationChange(bundle: Bundle?){
+        bundle?.putInt(TAB, selectedTab)
+    }
+
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
-        outState?.putInt(TAB, selectedTab)
+        saveDataBeforeOrientationChange(outState)
     }
 
     private fun startCurrentWeatherFragment(){
