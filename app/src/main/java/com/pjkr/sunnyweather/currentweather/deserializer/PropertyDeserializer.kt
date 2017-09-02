@@ -4,20 +4,18 @@ import com.google.gson.JsonElement
 import com.pjkr.sunnyweather.currentweather.model.Data
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.Temp
-import com.pjkr.sunnyweather.utils.celsiusFromKelvin
-import com.pjkr.sunnyweather.utils.extractTimeFromDateTime
-import com.pjkr.sunnyweather.utils.fromString
-import com.pjkr.sunnyweather.utils.getWeatherDay
+import com.pjkr.sunnyweather.utils.*
 import java.util.*
 
 /**
  * Created by yabol on 28.08.2017.
  */
 class PropertyDeserializer: Deserializer<Properties?>{
-    companion object {
+    private companion object {
         const val DATA = "main"
         const val CLOUDS = "clouds"
         const val DATE_TIME = "dt_txt"
+        const val WIND = "wind"
     }
 
     private var result: Properties? = null
@@ -31,9 +29,12 @@ class PropertyDeserializer: Deserializer<Properties?>{
             result?.temp = getTemp(data)
             result?.humidity = data?.humidity
             result?.pressure = data?.pressure?.toDouble()
+
             result?.clouds = CloudsDeserializer().parse(jsonObject.get(CLOUDS))
             setTimeAndDate(result, jsonObject.get(DATE_TIME).asString)
 
+            val wind = WindDeserialiser().parse(jsonObject.get(WIND))
+            result?.speed = wind?.speed?.toDouble()
             return result
         }
         return null

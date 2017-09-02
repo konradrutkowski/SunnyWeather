@@ -28,8 +28,8 @@ class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.
         holder.titleTV.text = context.getString(R.string.temperature_with_degrees, property.temp!!.day.formatDouble())
         holder.descriptionTV.text = context.getString(R.string.pressure_with_unit, property.pressure.formatDouble())
         holder.day.text = property.timeString!! + " "+context.getString(context.getResourceIdByName(property.dayOfTheWeek!!.nameOfTheDay, "string"))
-        holder.humidity.text = "Humidity" +" "+ property.humidity.toString()+ " %"
-        holder.windSpeed.text = "Wind" +" "+ property.speed.toString()+ " km/h"
+        holder.humidity.text = "Humidity" +" "+ property.humidity.toString() + " %"
+        holder.windSpeed.text = "Wind" +" "+ property.speed.formatDouble() + " km/h"
         Picasso.with(context).load(context.getResourceIdByName(property.icon!!.iconName, "drawable")).fit().centerInside().into(holder.icon)
     }
 
