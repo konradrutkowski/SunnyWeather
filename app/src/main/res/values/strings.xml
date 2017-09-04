@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">SunnyWeather</string>
+    <string name="temperature_with_degrees">%1$s\u2103</string>
+    <string name="pressure_with_unit">Pressure: %1$s hPa</string>
+    <string name="minTemp">Min. temp: %1$s\u2103</string>
+    <string name="maxTemp">Max. temp: %1$s\u2103</string>
+    <string name="current_tab">Current</string>
+    <string name="long_term_tab">Forecast</string>
+    <string name="search_title">City</string>
+    <string name="pressure">Pressure</string>
+    <string name="temperature">Temperature</string>
+    <string name="monday_shortcut">MON</string>
+    <string name="tuesday_shortcut">TUE</string>
+    <string name="wednesday_shortcut">WED</string>
+    <string name="thursday_shortcut">THU</string>
+    <string name="friday_shortcut">FRI</string>
+    <string name="saturday_shortcut">SAT</string>
+    <string name="sunday_shortcut">SUN</string>
 </resources>
