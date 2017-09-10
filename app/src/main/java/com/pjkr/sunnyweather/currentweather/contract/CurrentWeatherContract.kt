@@ -28,7 +28,4 @@ class CurrentWeatherContract {
         fun getCount(): Int
         fun getWeather(position: Int): Weather?
     }
-    interface Repository{
-        fun getWeatherInformation(cityName: String)
-    }
 }

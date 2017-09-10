@@ -100,7 +100,8 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
     }
 
     private fun changeIndicatorVisibility(state: Boolean) {
-        activity.runOnUiThread { swipeRefreshLayout.isRefreshing = state }
+        swipeRefreshLayout.post { swipeRefreshLayout.isRefreshing = state }
+
 
     }
 

@@ -10,12 +10,11 @@ import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastR
 import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.utils.getWeatherDay
+import io.realm.RealmList
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import kotlin.collections.ArrayList
-
 
 /**
  * Created by konradrutkowski on 04.07.2017.
@@ -77,12 +76,16 @@ object RemoteDataSource : WeathersDataSource {
         WeatherProvider().getCurrentWeather(cityName, object : Callback<WeatherResponse> {
             override fun onResponse(call: Call<WeatherResponse>?, response: Response<WeatherResponse>?) {
                 val weather: Weather? = response?.body()?.weathers?.get(0)
-                var weatherObj = Weather(weather?.id, weather?.main, weather?.description, weather?.icon)
+                var weatherObj = Weather()
+                weatherObj.id = weather?.id
+                weatherObj.main = weather?.main
+                weatherObj.description = weather?.description
+                weatherObj.icon = weather?.icon
                 weatherObj.coord = response?.body()?.coord
                 weatherObj.data = response?.body()?.main
                 weatherObj.wind = response?.body()?.wind
                 weatherObj.visibility = response?.body()?.visibility
-                weatherObj.name = response?.body()?.name
+                weatherObj.name = cityName
                 if (weather != null) {
                     callback.onSuccess(weatherObj)
                 } else {
@@ -119,16 +122,16 @@ object RemoteDataSource : WeathersDataSource {
         })
     }
 
-    private fun getNext9Elements(properties: List<Properties>?): List<Properties>{
-        var result: ArrayList<Properties> = ArrayList<Properties>()
+    private fun getNext9Elements(properties: RealmList<Properties>?): RealmList<Properties>{
+        var result = RealmList<Properties>()
         if(properties != null) {
-            (0..8).mapTo(result) { properties?.get(it) }
+            (0..8).mapTo(result) { properties.get(it) }
         }
         return result
     }
 
 
-    private fun fillWeatherIcon(properties: List<Properties>): List<Properties> {
+    private fun fillWeatherIcon(properties: RealmList<Properties>): RealmList<Properties> {
         return WeatherData().chooseIcon(properties)
     }
 
@@ -155,6 +158,18 @@ object RemoteDataSource : WeathersDataSource {
         weather.list = fillWeatherIcon(weather.list!!)
 
         return weather
+    }
+
+    override fun saveWeather(weather: Weather) {
+        // not implemented in remote data source
+    }
+
+    override fun saveLongtermForecast(weathers: RealmList<Properties>) {
+        // not implemented in remote data source
+    }
+
+    override fun saveCurrentDayForecast(cityName: String, weathers: RealmList<Properties>?) {
+        // not implemented in remote data source
     }
 
 }

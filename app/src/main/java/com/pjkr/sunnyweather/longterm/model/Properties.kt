@@ -3,8 +3,11 @@ package com.pjkr.sunnyweather.longterm.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.pjkr.sunnyweather.currentweather.model.Weather
+import io.realm.RealmList
+import io.realm.RealmObject
+import io.realm.annotations.Ignore
 
-class Properties {
+open class Properties: RealmObject() {
 
     @SerializedName("dt")
     @Expose
@@ -20,7 +23,7 @@ class Properties {
     var humidity: Int? = null
     @SerializedName("weather")
     @Expose
-    var weather: List<Weather>? = null
+    var weather: RealmList<Weather>? = null
     @SerializedName("speed")
     @Expose
     var speed: Double? = null
@@ -36,9 +39,11 @@ class Properties {
     @SerializedName("snow")
     @Expose
     var snow: Double? = null
+    @Ignore
     var dayOfTheWeek: WeatherDay? = null
     var timeString: String? = null
 
+    @Ignore
     var icon: WeatherIcon? = null
 
     override fun toString(): String {

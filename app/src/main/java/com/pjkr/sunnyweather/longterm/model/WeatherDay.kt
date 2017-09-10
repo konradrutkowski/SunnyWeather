@@ -1,10 +1,12 @@
 package com.pjkr.sunnyweather.longterm.model
 
+import io.realm.RealmObject
+
 
 /**
  * Created by konrad on 25.07.2017.
  */
-enum class WeatherDay(val nameOfTheDay: String) {
+enum class WeatherDay(val nameOfTheDay: String){
     MONDAY("monday_shortcut"),
     TUESDAY("tuesday_shortcut"),
     WEDNESDAY("wednesday_shortcut"),

@@ -1,7 +1,11 @@
 package com.pjkr.sunnyweather.currentweather.model
 
+import io.realm.RealmObject
+
 /**
  * Created by PJablonski on 28.06.2017.
  */
-class Coordinates(val lon: Float,
-                  val lat: Float)
+open class Coordinates : RealmObject(){
+    var lon: Float = 0f
+    var lat: Float = 0f
+}

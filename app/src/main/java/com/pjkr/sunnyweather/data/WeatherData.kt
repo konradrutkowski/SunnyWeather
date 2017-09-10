@@ -5,6 +5,7 @@ import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.longterm.model.Properties
 
 import com.pjkr.sunnyweather.longterm.model.WeatherIcon
+import io.realm.RealmList
 
 /**
  * Created by konrad on 25.07.2017.
@@ -12,7 +13,7 @@ import com.pjkr.sunnyweather.longterm.model.WeatherIcon
 
 class WeatherData {
 
-    fun chooseIcon(list: List<Properties>) : List<Properties> {
+    fun chooseIcon(list: RealmList<Properties>) : RealmList<Properties> {
         for (prop: Properties in list) {
             Log.e("SearchingForIcon", "For property: "+prop.toString())
             var icon: WeatherIcon

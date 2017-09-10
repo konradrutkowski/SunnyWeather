@@ -6,6 +6,7 @@ import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.utils.celsiusFromKelvin
 import com.pjkr.sunnyweather.utils.formatDouble
+import io.realm.RealmList
 
 /**
  * Created by PJablonski on 28.06.2017.
@@ -58,7 +59,7 @@ class CurrentWeatherPresenter
 
     override fun loadNextDaysWeather(cityName: String) {
         this.dataSource.getTodayForecast(cityName, object: WeathersDataSource.LoadWeathersCallback{
-            override fun onSuccess(weatherList: List<Properties>?) {
+            override fun onSuccess(weatherList: RealmList<Properties>?) {
                 view.setWeathersList(weatherList)
             }
 

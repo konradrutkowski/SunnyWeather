@@ -14,10 +14,12 @@ class WindDeserialiser : Deserializer<Wind?>{
     override fun parse(element: JsonElement?): Wind? {
         if(element?.isJsonObject!!){
             val jsonObj = element.asJsonObject
-            return Wind(jsonObj.get(SPEED).asFloat,
-                    jsonObj.get(DEGREES).asFloat)
+            var wind = Wind()
+            wind.speed = jsonObj.get(SPEED).asFloat
+            wind.deg = jsonObj.get(DEGREES).asFloat
+            return wind
         }
-        return null;
+        return null
     }
 
 }

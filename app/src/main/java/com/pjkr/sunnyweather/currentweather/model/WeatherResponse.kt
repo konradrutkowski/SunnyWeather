@@ -1,6 +1,7 @@
 package com.pjkr.sunnyweather.currentweather.model
 
 import com.google.gson.annotations.SerializedName
+import io.realm.RealmObject
 
 /**
  * Created by PJablonski on 28.06.2017.
