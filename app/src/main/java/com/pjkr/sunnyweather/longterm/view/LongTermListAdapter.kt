@@ -2,13 +2,11 @@ package com.pjkr.sunnyweather.longterm.view
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.currentweather.model.Weather
-import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.utils.*
 import com.squareup.picasso.Picasso
 
@@ -31,7 +29,7 @@ class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.
         holder.day.text = weather.timeString!! + " "+context.getString(context.getResourceIdByName(weather.dayOfTheWeek!!.nameOfTheDay, "string"))
         holder.humidity.text = "Humidity" +" "+ weather.data?.humidity.toString() + " %"
         holder.windSpeed.text = "Wind" +" "+ weather.wind?.speed.toString() + " km/h"
-        Picasso.with(context).load(context.getResourceIdByName(weather.icon!!.iconName, "drawable")).fit().centerInside().into(holder.icon)
+        Picasso.with(context).load(context.getResourceIdByName(weather.listIcon!!.iconName, "drawable")).fit().centerInside().into(holder.icon)
     }
 
 

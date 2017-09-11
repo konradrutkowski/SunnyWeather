@@ -41,6 +41,6 @@ open class Weather: RealmObject() {
     var timeString: String? = null
 
     @Ignore
-    var icon: WeatherIcon? = null
+    var listIcon: WeatherIcon? = null
 
 }

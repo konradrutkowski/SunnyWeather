@@ -113,7 +113,12 @@ object RemoteDataSource : WeathersDataSource {
                     forecast?.properties = getNext9Elements(forecast?.properties)
                     forecast?.properties = fillWeatherIcon(forecast?.properties!!)
                     val result = ArrayList<Weather>()
-                    forecast?.properties!!.mapTo(result) { createWeather(it)!! }
+                    for(property in forecast?.properties!!){
+                        if(property.weather != null){
+                            result.add(createWeather(property)!!)
+                        }
+                    }
+                    //forecast?.properties!!.mapTo(result) { createWeather(it)!! }
                     callback.onSuccess(result)
                 }else{
                     callback.onFail()
@@ -149,7 +154,7 @@ object RemoteDataSource : WeathersDataSource {
         clouds.all = property.clouds
 
         weather?.timeString = property.timeString
-        weather?.icon = property.icon
+        weather?.listIcon = property.icon
         weather?.dayOfTheWeek = property.dayOfTheWeek
         return weather
     }
@@ -187,10 +192,10 @@ object RemoteDataSource : WeathersDataSource {
 
     private fun proceedListResponse(weather: LongtermForecastResponse) : List<Weather>{
         fillResponseWithDates(weather)
-        fillWeatherIcon(weather.list!!)
+        val properties = fillWeatherIcon(weather.list!!)
 
         val result = ArrayList<Weather>()
-        weather.list.mapTo(result) { createWeather(it)!! }
+        properties.mapTo(result) { createWeather(it)!! }
         return result
     }
 
