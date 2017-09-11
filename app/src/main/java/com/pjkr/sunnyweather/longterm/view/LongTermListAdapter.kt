@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pjkr.sunnyweather.R
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.utils.*
 import com.squareup.picasso.Picasso
@@ -16,7 +17,7 @@ import com.squareup.picasso.Picasso
  */
 class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.Adapter<LongTermHolder>() {
 
-    var longTermWeatherList: List<Properties> = ArrayList()
+    var longTermWeatherList: List<Weather> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): LongTermHolder {
         val view: View = LayoutInflater.from(parent!!.context).inflate(viewid, parent, false)
@@ -24,13 +25,13 @@ class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: LongTermHolder, position: Int) {
-        val property: Properties = longTermWeatherList[position]
-        holder.titleTV.text = context.getString(R.string.temperature_with_degrees, property.temp!!.day.formatDouble())
-        holder.descriptionTV.text = context.getString(R.string.pressure_with_unit, property.pressure.formatDouble())
-        holder.day.text = property.timeString!! + " "+context.getString(context.getResourceIdByName(property.dayOfTheWeek!!.nameOfTheDay, "string"))
-        holder.humidity.text = "Humidity" +" "+ property.humidity.toString() + " %"
-        holder.windSpeed.text = "Wind" +" "+ property.speed.formatDouble() + " km/h"
-        Picasso.with(context).load(context.getResourceIdByName(property.icon!!.iconName, "drawable")).fit().centerInside().into(holder.icon)
+        val weather = longTermWeatherList[position]
+        holder.titleTV.text = context.getString(R.string.temperature_with_degrees, weather.data!!.temp.formatDouble())
+        holder.descriptionTV.text = context.getString(R.string.pressure_with_unit, weather.data!!.pressure.toString())
+        holder.day.text = weather.timeString!! + " "+context.getString(context.getResourceIdByName(weather.dayOfTheWeek!!.nameOfTheDay, "string"))
+        holder.humidity.text = "Humidity" +" "+ weather.data?.humidity.toString() + " %"
+        holder.windSpeed.text = "Wind" +" "+ weather.wind?.speed.toString() + " km/h"
+        Picasso.with(context).load(context.getResourceIdByName(weather.icon!!.iconName, "drawable")).fit().centerInside().into(holder.icon)
     }
 
 
@@ -38,11 +39,11 @@ class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.
         return longTermWeatherList.size
     }
 
-    fun changeLongTermWeatherList(weatherList: List<Properties>) {
-        this.longTermWeatherList = weatherList
-        this.notifyDataSetChanged()
+    fun changeLongTermWeatherList(weatherList: List<Weather>?){
+        if(weatherList != null) {
+            this.longTermWeatherList = weatherList
+        }
     }
-
 
 }
 

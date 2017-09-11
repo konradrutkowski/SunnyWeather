@@ -3,10 +3,11 @@ package com.pjkr.sunnyweather.api
 
 import com.google.gson.GsonBuilder
 import com.pjkr.sunnyweather.BuildConfig
+import com.pjkr.sunnyweather.api.dto.LongtermForecastResponse
 import com.pjkr.sunnyweather.currentweather.deserializer.GsonForecastDeserializer
 import com.pjkr.sunnyweather.currentweather.model.Weather
-import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
-import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastResponse
+import com.pjkr.sunnyweather.api.dto.WeatherResponse
+import com.pjkr.sunnyweather.api.dto.WeatherTodayForecastResponse
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -35,7 +36,7 @@ class WeatherProvider {
         mapAPI = retrofit.create(MapAPI::class.java)
     }
 
-    fun getWeather(city:String, numberOfDays: String, callback: Callback<Weather>) {
+    fun getWeather(city:String, numberOfDays: String, callback: Callback<LongtermForecastResponse>) {
         val weatherCall = mapAPI.getWeather(city, numberOfDays, "metric",BuildConfig.WEATHER_API)
         weatherCall.enqueue(callback)
     }

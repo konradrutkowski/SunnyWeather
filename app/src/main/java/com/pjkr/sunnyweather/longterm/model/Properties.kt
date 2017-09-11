@@ -26,10 +26,10 @@ open class Properties: RealmObject() {
     var weather: RealmList<Weather>? = null
     @SerializedName("speed")
     @Expose
-    var speed: Double? = null
+    var speed: Float? = null
     @SerializedName("deg")
     @Expose
-    var deg: Int? = null
+    var deg: Float? = null
     @SerializedName("clouds")
     @Expose
     var clouds: Int? = null
@@ -47,7 +47,7 @@ open class Properties: RealmObject() {
     var icon: WeatherIcon? = null
 
     override fun toString(): String {
-        return "Properties(dt=$dt, temp=$temp, pressure=$pressure, humidity=$humidity, weather=$weather, speed=$speed, deg=$deg, clouds=$clouds, rain=$rain, snow=$snow, dayOfTheWeek=$dayOfTheWeek, timeString=$timeString, icon=$icon)"
+        return "Properties(dt=$dt, temp=$temp, pressure=$pressure, humidity=$humidity, weather=$weather, speed=$speed, deg=$deg, clouds=$clouds, rain=$rain, snow=$snow, dayOfTheWeek=$dayOfTheWeek, timeString=$timeString, mainIcon=$icon)"
     }
 
 }

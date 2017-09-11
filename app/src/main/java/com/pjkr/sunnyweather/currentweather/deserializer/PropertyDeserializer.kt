@@ -34,7 +34,7 @@ class PropertyDeserializer: Deserializer<Properties?>{
             setTimeAndDate(result, jsonObject.get(DATE_TIME).asString)
 
             val wind = WindDeserialiser().parse(jsonObject.get(WIND))
-            result?.speed = wind?.speed?.toDouble()
+            result?.speed = wind?.speed
             return result
         }
         return null

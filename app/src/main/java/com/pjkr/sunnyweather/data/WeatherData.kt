@@ -13,7 +13,7 @@ import io.realm.RealmList
 
 class WeatherData {
 
-    fun chooseIcon(list: RealmList<Properties>) : RealmList<Properties> {
+    fun chooseIcon(list: List<Properties>) : List<Properties> {
         for (prop: Properties in list) {
             Log.e("SearchingForIcon", "For property: "+prop.toString())
             var icon: WeatherIcon

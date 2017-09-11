@@ -76,7 +76,7 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         list.adapter = adapter
     }
 
-    override fun showWeatherList(weatherList: List<Properties>) {
+    override fun showWeatherList(weatherList: List<Weather>?) {
         adapter.changeLongTermWeatherList(weatherList)
     }
 
@@ -84,12 +84,6 @@ class LongTermWeatherFragment : Fragment(), WeatherContract.View {
         Toast.makeText(context, "Failed to download the data", Toast.LENGTH_LONG).show()
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun showWeather(weather: Weather) {
-        city_name_tv?.text = weather.city!!.name
-        latlon_tv?.text = weather.city!!.coord!!.lat.toString() + "  " + weather.city!!.coord!!.lon.toString()
-        adapter.changeLongTermWeatherList(weather.list!!)
-    }
 
     override fun showLoadIndicator() {
         changeIndicatorVisibility(true)

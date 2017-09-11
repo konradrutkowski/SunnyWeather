@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.presenter.CurrentWeatherPresenter
 import com.pjkr.sunnyweather.data.WeathersRepository
 import com.pjkr.sunnyweather.data.local.LocalDataSource
@@ -91,7 +92,7 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
         this.header?.setMaxTemperature(context.getString(R.string.maxTemp, temp))
     }
 
-    override fun setWeathersList(weathers: List<Properties>?) {
+    override fun setWeathersList(weathers: List<Weather>?) {
         if(weathers != null) {
             this.adapter?.changeLongTermWeatherList(weathers)
         }

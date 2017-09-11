@@ -3,7 +3,7 @@ package com.pjkr.sunnyweather.currentweather.deserializer
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
-import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastResponse
+import com.pjkr.sunnyweather.api.dto.WeatherTodayForecastResponse
 import java.lang.reflect.Type
 
 /**

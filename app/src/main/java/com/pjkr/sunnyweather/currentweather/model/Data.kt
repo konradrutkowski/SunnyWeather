@@ -7,11 +7,11 @@ import io.realm.RealmObject
  * Created by PJablonski on 28.06.2017.
  */
 open class Data: RealmObject() {
-    var temp: Double = 0.00
-    var pressure: Int = 0
-    var humidity: Int = 0
+    var temp: Double? = null
+    var pressure: Int? = null
+    var humidity: Int? = null
     @SerializedName("temp_min")
-    var minTemp: Double? = 0.00
+    var minTemp: Double? = null
     @SerializedName("temp_max")
-    var maxTemp: Double? = 0.00
+    var maxTemp: Double? = null
 }

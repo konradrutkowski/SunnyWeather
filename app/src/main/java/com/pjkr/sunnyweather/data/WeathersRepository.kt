@@ -1,15 +1,13 @@
 package com.pjkr.sunnyweather.data
 
 import com.pjkr.sunnyweather.currentweather.model.Weather
-import com.pjkr.sunnyweather.longterm.model.Properties
-import io.realm.RealmList
 
 /**
  * Created by konradrutkowski on 04.07.2017.
  */
 
 class WeathersRepository constructor(private val localDataSource: WeathersDataSource, private val remoteDataSource: WeathersDataSource) : WeathersDataSource {
-    override fun saveCurrentDayForecast(cityName: String, weathers: RealmList<Properties>?) {
+    override fun saveCurrentDayForecast(cityName: String, weathers: List<Weather>?) {
         localDataSource.saveCurrentDayForecast(cityName, weathers)
     }
 
@@ -17,8 +15,8 @@ class WeathersRepository constructor(private val localDataSource: WeathersDataSo
         localDataSource.saveWeather(weather)
     }
 
-    override fun saveLongtermForecast(weathers: RealmList<Properties>) {
-        localDataSource.saveLongtermForecast(weathers)
+    override fun saveLongtermForecast(weathers: List<Weather>?): List<Weather>? {
+        return localDataSource.saveLongtermForecast(weathers)
     }
 
     override fun getWeatherList(city: String, numberOfDays: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
@@ -34,8 +32,8 @@ class WeathersRepository constructor(private val localDataSource: WeathersDataSo
 
     }
 
-    override fun getWeather(city: String, getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
-        remoteDataSource.getWeather(city, getWeatherCallback)
+    override fun getLongtermWeather(city: String, getWeatherCallback: WeathersDataSource.LoadWeathersCallback) {
+        remoteDataSource.getLongtermWeather(city, getWeatherCallback)
     }
 
 
@@ -71,7 +69,7 @@ class WeathersRepository constructor(private val localDataSource: WeathersDataSo
 
     override fun getTodayForecast(cityName: String, callback: WeathersDataSource.LoadWeathersCallback) {
         remoteDataSource.getTodayForecast(cityName, object : WeathersDataSource.LoadWeathersCallback {
-            override fun onSuccess(weatherList: RealmList<Properties>?) {
+            override fun onSuccess(weatherList: List<Weather>?) {
                 saveCurrentDayForecast(cityName, weatherList)
                 callback.onSuccess(weatherList)
             }

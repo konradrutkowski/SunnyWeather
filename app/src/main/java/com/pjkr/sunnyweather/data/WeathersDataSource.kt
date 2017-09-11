@@ -18,7 +18,7 @@ public interface WeathersDataSource {
 
     fun getDeclinedWeathers(loadWeathersCallback: LoadWeathersCallback)
 
-    fun getWeather(city:String, getWeatherCallback: GetWeatherCallback)
+    fun getLongtermWeather(city:String, getWeatherCallback: LoadWeathersCallback)
 
     fun getCurrentWeather(cityName: String, callback: GetWeatherCallback)
 
@@ -26,13 +26,13 @@ public interface WeathersDataSource {
 
     fun saveWeather(weather: Weather)
 
-    fun saveLongtermForecast(weathers: RealmList<Properties>)
+    fun saveLongtermForecast(weathers: List<Weather>?): List<Weather>?
 
-    fun saveCurrentDayForecast(cityName: String, weathers: RealmList<Properties>?)
+    fun saveCurrentDayForecast(cityName: String, weathers: List<Weather>?)
 
     interface LoadWeathersCallback {
 
-        fun onSuccess(weatherList: RealmList<Properties>?)
+        fun onSuccess(weatherList: List<Weather>?)
 
         fun onFail()
     }

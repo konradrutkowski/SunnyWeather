@@ -1,4 +1,4 @@
-package com.pjkr.sunnyweather.currentweather.model.forecast
+package com.pjkr.sunnyweather.api.dto
 
 import com.pjkr.sunnyweather.longterm.model.Properties
 import io.realm.RealmList
@@ -7,6 +7,6 @@ import io.realm.RealmList
  * Created by yabol on 23.08.2017.
  */
 class WeatherTodayForecastResponse {
-    var properties: RealmList<Properties>? = null
+    var properties: List<Properties>? = null
 
 }

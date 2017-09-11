@@ -4,9 +4,10 @@ package com.pjkr.sunnyweather.data.remote
 import android.util.Log
 import com.pjkr.sunnyweather.data.WeatherData
 import com.pjkr.sunnyweather.api.WeatherProvider
-import com.pjkr.sunnyweather.currentweather.model.Weather
-import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
-import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastResponse
+import com.pjkr.sunnyweather.api.dto.LongtermForecastResponse
+import com.pjkr.sunnyweather.api.dto.WeatherResponse
+import com.pjkr.sunnyweather.api.dto.WeatherTodayForecastResponse
+import com.pjkr.sunnyweather.currentweather.model.*
 import com.pjkr.sunnyweather.data.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.utils.getWeatherDay
@@ -15,6 +16,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * Created by konradrutkowski on 04.07.2017.
@@ -23,24 +25,25 @@ import java.util.*
 object RemoteDataSource : WeathersDataSource {
 
     override fun getWeatherList(city: String, numberOfDays: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
-        WeatherProvider().getWeather(city, numberOfDays, object : Callback<Weather> {
-            override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
-                Log.e("Request", " Response response = " + response.isSuccessful)
-                if (response.body() != null) {
+        WeatherProvider().getWeather(city, numberOfDays, object : Callback<LongtermForecastResponse> {
+            override fun onResponse(call: Call<LongtermForecastResponse>?, response: Response<LongtermForecastResponse>?) {
+                Log.e("Request", " Response response = " + response?.isSuccessful)
+                if (response?.body() != null) {
                     Log.e("Request", " Value = " + response.body()!!.toString())
                     var weather = proceedListResponse(response.body()!!)
-                    loadWeathersCallback.onSuccess(weather.list)
+                    loadWeathersCallback.onSuccess(weather)
                 }else{
                     loadWeathersCallback.onFail()
                 }
             }
 
-            override fun onFailure(call: Call<Weather>, t: Throwable) {
+            override fun onFailure(call: Call<LongtermForecastResponse>?, t: Throwable?) {
                 Log.e("Request", " FAILED")
-                Log.e("Request", " FAILED" + call.request().url())
-                t.printStackTrace()
+                Log.e("Request", " FAILED" + call?.request()?.url())
+                t?.printStackTrace()
                 loadWeathersCallback.onFail()
             }
+
         })
     }
 
@@ -52,18 +55,18 @@ object RemoteDataSource : WeathersDataSource {
 
     }
 
-    override fun getWeather(city: String, getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
-        WeatherProvider().getWeather(city, "16", object : Callback<Weather> {
-            override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
-                if (response.body() != null) {
-                    var weather: Weather = proceedListResponse(response.body()!!)
+    override fun getLongtermWeather(city: String, getWeatherCallback: WeathersDataSource.LoadWeathersCallback) {
+        WeatherProvider().getWeather(city, "16", object : Callback<LongtermForecastResponse> {
+            override fun onResponse(call: Call<LongtermForecastResponse>, response: Response<LongtermForecastResponse>?) {
+                if (response?.body() != null) {
+                    var weather: List<Weather> = proceedListResponse(response.body()!!)
                     getWeatherCallback.onSuccess(weather)
                     return
                 }
                 getWeatherCallback.onFail()
             }
 
-            override fun onFailure(call: Call<Weather>, t: Throwable) {
+            override fun onFailure(call: Call<LongtermForecastResponse>, t: Throwable) {
                 Log.e("Request", " FAILED")
                 Log.e("Request", " FAILED" + call.request().url())
                 t.printStackTrace()
@@ -80,7 +83,7 @@ object RemoteDataSource : WeathersDataSource {
                 weatherObj.id = weather?.id
                 weatherObj.main = weather?.main
                 weatherObj.description = weather?.description
-                weatherObj.icon = weather?.icon
+                weatherObj.mainIcon = weather?.mainIcon
                 weatherObj.coord = response?.body()?.coord
                 weatherObj.data = response?.body()?.main
                 weatherObj.wind = response?.body()?.wind
@@ -109,7 +112,9 @@ object RemoteDataSource : WeathersDataSource {
                     var forecast = response.body()
                     forecast?.properties = getNext9Elements(forecast?.properties)
                     forecast?.properties = fillWeatherIcon(forecast?.properties!!)
-                    callback.onSuccess(forecast?.properties)
+                    val result = ArrayList<Weather>()
+                    forecast?.properties!!.mapTo(result) { createWeather(it)!! }
+                    callback.onSuccess(result)
                 }else{
                     callback.onFail()
                 }
@@ -122,7 +127,34 @@ object RemoteDataSource : WeathersDataSource {
         })
     }
 
-    private fun getNext9Elements(properties: RealmList<Properties>?): RealmList<Properties>{
+    private fun createWeather(property: Properties): Weather?{
+        val weather = property.weather?.get(0)
+
+        val data = Data()
+        data.temp = property.temp?.day
+        data.maxTemp = property.temp?.max
+        data.minTemp = property.temp?.min
+        data.pressure = property.pressure?.toInt()
+        data.humidity = property.humidity
+        weather?.data = data
+
+        val wind = Wind()
+
+        wind.deg = property.deg
+        wind.speed = property.speed
+
+        weather?.wind = wind
+
+        val clouds = Clouds()
+        clouds.all = property.clouds
+
+        weather?.timeString = property.timeString
+        weather?.icon = property.icon
+        weather?.dayOfTheWeek = property.dayOfTheWeek
+        return weather
+    }
+
+    private fun getNext9Elements(properties: List<Properties>?): List<Properties>{
         var result = RealmList<Properties>()
         if(properties != null) {
             (0..8).mapTo(result) { properties.get(it) }
@@ -131,15 +163,15 @@ object RemoteDataSource : WeathersDataSource {
     }
 
 
-    private fun fillWeatherIcon(properties: RealmList<Properties>): RealmList<Properties> {
+    private fun fillWeatherIcon(properties: List<Properties>): List<Properties> {
         return WeatherData().chooseIcon(properties)
     }
 
-    private fun fillResponseWithDates(weather: Weather): Weather {
+    private fun fillResponseWithDates(weather: LongtermForecastResponse): List<Properties> {
         return getNextDays(weather)
     }
 
-    private fun getNextDays(weather: Weather): Weather {
+    private fun getNextDays(weather: LongtermForecastResponse): List<Properties> {
         val properties: List<Properties> = weather.list!!
         val cal: Calendar = Calendar.getInstance()
         cal.time = Date()
@@ -149,26 +181,29 @@ object RemoteDataSource : WeathersDataSource {
                 properties[i - 1].timeString = dateStr
                 properties[i - 1].dayOfTheWeek = cal.time.getWeatherDay()
         }
-        return weather
+        return properties
 
     }
 
-    private fun proceedListResponse(weather: Weather) : Weather{
+    private fun proceedListResponse(weather: LongtermForecastResponse) : List<Weather>{
         fillResponseWithDates(weather)
-        weather.list = fillWeatherIcon(weather.list!!)
+        fillWeatherIcon(weather.list!!)
 
-        return weather
+        val result = ArrayList<Weather>()
+        weather.list.mapTo(result) { createWeather(it)!! }
+        return result
     }
 
     override fun saveWeather(weather: Weather) {
         // not implemented in remote data source
     }
 
-    override fun saveLongtermForecast(weathers: RealmList<Properties>) {
+    override fun saveLongtermForecast(weathers: List<Weather>?): RealmList<Weather>? {
         // not implemented in remote data source
+        return null
     }
 
-    override fun saveCurrentDayForecast(cityName: String, weathers: RealmList<Properties>?) {
+    override fun saveCurrentDayForecast(cityName: String, weathers: List<Weather>?) {
         // not implemented in remote data source
     }
 

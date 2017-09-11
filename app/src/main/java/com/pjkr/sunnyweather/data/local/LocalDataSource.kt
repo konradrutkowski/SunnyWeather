@@ -12,13 +12,16 @@ import io.realm.RealmList
  */
 
 object LocalDataSource : WeathersDataSource {
+    override fun getLongtermWeather(city: String, getWeatherCallback: WeathersDataSource.LoadWeathersCallback) {
+
+    }
 
     override fun getTodayForecast(cityName: String, callback: WeathersDataSource.LoadWeathersCallback) {
 
     }
 
     override fun getCurrentWeather(cityName: String, callback: WeathersDataSource.GetWeatherCallback) {
-        val realm = Realm.getDefaultInstance()
+        /*val realm = Realm.getDefaultInstance()
         realm.beginTransaction()
         val weather = realm.where(Weather::class.java).equalTo("name", cityName).findFirst()
         if(weather != null){
@@ -26,7 +29,7 @@ object LocalDataSource : WeathersDataSource {
         }else{
             callback.onFail()
         }
-        realm.commitTransaction()
+        realm.commitTransaction()*/
     }
 
     override fun getWeatherList(city: String, numberOfDays: String, loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {
@@ -39,28 +42,28 @@ object LocalDataSource : WeathersDataSource {
 
     override fun getDeclinedWeathers(loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {}
 
-    override fun getWeather(city: String, getWeatherCallback: WeathersDataSource.GetWeatherCallback) {
-    }
-
     override fun saveWeather(weather: Weather) {
-        val realm = Realm.getDefaultInstance()
-        realm.beginTransaction()
-        realm.copyToRealmOrUpdate(weather)
-        realm.commitTransaction()
-    }
-
-    override fun saveLongtermForecast(weathers: RealmList<Properties>) {
-        val realm = Realm.getDefaultInstance()
-        realm.beginTransaction()
-        realm.copyToRealmOrUpdate(weathers)
-        realm.commitTransaction()
-    }
-
-    override fun saveCurrentDayForecast(cityName: String, weathers: RealmList<Properties>?) {
         /*val realm = Realm.getDefaultInstance()
         realm.beginTransaction()
+        realm.copyToRealmOrUpdate(weather)
+        realm.commitTransaction()*/
+    }
+
+    override fun saveLongtermForecast(weathers: List<Weather>?): List<Weather>? {
+        /*val realm = Realm.getDefaultInstance()
+        realm.beginTransaction()
+        var result = RealmList<Properties>()
+        result.addAll(realm.copyToRealmOrUpdate(weathers))
+        realm.commitTransaction()*/
+        return null
+    }
+
+    override fun saveCurrentDayForecast(cityName: String, weathers: List<Weather>?) {
+       /* val realm = Realm.getDefaultInstance()
+        val weathersList = saveLongtermForecast(weathers)
+        realm.beginTransaction()
         var weather = realm.where(Weather::class.java).equalTo("name", cityName).findFirst()
-        weather?.list = weathers
+        weather?.list = weathersList
         if(weather != null) {
             realm.copyToRealmOrUpdate(weather)
         }

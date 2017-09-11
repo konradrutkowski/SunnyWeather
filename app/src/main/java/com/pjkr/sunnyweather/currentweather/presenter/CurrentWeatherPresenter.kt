@@ -32,7 +32,7 @@ class CurrentWeatherPresenter
         this.view.showTemperature(celsiusTemp)
         this.view.setCityName(weather.name)
 
-        val iconName: String? = "weather_" + weather.icon?.replace('n', 'd')
+        val iconName: String? = "weather_" + weather.mainIcon?.replace('n', 'd')
         this.view.showHeaderIcon(iconName)
         this.view.setTemperatureInfo(weather.main, weather.description)
         this.view.setPressure(weather.data?.pressure.toString())
@@ -59,7 +59,7 @@ class CurrentWeatherPresenter
 
     override fun loadNextDaysWeather(cityName: String) {
         this.dataSource.getTodayForecast(cityName, object: WeathersDataSource.LoadWeathersCallback{
-            override fun onSuccess(weatherList: RealmList<Properties>?) {
+            override fun onSuccess(weatherList: List<Weather>?) {
                 view.setWeathersList(weatherList)
             }
 
