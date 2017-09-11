@@ -7,7 +7,7 @@ import io.realm.RealmList
 import io.realm.RealmObject
 import io.realm.annotations.Ignore
 
-open class Properties: RealmObject() {
+open class Properties {
 
     @SerializedName("dt")
     @Expose
@@ -23,7 +23,7 @@ open class Properties: RealmObject() {
     var humidity: Int? = null
     @SerializedName("weather")
     @Expose
-    var weather: RealmList<Weather>? = null
+    var weather: List<Weather>? = null
     @SerializedName("speed")
     @Expose
     var speed: Float? = null
