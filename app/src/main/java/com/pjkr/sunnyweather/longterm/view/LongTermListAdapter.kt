@@ -2,6 +2,7 @@ package com.pjkr.sunnyweather.longterm.view
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +27,7 @@ class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.
         val weather = longTermWeatherList[position]
         holder.titleTV.text = context.getString(R.string.temperature_with_degrees, weather.data!!.temp.formatDouble())
         holder.descriptionTV.text = context.getString(R.string.pressure_with_unit, weather.data!!.pressure.toString())
+        Log.e("Adapter", weather.dayOfTheWeek?.name)
         holder.day.text = weather.timeString!! + " "+context.getString(context.getResourceIdByName(weather.dayOfTheWeek!!.nameOfTheDay, "string"))
         holder.humidity.text = "Humidity" +" "+ weather.data?.humidity.toString() + " %"
         holder.windSpeed.text = "Wind" +" "+ weather.wind?.speed.toString() + " km/h"
@@ -40,6 +42,7 @@ class LongTermListAdapter(var context: Context, var viewid: Int) : RecyclerView.
     fun changeLongTermWeatherList(weatherList: List<Weather>?){
         if(weatherList != null) {
             this.longTermWeatherList = weatherList
+            notifyDataSetChanged()
         }
     }
 
