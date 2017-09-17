@@ -18,6 +18,7 @@ open class Weather: RealmObject() {
     var id: String? = null
     var main: String? = null
     var description: String? = null
+
     @SerializedName("icon")
     var mainIcon: String? = null
     var coord: Coordinates? = null
@@ -26,8 +27,8 @@ open class Weather: RealmObject() {
     var visibility: Int? = null
     var wind: Wind? = null
 
-    @PrimaryKey
-    @Required
+    @SerializedName("dt")
+    var timeMilis: Long? = null
     var name: String? = null
     var city: City? = null
     var cod: String? = null

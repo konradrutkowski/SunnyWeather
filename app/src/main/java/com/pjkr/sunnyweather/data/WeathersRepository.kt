@@ -38,7 +38,7 @@ class WeathersRepository constructor(private val localDataSource: WeathersDataSo
 
 
     override fun getCurrentWeather(cityName: String, callback: WeathersDataSource.GetWeatherCallback) {
-        /*localDataSource.getCurrentWeather(cityName, object : WeathersDataSource.GetWeatherCallback{
+        localDataSource.getCurrentWeather(cityName, object : WeathersDataSource.GetWeatherCallback{
             override fun onSuccess(weather: Weather) {
                 callback.onSuccess(weather)
                 getCurrentWeatherFromRemote(cityName, callback)
@@ -49,7 +49,7 @@ class WeathersRepository constructor(private val localDataSource: WeathersDataSo
                 getCurrentWeatherFromRemote(cityName, callback)
             }
 
-        })*/
+        })
         remoteDataSource.getCurrentWeather(cityName, callback)
 
     }

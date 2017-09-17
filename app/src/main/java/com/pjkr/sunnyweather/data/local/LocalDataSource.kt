@@ -43,31 +43,22 @@ object LocalDataSource : WeathersDataSource {
     override fun getDeclinedWeathers(loadWeathersCallback: WeathersDataSource.LoadWeathersCallback) {}
 
     override fun saveWeather(weather: Weather) {
-        /*val realm = Realm.getDefaultInstance()
+        val realm = Realm.getDefaultInstance()
         realm.beginTransaction()
         realm.copyToRealmOrUpdate(weather)
-        realm.commitTransaction()*/
+        realm.commitTransaction()
     }
 
     override fun saveLongtermForecast(weathers: List<Weather>?): List<Weather>? {
-        /*val realm = Realm.getDefaultInstance()
+        val realm = Realm.getDefaultInstance()
         realm.beginTransaction()
-        var result = RealmList<Properties>()
-        result.addAll(realm.copyToRealmOrUpdate(weathers))
-        realm.commitTransaction()*/
+        realm.copyToRealmOrUpdate(weathers)
+        realm.commitTransaction()
         return null
     }
 
     override fun saveCurrentDayForecast(cityName: String, weathers: List<Weather>?) {
-       /* val realm = Realm.getDefaultInstance()
-        val weathersList = saveLongtermForecast(weathers)
-        realm.beginTransaction()
-        var weather = realm.where(Weather::class.java).equalTo("name", cityName).findFirst()
-        weather?.list = weathersList
-        if(weather != null) {
-            realm.copyToRealmOrUpdate(weather)
-        }
-        realm.commitTransaction()*/
+        saveLongtermForecast(weathers)
     }
 
 
