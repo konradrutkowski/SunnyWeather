@@ -8,8 +8,12 @@ import android.location.LocationManager
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.Toast
 import com.pjkr.sunnyweather.currentweather.fragment.CurrentWeatherFragment
 import com.pjkr.sunnyweather.longterm.view.LongTermWeatherFragment
@@ -17,7 +21,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.tab_component.view.*
 
 
-class MainActivity : AppCompatActivity() {
+
+
+class SunnyActivity : AppCompatActivity() {
 
     private val LOCATION_REQUEST: Int = 600
 
@@ -85,10 +91,27 @@ class MainActivity : AppCompatActivity() {
                     obtainLastKnownLocation()
 
                 } else {
+                    //TODO IF LIST OF MANUAL CITIES IS EMPTY
+                    showUserCityAddDialog()
                     Toast.makeText(this, "Permission is denied :( ", Toast.LENGTH_SHORT).show()
                 }
                 return
             }
         }
+    }
+
+    fun showUserCityAddDialog(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Add new city")
+        val viewInflated = LayoutInflater.from(this).inflate(R.layout.add_new_city_dialog_layout,  window.decorView as ViewGroup, false)
+        val input = viewInflated.findViewById(R.id.input) as EditText
+        builder.setView(viewInflated)
+        builder.setPositiveButton(android.R.string.ok, { dialog, _ ->
+            Log.e("Save", "New city should be added "+input.text)
+            dialog.dismiss()
+
+        })
+        builder.setNegativeButton(android.R.string.cancel, { dialog, _ -> dialog.cancel() })
+        builder.show()
     }
 }
