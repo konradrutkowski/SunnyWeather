@@ -1,7 +1,7 @@
-package com.pjkr.sunnyweather.data.local
+package com.pjkr.sunnyweather.data.weather.local
 
 
-import com.pjkr.sunnyweather.data.WeathersDataSource
+import com.pjkr.sunnyweather.data.weather.WeathersDataSource
 
 /**
  * Created by konradrutkowski on 04.07.2017.

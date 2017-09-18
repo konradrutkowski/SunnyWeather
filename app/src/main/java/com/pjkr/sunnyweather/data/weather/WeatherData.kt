@@ -1,4 +1,4 @@
-package com.pjkr.sunnyweather.data
+package com.pjkr.sunnyweather.data.weather
 
 import android.util.Log
 import com.pjkr.sunnyweather.currentweather.model.Weather

@@ -10,9 +10,9 @@ import android.view.ViewGroup
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
 import com.pjkr.sunnyweather.currentweather.presenter.CurrentWeatherPresenter
-import com.pjkr.sunnyweather.data.WeathersRepository
-import com.pjkr.sunnyweather.data.local.LocalDataSource
-import com.pjkr.sunnyweather.data.remote.RemoteDataSource
+import com.pjkr.sunnyweather.data.weather.WeathersRepository
+import com.pjkr.sunnyweather.data.weather.local.LocalDataSource
+import com.pjkr.sunnyweather.data.weather.remote.RemoteDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.view.LongTermListAdapter
 import com.pjkr.sunnyweather.utils.getColorSecure

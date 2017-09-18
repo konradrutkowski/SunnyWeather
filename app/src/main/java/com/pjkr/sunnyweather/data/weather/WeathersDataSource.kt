@@ -1,4 +1,4 @@
-package com.pjkr.sunnyweather.data
+package com.pjkr.sunnyweather.data.weather
 
 
 import com.pjkr.sunnyweather.currentweather.model.Weather

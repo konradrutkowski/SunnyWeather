@@ -1,7 +1,7 @@
 package com.pjkr.sunnyweather.longterm.presenter
 
 import com.pjkr.sunnyweather.currentweather.model.Weather
-import com.pjkr.sunnyweather.data.WeathersDataSource
+import com.pjkr.sunnyweather.data.weather.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.WeatherContract
 
 

@@ -1,4 +1,4 @@
-package com.pjkr.sunnyweather.data
+package com.pjkr.sunnyweather.data.weather
 
 /**
  * Created by konradrutkowski on 04.07.2017.

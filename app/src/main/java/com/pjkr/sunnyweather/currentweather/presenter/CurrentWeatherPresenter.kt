@@ -1,7 +1,7 @@
 package com.pjkr.sunnyweather.currentweather.presenter
 
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
-import com.pjkr.sunnyweather.data.WeathersDataSource
+import com.pjkr.sunnyweather.data.weather.WeathersDataSource
 import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.utils.celsiusFromKelvin
