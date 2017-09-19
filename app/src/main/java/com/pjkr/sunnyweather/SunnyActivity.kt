@@ -6,7 +6,6 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.os.Bundle
-import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
@@ -14,7 +13,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
 import com.pjkr.sunnyweather.currentweather.fragment.CurrentWeatherFragment
 import com.pjkr.sunnyweather.longterm.view.LongTermWeatherFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -25,12 +23,10 @@ import kotlinx.android.synthetic.main.tab_component.view.*
 
 class SunnyActivity : AppCompatActivity() {
 
-    private val LOCATION_REQUEST: Int = 600
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        locationPermissionCheck()
         currentWeatherTab.tabName.text = getString(R.string.current_tab)
         longTermTab.tabName.text = getString(R.string.long_term_tab)
 
@@ -43,21 +39,7 @@ class SunnyActivity : AppCompatActivity() {
 
     }
 
-    fun locationPermissionCheck() {
-        if (ContextCompat.checkSelfPermission(this,
-                Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)) {
-                //TODO SHOW EXPLANATION
-            } else {
-                ActivityCompat.requestPermissions(this,
-                        Array(1, { Manifest.permission.ACCESS_FINE_LOCATION }),
-                        LOCATION_REQUEST)
-            }
-        }
-    }
 
     private fun startCurrentWeatherFragment() {
         currentWeatherTab.showUnderline()
@@ -83,22 +65,6 @@ class SunnyActivity : AppCompatActivity() {
         return ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
     }
 
-    override fun onRequestPermissionsResult(requestCode: Int,
-                                            permissions: Array<String>, grantResults: IntArray) {
-        when (requestCode) {
-            LOCATION_REQUEST -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    obtainLastKnownLocation()
-
-                } else {
-                    //TODO IF LIST OF MANUAL CITIES IS EMPTY
-                    showUserCityAddDialog()
-                    Toast.makeText(this, "Permission is denied :( ", Toast.LENGTH_SHORT).show()
-                }
-                return
-            }
-        }
-    }
 
     fun showUserCityAddDialog(){
         val builder = AlertDialog.Builder(this)

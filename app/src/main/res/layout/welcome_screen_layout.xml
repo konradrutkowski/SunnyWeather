@@ -73,7 +73,7 @@
             android:background="@android:color/white" />
 
         <Button
-            android:id="@+id/btn_skip"
+            android:id="@+id/button_add_place"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"

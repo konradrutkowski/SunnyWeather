@@ -9,17 +9,22 @@ import android.support.v7.app.AppCompatActivity
  * Created by yabol on 17.07.2017.
  */
 
-fun AppCompatActivity.startFragment(id: Int, fragment: Fragment, replace: Boolean = false, addToBackStack: Boolean = false, tag: String?) {
-    var transaction: FragmentTransaction = supportFragmentManager
-            .beginTransaction()
+fun AppCompatActivity.startFragment(
+        id: Int,
+        fragment: Fragment,
+        replace: Boolean = false,
+        addToBackStack: Boolean = false,
+        tag: String?
+) {
+    val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
 
-    if (replace) {
-        transaction.replace(id, fragment)
-    } else {
-        transaction.add(id, fragment)
+    when {
+        replace -> transaction.replace(id, fragment)
+        else -> transaction.add(id, fragment)
     }
-    if (addToBackStack) {
-        transaction.addToBackStack(tag)
+    when {
+        addToBackStack -> transaction.addToBackStack(tag)
     }
-    transaction.commitAllowingStateLoss()
+
+    transaction.commit()
 }
