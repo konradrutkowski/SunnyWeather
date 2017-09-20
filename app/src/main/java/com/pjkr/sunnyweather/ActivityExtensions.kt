@@ -14,16 +14,18 @@ fun AppCompatActivity.startFragment(
         fragment: Fragment,
         replace: Boolean = false,
         addToBackStack: Boolean = false,
-        tag: String?
-) {
-    val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        tag: String? = "",
+        sourceTag: String? = ""
 
-    when {
-        replace -> transaction.replace(id, fragment)
-        else -> transaction.add(id, fragment)
+) {
+    var transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
+    transaction = when {
+        replace -> transaction.replace(id, fragment, tag)
+        else -> transaction.add(id, fragment, tag)
     }
     when {
-        addToBackStack -> transaction.addToBackStack(tag)
+        addToBackStack -> transaction = transaction.addToBackStack(sourceTag)
     }
 
     transaction.commit()

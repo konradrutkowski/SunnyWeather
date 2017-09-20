@@ -6,20 +6,18 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00dc83b4-51c5-4dd5-b271-9d1ca080737b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.kt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/add_new_city_fragment_layout.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/WelcomeActivity.kt" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/PermissionInteraction.kt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_fragment_holder.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/ActivityExtensions.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/ActivityExtensions.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/SunnyActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/SunnyActivity.kt" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/welcome_screen_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/welcome_screen_layout.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt" afterPath="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/add_new_city_fragment_layout.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/add_new_city_fragment_layout.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/app/build/intermediates/blame/" />
@@ -57,30 +55,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="styles.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="51" lean-forward="false" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SunnyActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/SunnyActivity.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="65" column="5" lean-forward="false" selection-start-line="63" selection-start-column="4" selection-end-line="65" selection-end-column="5" />
-              <folding>
-                <element signature="e#31#738#0" expanded="true" />
-                <element signature="e#977#1008#0" expanded="true" />
-                <element signature="e#1044#1077#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="welcome_screen_layout.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/welcome_screen_layout.xml">
           <provider selected="true" editor-type-id="text-editor">
@@ -94,11 +68,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add_new_city_fragment_layout.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="add_new_city_fragment_layout.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_new_city_fragment_layout.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="32" column="55" lean-forward="false" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+            <state relative-caret-position="431">
+              <caret line="39" column="41" lean-forward="false" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -107,24 +81,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ids.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/ids.xml">
+      <file leaf-file-name="WelcomeActivity.kt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="36" lean-forward="false" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-              <folding />
+            <state relative-caret-position="211">
+              <caret line="22" column="94" lean-forward="false" selection-start-line="22" selection-start-column="94" selection-end-line="22" selection-end-column="94" />
+              <folding>
+                <element signature="e#39#236#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WelcomeActivity.kt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt">
+      <file leaf-file-name="PermissionInteraction.kt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/PermissionInteraction.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-478">
-              <caret line="38" column="47" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="47" />
-              <folding>
-                <element signature="e#39#368#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="7" column="45" lean-forward="false" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,8 +106,8 @@
       <file leaf-file-name="ActivityExtensions.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/ActivityExtensions.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
+            <state relative-caret-position="63">
+              <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
               <folding>
                 <element signature="e#32#168#0" expanded="true" />
               </folding>
@@ -141,15 +115,51 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="FragmentTransaction.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/25.4.0/cc1db0e29908067f78f1c55e7b80ad5e0fafab96/support-fragment-25.4.0-sources.jar!/android/support/v4/app/FragmentTransaction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="148">
+              <caret line="322" column="24" lean-forward="false" selection-start-line="322" selection-start-column="24" selection-end-line="322" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="NoLocationsFragment.kt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="25" column="66" lean-forward="true" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
+            <state relative-caret-position="301">
+              <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="26" />
               <folding>
-                <element signature="e#39#309#0" expanded="true" />
+                <element signature="e#39#623#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="435">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_fragment_holder.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fragment_holder.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
@@ -157,7 +167,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_new_city_dialog_layout.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="18" column="52" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="18" selection-end-column="52" />
+              <caret line="18" column="52" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="18" selection-end-column="52" />
               <folding />
             </state>
           </provider>
@@ -171,10 +181,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Kotlin File" />
         <option value="valueResourceFile" />
-        <option value="layoutResourceFile_vertical" />
         <option value="Class" />
+        <option value="layoutResourceFile_vertical" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
@@ -1988,12 +1998,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/values/ids.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/welcome_screen_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/SunnyActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/add_new_city_fragment_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/WelcomeActivity.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/add_new_city_fragment_layout.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_fragment_holder.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/PermissionInteraction.kt" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/ActivityExtensions.kt" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.kt" />
       </list>
     </option>
   </component>
@@ -2291,7 +2303,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1505852122203" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1505943790081" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2339,7 +2351,7 @@
       </Profilers>
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1505852122203" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1505943790081" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2522,7 +2534,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method>
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1505852122208" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1505943790082" />
       </method>
     </configuration>
     <list size="1">
@@ -2579,13 +2591,13 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Documentation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" x="100" y="123" width="1240" height="673" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3869814" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32950193" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14048532" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24964234" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19027181" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -2606,52 +2618,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="kotlin-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt</url>
-          <line>78</line>
+          <line>22</line>
           <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt</url>
-          <line>77</line>
-          <properties />
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt</url>
-          <line>47</line>
-          <properties />
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt</url>
-          <line>87</line>
-          <properties />
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt</url>
-          <line>48</line>
-          <properties />
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt</url>
-          <line>46</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="kotlin-line">
-          <url>file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt</url>
-          <line>52</line>
-          <properties />
-          <option name="timeStamp" value="9" />
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="10" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Remote">
         <watch expression="checkAndRequestLocationPermission()" language="kotlin" />
+        <watch expression="supportFragmentManager" language="kotlin" />
+        <watch expression="supportFragmentManager.backStackEntryCount" language="kotlin" />
+        <watch expression="fragmentManager" language="kotlin" />
+        <watch expression="supportFragmentManager.findFragmentByTag(&quot;WelcomeScreen&quot;)" language="kotlin" />
+        <watch expression="supportFragmentManager.findFragmentById(R.id.fragment_container)" language="kotlin" />
       </configuration>
     </watches-manager>
   </component>
@@ -2903,48 +2884,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/25.4.0/cc1db0e29908067f78f1c55e7b80ad5e0fafab96/support-fragment-25.4.0-sources.jar!/android/support/v4/app/FragmentTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-183">
-          <caret line="71" column="40" lean-forward="false" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/ActivityExtensions.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="28" lean-forward="false" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="28" />
-          <folding>
-            <element signature="e#32#168#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="25" column="66" lean-forward="true" selection-start-line="25" selection-start-column="66" selection-end-line="25" selection-end-column="66" />
-          <folding>
-            <element signature="e#39#309#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-478">
-          <caret line="38" column="47" lean-forward="false" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="47" />
-          <folding>
-            <element signature="e#39#368#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_new_city_dialog_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="18" column="52" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="18" selection-end-column="52" />
+          <caret line="18" column="52" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="18" selection-end-column="52" />
           <folding />
         </state>
       </provider>
@@ -2954,13 +2897,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/add_new_city_fragment_layout.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="55" lean-forward="false" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+        <state relative-caret-position="431">
+          <caret line="39" column="41" lean-forward="false" selection-start-line="39" selection-start-column="41" selection-end-line="39" selection-end-column="41" />
           <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/25.4.0/cc1db0e29908067f78f1c55e7b80ad5e0fafab96/support-fragment-25.4.0-sources.jar!/android/support/v4/app/FragmentTransaction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="322" column="24" lean-forward="false" selection-start-line="322" selection-start-column="24" selection-end-line="322" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/PermissionInteraction.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="45" lean-forward="false" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/ActivityExtensions.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="11" column="22" lean-forward="false" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <folding>
+            <element signature="e#32#168#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_fragment_holder.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="43" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/NoLocationsFragment.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="301">
+          <caret line="39" column="26" lean-forward="false" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="26" />
+          <folding>
+            <element signature="e#39#623#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/pjkr/sunnyweather/welcome/WelcomeActivity.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="22" column="94" lean-forward="false" selection-start-line="22" selection-start-column="94" selection-end-line="22" selection-end-column="94" />
+          <folding>
+            <element signature="e#39#236#0" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>
