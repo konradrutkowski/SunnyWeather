@@ -13,7 +13,7 @@ fun Context.getDrawableByName(resourceName: String?, defType: String): Drawable 
     return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         getDrawable(resourceId)
     } else {
-        return getResources().getDrawable(resourceId)
+        return resources.getDrawable(resourceId)
     }
 }
 

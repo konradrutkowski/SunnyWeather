@@ -23,8 +23,8 @@ class DataDeserializer : Deserializer<Data?> {
             val pressure = dataObject.get(PRESSURE).asInt
             val humidity = dataObject.get(HUMIDITY).asInt
             result = Data(temperature, pressure, humidity)
-            result?.minTemp = dataObject.get(MIN_TEMP).asDouble
-            result?.maxTemp = dataObject.get(MAX_TEMP).asDouble
+            result.minTemp = dataObject.get(MIN_TEMP).asDouble
+            result.maxTemp = dataObject.get(MAX_TEMP).asDouble
         }
         return result
     }

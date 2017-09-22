@@ -122,7 +122,7 @@ object RemoteDataSource : WeathersDataSource {
     private fun getNext9Elements(properties: List<Properties>?): List<Properties>{
         var result: ArrayList<Properties> = ArrayList<Properties>()
         if(properties != null) {
-            (0..8).mapTo(result) { properties?.get(it) }
+            (0..8).mapTo(result) { properties.get(it) }
         }
         return result
     }

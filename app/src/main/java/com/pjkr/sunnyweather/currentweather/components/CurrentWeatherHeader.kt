@@ -5,8 +5,10 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.RelativeLayout
 import com.pjkr.sunnyweather.R
+import com.pjkr.sunnyweather.currentweather.components.animations.CircleAnimation
 import com.pjkr.sunnyweather.utils.getResourceIdByName
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.component_round_border_text_view.view.*
 import kotlinx.android.synthetic.main.current_weather_header.view.*
 
 /**
@@ -22,7 +24,7 @@ class CurrentWeatherHeader @JvmOverloads constructor(
     }
 
     fun setTemperature(temp: String){
-        this.tempText.text = temp
+        this.tempText.text.text = temp
     }
 
     fun setWeatherIcon(iconName: String?){
