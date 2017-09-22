@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
@@ -29,10 +28,9 @@
             android:paddingBottom="10dp"
             android:textColorHighlight="@android:color/white"
             android:textColorHint="@android:color/white"
-            app:hintTextAppearance="@style/TextInputLayoutStyle"
-            app:passwordToggleTint="@android:color/white"
             app:backgroundTint="@android:color/white"
-  >
+            app:hintTextAppearance="@style/TextInputLayoutStyle"
+            app:passwordToggleTint="@android:color/white">
 
             <AutoCompleteTextView
                 android:id="@+id/textCityInput"
