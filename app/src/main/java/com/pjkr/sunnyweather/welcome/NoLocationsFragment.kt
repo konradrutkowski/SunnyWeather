@@ -7,33 +7,35 @@ import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
 import com.pjkr.sunnyweather.PermissionInteraction
 import com.pjkr.sunnyweather.R
+import com.pjkr.sunnyweather.RequestCodes.LOCATION_REQUEST
+import com.pjkr.sunnyweather.startFragment
+import com.pjkr.sunnyweather.welcome.inputlocation.InputLocationFragment
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.welcome_screen_layout.*
 
 /**
- * Created by root on 19.09.2017.
+ * Created by Konrad Rutkowski on 19.09.2017.
  */
 
 class NoLocationsFragment : Fragment(), PermissionInteraction {
 
-    private val LOCATION_REQUEST: Int = 600
-    private lateinit var gpsLocation: Button
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        val view = inflater?.inflate(R.layout.welcome_screen_layout, container, false)
-        val welcomePicture = view?.findViewById(R.id.welcome_picture) as ImageView
-        gpsLocation = view.findViewById(R.id.button_auto) as Button
-        Picasso.with(activity).load(R.drawable.sun_512x512).fit().centerCrop().into(welcomePicture)
-        gpsLocation.setOnClickListener({ addDynamicPosition() })
-        return view
+        return inflater!!.inflate(R.layout.welcome_screen_layout, container, false)
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Picasso.with(activity).load(R.drawable.sun_512x512).fit().centerCrop().into(welcome_picture)
+        button_auto.setOnClickListener({ addDynamicPosition() })
+        button_add_place.setOnClickListener({ startInputLocationFragment() })
     }
 
     override fun handleThePermission(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -46,13 +48,19 @@ class NoLocationsFragment : Fragment(), PermissionInteraction {
                         Toast.makeText(context, "Permission is granted", Toast.LENGTH_SHORT).show()
 
                     }
-                    else -> //TODO IF LIST OF MANUAL CITIES IS EMPTY
-                        //showUserCityAddDialog()
-                        Toast.makeText(context, "Permission is denied :( ", Toast.LENGTH_SHORT).show()
+                    else -> {
+                        Toast.makeText(context, "Permission is denied :( ", Toast.LENGTH_SHORT)
+                                .show()
+                    }
                 }
                 return
             }
         }
+    }
+
+    private fun startInputLocationFragment() {
+        (activity as AppCompatActivity).startFragment(R.id.fragment_container,
+                InputLocationFragment(), true, true, "Input", "Source")
     }
 
     private fun checkAndRequestLocationPermission(): Boolean {
@@ -77,8 +85,7 @@ class NoLocationsFragment : Fragment(), PermissionInteraction {
                 .setTitle("Location permission")
                 .setMessage("Access to your location is used when you want to add dynamic place. Is that okay?")
                 .setPositiveButton(android.R.string.ok, { _, _ -> requestLocationPermission() })
-                .setNegativeButton(android.R.string.no, { _, _ -> Log.e("Permission", "Canceled") })
-                //.setNeutralButton("Static place", { _, _ -> showManualPlaceInputDialog() })
+                .setNegativeButton(android.R.string.no, { _, _ -> startInputLocationFragment() })
                 .show()
     }
 
@@ -98,10 +105,7 @@ class NoLocationsFragment : Fragment(), PermissionInteraction {
             ActivityCompat.shouldShowRequestPermissionRationale(activity,
                     Manifest.permission.ACCESS_FINE_LOCATION)
 
-    private fun showManualPlaceInputDialog() {
-
-    }
-
     private fun checkLocationPermission(): Boolean =
             ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+
 }

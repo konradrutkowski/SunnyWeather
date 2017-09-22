@@ -7,8 +7,8 @@ import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.startFragment
 
 /**
- * Created by root on 18.09.2017.
- */
+* Created by Konrad Rutkowski on 18.09.2017.
+*/
 
 class WelcomeActivity : AppCompatActivity() {
 

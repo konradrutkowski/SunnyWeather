@@ -1,8 +1,8 @@
 package com.pjkr.sunnyweather.location
 
 /**
- * Created by root on 31.08.2017.
- */
+* Created by Konrad Rutkowski on 31.08.2017.
+*/
 public class CurrentLocation private constructor() {
 
     private object Holder { val INSTANCE = CurrentLocation() }
