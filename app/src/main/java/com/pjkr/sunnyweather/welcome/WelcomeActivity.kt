@@ -7,8 +7,8 @@ import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.startFragment
 
 /**
-* Created by Konrad Rutkowski on 18.09.2017.
-*/
+ * Created by Konrad Rutkowski on 18.09.2017.
+ */
 
 class WelcomeActivity : AppCompatActivity() {
 
@@ -24,6 +24,10 @@ class WelcomeActivity : AppCompatActivity() {
         when (currentFragment) {
             is PermissionInteraction -> currentFragment.handleThePermission(requestCode, permissions, grantResults)
         }
+    }
+
+    override fun onBackPressed() {
+        // No way to get back :)
     }
 
 
