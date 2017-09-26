@@ -1,7 +1,9 @@
 package com.pjkr.sunnyweather.data.usercity
 
+import io.realm.RealmObject
+
 /**
  * Created by root on 10.09.2017.
  */
 
-data class UserCityData(var cityName:String, var static: Boolean )
+data class UserCityData(var cityName:String, var static: Boolean ) : RealmObject()
