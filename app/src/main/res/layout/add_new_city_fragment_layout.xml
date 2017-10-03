@@ -47,6 +47,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <Button
+        android:id="@+id/add_city_btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:padding="10dp"

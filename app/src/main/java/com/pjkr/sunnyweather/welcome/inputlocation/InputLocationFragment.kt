@@ -23,9 +23,10 @@ class InputLocationFragment : Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Picasso.with(activity).load(R.drawable.gps_user_100x100).fit().centerCrop().into(add_location_picture)
+        add_city_btn.setOnClickListener { addUserCity() }
     }
 
-    fun addUserCity() {
+    private fun addUserCity() {
         UserCityData(textCityInput.text.toString(), true)
     }
 }

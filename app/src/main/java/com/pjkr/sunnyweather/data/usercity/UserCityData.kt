@@ -6,4 +6,6 @@ import io.realm.RealmObject
  * Created by root on 10.09.2017.
  */
 
-data class UserCityData(var cityName:String, var static: Boolean ) : RealmObject()
+open class UserCityData(var cityName:String = "",
+                        var static: Boolean = false
+) : RealmObject()
