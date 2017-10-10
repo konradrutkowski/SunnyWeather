@@ -6,6 +6,7 @@ import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.utils.celsiusFromKelvin
 import com.pjkr.sunnyweather.utils.formatDouble
+import io.realm.RealmList
 
 /**
  * Created by PJablonski on 28.06.2017.
@@ -31,7 +32,7 @@ class CurrentWeatherPresenter
         this.view.showTemperature(celsiusTemp)
         this.view.setCityName(weather.name)
 
-        val iconName: String? = "weather_" + weather.icon?.replace('n', 'd')
+        val iconName: String? = "weather_" + weather.mainIcon?.replace('n', 'd')
         this.view.showHeaderIcon(iconName)
         this.view.setTemperatureInfo(weather.main, weather.description)
         this.view.setPressure(weather.data?.pressure.toString())
@@ -58,7 +59,7 @@ class CurrentWeatherPresenter
 
     override fun loadNextDaysWeather(cityName: String) {
         this.dataSource.getTodayForecast(cityName, object: WeathersDataSource.LoadWeathersCallback{
-            override fun onSuccess(weatherList: List<Properties>?) {
+            override fun onSuccess(weatherList: List<Weather>?) {
                 view.setWeathersList(weatherList)
             }
 

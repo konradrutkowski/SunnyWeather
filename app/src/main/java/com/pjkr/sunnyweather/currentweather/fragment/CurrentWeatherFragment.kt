@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.currentweather.contract.CurrentWeatherContract
+import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.presenter.CurrentWeatherPresenter
 import com.pjkr.sunnyweather.data.WeathersRepository
 import com.pjkr.sunnyweather.data.local.LocalDataSource
@@ -66,35 +67,35 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
     }
 
     override fun showTemperature(temp: String) {
-        this.header.setTemperature(context.getString(R.string.temperature_with_degrees, temp))
+        this.header?.setTemperature(context.getString(R.string.temperature_with_degrees, temp))
     }
 
     override fun showHeaderIcon(iconName: String?) {
-        this.header.setWeatherIcon(iconName)
+        this.header?.setWeatherIcon(iconName)
     }
 
     override fun setPressure(pressure: String?) {
-        this.header.setPressure(pressure)
+        this.header?.setPressure(pressure)
     }
 
     override fun setCityName(cityName: String?) {
-        this.header.setCityName(cityName)
+        this.header?.setCityName(cityName)
     }
 
     override fun setTemperatureInfo(weatherName: String?, weatherDescription: String?) {
-        this.header.setTemperatureTitle(weatherName)
-        this.header.setTemperatureDescription(weatherDescription)
+        this.header?.setTemperatureTitle(weatherName)
+        this.header?.setTemperatureDescription(weatherDescription)
     }
 
     override fun setMinTemp(temp: String) {
-        this.header.setMinTemperature(context.getString(R.string.minTemp, temp))
+        this.header?.setMinTemperature(context.getString(R.string.minTemp, temp))
     }
 
     override fun setMaxTemp(temp: String) {
-        this.header.setMaxTemperature(context.getString(R.string.maxTemp, temp))
+        this.header?.setMaxTemperature(context.getString(R.string.maxTemp, temp))
     }
 
-    override fun setWeathersList(weathers: List<Properties>?) {
+    override fun setWeathersList(weathers: List<Weather>?) {
         if(weathers != null) {
             this.adapter.changeLongTermWeatherList(weathers)
         }

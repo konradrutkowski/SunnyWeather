@@ -18,7 +18,7 @@ class CurrentWeatherContract {
         fun setTemperatureInfo(weatherName: String?, weatherDescription: String?)
         fun setMinTemp(temp: String)
         fun setMaxTemp(temp: String)
-        fun setWeathersList(weathers: List<Properties>?)
+        fun setWeathersList(weathers: List<Weather>?)
     }
     interface Presenter{
         fun loadCurrentWeather(cityName: String)
@@ -27,8 +27,5 @@ class CurrentWeatherContract {
     interface Provider{
         fun getCount(): Int
         fun getWeather(position: Int): Weather?
-    }
-    interface Repository{
-        fun getWeatherInformation(cityName: String)
     }
 }

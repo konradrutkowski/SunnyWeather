@@ -3,8 +3,11 @@ package com.pjkr.sunnyweather.longterm.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import com.pjkr.sunnyweather.currentweather.model.Weather
+import io.realm.RealmList
+import io.realm.RealmObject
+import io.realm.annotations.Ignore
 
-class Properties {
+open class Properties {
 
     @SerializedName("dt")
     @Expose
@@ -23,10 +26,10 @@ class Properties {
     var weather: List<Weather>? = null
     @SerializedName("speed")
     @Expose
-    var speed: Double? = null
+    var speed: Float? = null
     @SerializedName("deg")
     @Expose
-    var deg: Int? = null
+    var deg: Float? = null
     @SerializedName("clouds")
     @Expose
     var clouds: Int? = null
@@ -36,13 +39,15 @@ class Properties {
     @SerializedName("snow")
     @Expose
     var snow: Double? = null
+    @Ignore
     var dayOfTheWeek: WeatherDay? = null
     var timeString: String? = null
 
+    @Ignore
     var icon: WeatherIcon? = null
 
     override fun toString(): String {
-        return "Properties(dt=$dt, temp=$temp, pressure=$pressure, humidity=$humidity, weather=$weather, speed=$speed, deg=$deg, clouds=$clouds, rain=$rain, snow=$snow, dayOfTheWeek=$dayOfTheWeek, timeString=$timeString, icon=$icon)"
+        return "Properties(dt=$dt, temp=$temp, pressure=$pressure, humidity=$humidity, weather=$weather, speed=$speed, deg=$deg, clouds=$clouds, rain=$rain, snow=$snow, dayOfTheWeek=$dayOfTheWeek, timeString=$timeString, mainIcon=$icon)"
     }
 
 }

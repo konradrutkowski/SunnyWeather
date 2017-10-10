@@ -1,8 +1,9 @@
 package com.pjkr.sunnyweather.api
 
+import com.pjkr.sunnyweather.api.dto.LongtermForecastResponse
 import com.pjkr.sunnyweather.currentweather.model.Weather
-import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
-import com.pjkr.sunnyweather.currentweather.model.forecast.WeatherTodayForecastResponse
+import com.pjkr.sunnyweather.api.dto.WeatherResponse
+import com.pjkr.sunnyweather.api.dto.WeatherTodayForecastResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,7 +17,7 @@ interface MapAPI {
     fun getWeather(@Query("q") cityName: String,
                    @Query("cnt") numberOfDays: String,
                    @Query("units") unit: String,
-                   @Query("APPID") keyApi: String): Call<Weather>
+                   @Query("APPID") keyApi: String): Call<LongtermForecastResponse>
 
     @GET("data/2.5/weather?")
     fun getCurrentWeather(@Query("q")cityId: String,

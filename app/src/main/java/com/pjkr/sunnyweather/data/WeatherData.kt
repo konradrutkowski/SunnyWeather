@@ -5,6 +5,7 @@ import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.longterm.model.Properties
 
 import com.pjkr.sunnyweather.longterm.model.WeatherIcon
+import io.realm.RealmList
 
 /**
  * Created by konrad on 25.07.2017.

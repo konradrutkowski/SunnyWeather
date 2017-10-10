@@ -1,6 +1,10 @@
-package com.pjkr.sunnyweather.currentweather.model
+package com.pjkr.sunnyweather.api.dto
 
 import com.google.gson.annotations.SerializedName
+import com.pjkr.sunnyweather.currentweather.model.Coordinates
+import com.pjkr.sunnyweather.currentweather.model.Data
+import com.pjkr.sunnyweather.currentweather.model.Weather
+import com.pjkr.sunnyweather.currentweather.model.Wind
 
 /**
  * Created by PJablonski on 28.06.2017.

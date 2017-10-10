@@ -18,15 +18,16 @@ class LongTermWeatherPresenter(val view: WeatherContract.View, val repository: W
 
 
     override fun loadData(city: String) {
-        repository.getWeather(city, object: WeathersDataSource.GetWeatherCallback{
+        repository.getLongtermWeather(city, object: WeathersDataSource.LoadWeathersCallback{
+            override fun onSuccess(weatherList: List<Weather>?) {
+                view.hideLoadIndicator()
+                view.showWeatherList(weatherList)
+            }
+
             override fun onFail() {
                 view.showFailedDataFetch()
             }
 
-            override fun onSuccess(weather: Weather) {
-                view.showWeather(weather)
-                view.hideLoadIndicator()
-            }
         })
 
     }
