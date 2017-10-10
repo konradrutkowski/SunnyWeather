@@ -1,11 +1,14 @@
 package com.pjkr.sunnyweather.welcome.inputlocation
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pjkr.sunnyweather.R
+import com.pjkr.sunnyweather.SunnyActivity
+import com.pjkr.sunnyweather.data.usercity.LocalUserCity
 import com.pjkr.sunnyweather.data.usercity.UserCityData
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.add_new_city_fragment_layout.*
@@ -27,6 +30,7 @@ class InputLocationFragment : Fragment() {
     }
 
     private fun addUserCity() {
-        UserCityData(textCityInput.text.toString(), true)
+        LocalUserCity().save(UserCityData(textCityInput.text.toString(), true))
+        activity.startActivity(Intent(activity, SunnyActivity::class.java))
     }
 }

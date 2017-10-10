@@ -22,8 +22,9 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.welcome_screen_layout.*
 
 /**
- * Created by Konrad Rutkowski on 19.09.2017.
- */
+* Created by Konrad Rutkowski on 19.09.2017.
+* This file is created for project SunnyWeather.
+*/
 
 class NoLocationsFragment : Fragment(), PermissionInteraction {
 
