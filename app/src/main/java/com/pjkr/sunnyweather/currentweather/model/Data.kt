@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 /**
  * Created by PJablonski on 28.06.2017.
  */
-class Data (val temp: Float,
+class Data (val temp: Double,
             val pressure: Int?,
             val humidity: Int?){
     @SerializedName("temp_min")
-    val minTemp: Float? = null
+    var minTemp: Double? = null
     @SerializedName("temp_max")
-    val maxTemp: Float? = null
+    var maxTemp: Double? = null
 }

@@ -12,8 +12,8 @@ import com.pjkr.sunnyweather.longterm.model.WeatherIcon
 
 class WeatherData {
 
-    fun chooseIcon(weather: Weather) : Weather {
-        for (prop: Properties in weather.list!!) {
+    fun chooseIcon(list: List<Properties>) : List<Properties> {
+        for (prop: Properties in list) {
             Log.e("SearchingForIcon", "For property: "+prop.toString())
             var icon: WeatherIcon
             if (prop.clouds!! > 25) {
@@ -32,7 +32,7 @@ class WeatherData {
             }
             prop.icon = icon
         }
-        return weather
+        return list
     }
 
 
