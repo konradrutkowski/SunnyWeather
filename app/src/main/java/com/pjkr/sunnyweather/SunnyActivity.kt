@@ -36,10 +36,7 @@ class SunnyActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             startCurrentWeatherFragment()
         }
-
     }
-
-
 
     private fun startCurrentWeatherFragment() {
         currentWeatherTab.showUnderline()

@@ -2,10 +2,10 @@ package com.pjkr.sunnyweather.data.weather.remote
 
 
 import android.util.Log
-import com.pjkr.sunnyweather.data.weather.WeatherData
 import com.pjkr.sunnyweather.api.WeatherProvider
 import com.pjkr.sunnyweather.currentweather.model.Weather
 import com.pjkr.sunnyweather.currentweather.model.WeatherResponse
+import com.pjkr.sunnyweather.data.weather.WeatherData
 import com.pjkr.sunnyweather.data.weather.WeathersDataSource
 import com.pjkr.sunnyweather.longterm.model.Properties
 import com.pjkr.sunnyweather.longterm.model.WeatherDay
@@ -68,6 +68,26 @@ object RemoteDataSource : WeathersDataSource {
                 Log.e("Request", " FAILED" + call.request().url())
                 t.printStackTrace()
                 getWeatherCallback.onFail()
+            }
+        })
+    }
+
+    override fun getCurrentWeatherByLatLon(lat: String, lon: String, callback: WeathersDataSource.GetWeatherCallback){
+        WeatherProvider().getWeatherByLatLon(lat, lon, "1", object: Callback<Weather>{
+            override fun onResponse(call: Call<Weather>, response: Response<Weather>) {
+                if (response.body() != null) {
+                    val weather: Weather = proceedListResponse(response.body()!!)
+                    callback.onSuccess(weather)
+                    return
+                }
+                callback.onFail()
+            }
+
+            override fun onFailure(call: Call<Weather>, t: Throwable) {
+                Log.e("Request", " FAILED")
+                Log.e("Request", " FAILED" + call.request().url())
+                t.printStackTrace()
+                callback.onFail()
             }
         })
     }

@@ -32,7 +32,7 @@ class WeatherProvider {
         weatherCall.enqueue(callback)
     }
 
-    fun getWeatherLatLon(lat:String,lon:String, numberOfDays: String, callback: Callback<Weather>) {
+    fun getWeatherByLatLon(lat:String,lon:String, numberOfDays: String, callback: Callback<Weather>) {
         val weatherCall = mapAPI.getWeatherLatLon(lat, lon, numberOfDays, "metric", BuildConfig.WEATHER_API)
         weatherCall.enqueue(callback)
     }

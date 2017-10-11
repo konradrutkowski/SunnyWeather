@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import com.pjkr.sunnyweather.PermissionInteraction
 import com.pjkr.sunnyweather.R
 import com.pjkr.sunnyweather.startFragment
+import com.pjkr.sunnyweather.welcome.nolocation.NoLocationsFragment
 
 /**
  * Created by Konrad Rutkowski on 18.09.2017.

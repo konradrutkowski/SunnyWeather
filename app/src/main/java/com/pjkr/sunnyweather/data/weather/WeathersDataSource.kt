@@ -20,7 +20,7 @@ public interface WeathersDataSource {
 
     fun getCurrentWeather(cityName: String, callback: GetWeatherCallback)
 
-
+    fun getCurrentWeatherByLatLon(lat: String, lon: String, callback: WeathersDataSource.GetWeatherCallback)
 
     interface LoadWeathersCallback {
 
