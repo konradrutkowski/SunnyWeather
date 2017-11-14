@@ -3,6 +3,7 @@ package com.pjkr.sunnyweather.currentweather.fragment
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -24,10 +25,10 @@ import kotlinx.android.synthetic.main.current_weather_framgnet.*
  * Created by PJablonski on 26.06.2017.
  */
 class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
-    private var presenter: CurrentWeatherPresenter? = null
-    private var adapter: LongTermListAdapter? = null
+    private lateinit var presenter: CurrentWeatherPresenter
+    private lateinit var adapter: LongTermListAdapter
 
-    private var list: RecyclerView? = null
+    private lateinit var list: RecyclerView
 
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -36,8 +37,10 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
 
         this.list = view.findViewById(R.id.recyclerView) as RecyclerView
 
-        this.list?.adapter = this.adapter
-        this.list?.layoutManager = LinearLayoutManager(context)
+        this.list.adapter = this.adapter
+        this.list.layoutManager = LinearLayoutManager(context)
+
+        this.list.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
         return view
     }
 
@@ -50,8 +53,8 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
 
     override fun onResume() {
         super.onResume()
-        this.presenter?.loadCurrentWeather("Łódź")
-        this.presenter?.loadNextDaysWeather("Łódź")
+        this.presenter.loadCurrentWeather("Łódź")
+        this.presenter.loadNextDaysWeather("Łódź")
     }
 
     override fun showLoadingIndicator() {
@@ -94,7 +97,7 @@ class CurrentWeatherFragment : Fragment(), CurrentWeatherContract.View {
 
     override fun setWeathersList(weathers: List<Weather>?) {
         if(weathers != null) {
-            this.adapter?.changeLongTermWeatherList(weathers)
+            this.adapter.changeLongTermWeatherList(weathers)
         }
     }
 
